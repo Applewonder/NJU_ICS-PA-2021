@@ -4,7 +4,7 @@
 #include "nemu.h"
 
 // define the structure of registers
-typedef struct
+struct
 {
 	// general purpose registers
 	union
