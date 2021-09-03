@@ -4,7 +4,7 @@
 #include "nemu.h"
 
 // define the structure of registers
-struct
+typedef struct
 {
 	// general purpose registers
 	union
@@ -19,7 +19,7 @@ struct
 			};
 			uint32_t val;
 		} gpr[8];
-		struct
+		structs
 		{ // do not change the order of the registers
 			uint32_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
 		};
