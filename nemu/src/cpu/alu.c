@@ -17,14 +17,13 @@ void set_SF(uint32_t result, size_t data_size) {
 }
 
 void set_PF(uint32_t result){
-    result = result & (0xFFFFFFFF >> 24);
-    int scan = 1;
+    
     int count = 0;
     for(int i = 0; i < 8; i++) {
-        scan  = scan << 1;
-        if(scan & result) {
+        if (result % 2 == 1) {
             count++;
         }
+        result /= 2;
     }
     cpu.eflags.PF = (count % 2) ? 0 : 1;
 }
