@@ -21,7 +21,7 @@ void set_PF(uint32_t result){
     int scan = 1;
     int count = 0;
     for(int i = 0; i < 8; i++) {
-        scan << i;
+        scan  = scan << 1;
         if(scan & result) {
             count++;
         }
