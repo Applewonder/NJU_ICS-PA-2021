@@ -17,7 +17,6 @@ void set_SF(uint32_t result, size_t data_size) {
 }
 
 void set_PF(uint32_t result){
-    
     int count = 0;
     for(int i = 0; i < 8; i++) {
         if (result % 2 == 1) {
@@ -54,12 +53,24 @@ void set_OF_add(uint32_t result, uint32_t src, uint32_t dest, size_t data_size) 
     }
 }
 
+void set_CF_adc(uint32_t result, uint32_t src, size_t data_size) {
+    if (cpu.eflags.CF == 0) {
+	    set_CF_add(res, src, data_size);
+	} else {
+	    result = sign_ext(result & (0xFFFFFFFF >> (32 -data_size)), data_size);
+        src= sign_ext(src& (0xFFFFFFFF >> (32 -data_size)), data_size);
+        if(src == result) {
+            cpu.eflags.CF = 1;
+            return;
+        }
+        cpu.eflags.CF = result < src; 
+	}
+}
+
+
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
-#ifdef NEMU_REF_ALU
-	return __ref_alu_add(src, dest, data_size);
-#else
-	uint32_t res = 0;
+    uint32_t res = 0;
 	res = src + dest;
 	
 	set_CF_add(res, src, data_size);
@@ -69,19 +80,21 @@ uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 	set_OF_add(res, src, dest, data_size);
 	
 	return res & (0xFFFFFFFF >> (32 -data_size));
-#endif
 }
 
 uint32_t alu_adc(uint32_t src, uint32_t dest, size_t data_size)
 {
-#ifdef NEMU_REF_ALU
-	return __ref_alu_adc(src, dest, data_size);
-#else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	fflush(stdout);
-	assert(0);
-	return 0;
-#endif
+
+	uint32_t res = 0;
+	res = src + dest + cpu.eflags.CF;
+	
+	set_PF(res);
+	set_ZF(res, data_size);
+	set_SF(res, data_size);
+	set_CF_adc(res, src, data_size);
+	set_OF_add(res, src, dest, data_size);
+	
+	return res & (0xFFFFFFFF >> (32 -data_size));
 }
 
 uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size)
