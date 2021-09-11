@@ -166,7 +166,7 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 	res = dest - (src + cpu.eflags.CF);
 	
 	int k = cpu.eflags.CF;
-	set_CF_sbb(res, src, data_size);
+	set_CF_sbb(res, dest, data_size);
 	int a = cpu.eflags.CF;
 	__ref_alu_sbb(src, dest, data_size);
 	int b = cpu.eflags.CF;
