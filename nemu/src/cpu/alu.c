@@ -170,7 +170,8 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 	__ref_alu_sbb(src, dest, data_size);
 	int b = cpu.eflags.CF;
 	if(a != b) {
-	    printf("%ud, %ud", src, dest);
+	    printf("src = %ud,dest = %ud", src, dest);
+	    printf("a = %d, b = %d", a, b);
 	    return res & (0xFFFFFFFF >> (32 -data_size));
 	}
 	set_ZF(res, data_size);
