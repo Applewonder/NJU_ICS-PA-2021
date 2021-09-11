@@ -101,15 +101,15 @@ void set_OF_sub(uint32_t result, uint32_t src, uint32_t dest, size_t data_size) 
 
 void set_CF_sbb(uint32_t result, uint32_t dest, size_t data_size) {
     if (cpu.eflags.CF == 0) {
-	    set_CF_sub(result, src, data_size);
+	    set_CF_sub(result, dest, data_size);
 	} else {
 	    result = sign_ext(result & (0xFFFFFFFF >> (32 -data_size)), data_size);
-        src= sign_ext(src& (0xFFFFFFFF >> (32 -data_size)), data_size);
-        if(src == result) {
+        dest = sign_ext(dest & (0xFFFFFFFF >> (32 -data_size)), data_size);
+        if(dest == result) {
             cpu.eflags.CF = 1;
             return;
         }
-        cpu.eflags.CF = result > src; 
+        cpu.eflags.CF = result > dest; 
 	}
 }
 
