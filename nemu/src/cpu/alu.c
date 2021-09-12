@@ -337,7 +337,7 @@ uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size)
 	uint32_t res = 0;
 	
 	res = dest >> src;
-	
+	prinf("%ud, %ud, %ud", dest, src, res);
 	set_ZF(res, data_size);
 	set_SF(res, data_size);
 	set_PF(res);
