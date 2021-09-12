@@ -113,10 +113,20 @@ void set_CF_sbb(uint32_t result, uint32_t dest, size_t data_size) {
 	}
 }
 
-void set_shl_CF(uint32_t dest, size_t data_size) {
-    uint32_t i = sign_ext(dest, data_size);
-    int sg = sign(i);
-    cpu.eflags.CF = sg;
+void set_shl_CF(uint32_t result, uint32_t dest, size_t data_size) {
+    int count_res = 0;
+    int count_dest = 0;
+    for(int i = 0; i < data_size; i++) {
+        if (result % 2) {
+            count_res++;
+        } 
+        if (dest % 2) {
+            count_dest++;
+        }
+        result /= 2;
+        dest /= 2;
+    }
+    cpu.eflags.CF = count_res < count_dest;
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
@@ -316,7 +326,7 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size)
 	set_ZF(res, data_size);
 	set_SF(res, data_size);
 	set_PF(res);
-	set_shl_CF(dest, data_size);
+	set_shl_CF(res, dest, data_size);
 	
 	return res & (0xFFFFFFFF >> (32 -data_size));
 #endif
