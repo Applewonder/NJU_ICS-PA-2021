@@ -358,15 +358,15 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size)
 	if(!(sign(tmp))) {
 	    res = dest >> src;
 	    res = res & (0xFFFFFFFF >> (32 -data_size + src));
- 	    } else {
+ 	} else {
             if (data_size <= src){
             res = 0xFFFFFFFF >> (32 - data_size);
-	    } else {
+	        } else {
              res = dest >> src;
              res = res | (0xFFFFFFFF << (data_size - src));
              res = res & (0xFFFFFFFF >> (32 -data_size));
-    }
-
+                }
+            }
     
 	
 	set_ZF(res, data_size);
@@ -394,5 +394,4 @@ uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size)
 	
 	return res & (0xFFFFFFFF >> (32 -data_size));
 #endif
-}
 }
