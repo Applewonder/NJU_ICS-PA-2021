@@ -335,10 +335,8 @@ uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_shr(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	for(int i = 0; i < src; i++) {
-	    dest /= 2;
-	}
-	res = dest;
+	
+	res = dest >> src;
 	
 	set_ZF(res, data_size);
 	set_SF(res, data_size);
