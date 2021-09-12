@@ -198,8 +198,8 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_mul(src, dest, data_size);
 #else
 	uint64_t res = 0;
-	uint64_t a = （uint64)src;
-	uint64_t b =  (uint64)dest;
+	uint64_t a =（uint64_t)src;
+	uint64_t b = (uint64_t)dest;
 
 	res = a * b;
 	uint64_t res_t = __ref_alu_mul(src, dest, data_size);
