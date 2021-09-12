@@ -361,7 +361,7 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size)
 	} else {
 	    if (data_size < src){
 	    res = 0xFFFFFFFF;
-	} else if {
+    	} else {
 	    res = res | (0xFFFFFFFF << (data_size - src);
 	    }
 	}
