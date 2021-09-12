@@ -114,9 +114,9 @@ void set_CF_sbb(uint32_t result, uint32_t dest, size_t data_size) {
 }
 
 void set_shl_CF(uint32_t dest, size_t data_size) {
-    uint32_t i = sign_ext(dest);
-    int sg = sigh(i);
-    return sg;
+    uint32_t i = sign_ext(dest, data_size);
+    int sg = sign(i);
+    cpu.eflags.CF = sg;
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
