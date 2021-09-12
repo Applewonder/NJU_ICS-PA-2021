@@ -130,6 +130,10 @@ void set_shr_CF(uint32_t src, uint32_t dest, size_t data_size) {
     }
 }
 
+void set_mul_CF_OF(uint32_t src, uint32_t dest, size_t data_size) {
+    
+}
+
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
     uint32_t res = 0;
@@ -196,6 +200,9 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	uint64_t res = 0;
 	res = src * dest;
 	
+	set_ZF(res, data_size);
+	set_SF(res, data_size);
+	set_PF(res);
 	
 	return res & (0xFFFFFFFF >> (64 - 2 * data_size));
 #endif
