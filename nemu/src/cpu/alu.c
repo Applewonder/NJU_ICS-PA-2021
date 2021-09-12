@@ -113,20 +113,13 @@ void set_CF_sbb(uint32_t result, uint32_t dest, size_t data_size) {
 	}
 }
 
-void set_shl_CF(uint32_t result, uint32_t dest, size_t data_size) {
-    int count_res = 0;
-    int count_dest = 0;
-    for(int i = 0; i < data_size; i++) {
-        if (result % 2) {
-            count_res++;
-        }
-        if (dest % 2) {
-            count_dest++;
-        }
-        result /= 2;
-        dest /= 2;
+void set_shl_CF(uint32_t src, uint32_t dest, size_t data_size) {
+    while (src != 0) {
+        uint32_t tmp = sign_ext(dest, data_size);
+        cpu.eflags.CF = sign(tmp);
+        dest *= 2;
+        src--;
     }
-    cpu.eflags.CF = result < dest;
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
