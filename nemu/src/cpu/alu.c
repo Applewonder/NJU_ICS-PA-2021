@@ -198,14 +198,11 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_mul(src, dest, data_size);
 #else
 	uint64_t res = 0;
-	for(int i = 0; i < data_size; i++) {
-	    if(src & 1) {
-	        res += dest;
-	    }
-	    dest <<= 1;
-	    src >>= 1;
-	}
-	
+	uint64_t a = src;
+	uint64_t b = dest;
+	a = a & (0xFFFFFFFF >> (64 - data_size));
+	b = b & (0xFFFFFFFF >> (64 - data_size));
+	res = a * b;
 	set_ZF(res, data_size);
 	set_SF(res, data_size);
 	set_PF(res);
