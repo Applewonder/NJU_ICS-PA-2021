@@ -335,15 +335,8 @@ uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_shr(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	
 	res = dest >> src;
-	uint32_t i = res & (0xFFFFFFFF >> (32 -data_size));
-	uint32_t t = __ref_alu_shr(src, dest, data_size);
-	if(i != t) {
-	    printf("%ud, %ud, %ud", dest, src, res);
-	    printf("i = %ud, t = %ud", i, t);
-	    return t;
-	}
+	res = res & (0xFFFFFFFF >> (32 -data_size + src));
 	
 	printf("%ud, %ud, %ud", dest, src, res);
 	set_ZF(res, data_size);
