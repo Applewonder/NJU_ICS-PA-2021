@@ -114,8 +114,8 @@ void set_CF_sbb(uint32_t result, uint32_t dest, size_t data_size) {
 }
 
 void set_shl_CF(uint32_t dest, size_t data_size) {
-    uint32_t i = sign_ext(dest);
-    int sg = sigh(i);
+    uint32_t i = sign_ext(dest, data_size);
+    int sg = sign(i);
     return sg;
 }
 
