@@ -119,14 +119,14 @@ void set_shl_CF(uint32_t result, uint32_t dest, size_t data_size) {
     for(int i = 0; i < data_size; i++) {
         if (result % 2) {
             count_res++;
-        } 
+        }
         if (dest % 2) {
             count_dest++;
         }
         result /= 2;
         dest /= 2;
     }
-    cpu.eflags.CF = count_res < count_dest;
+    cpu.eflags.CF = result < dest;
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
