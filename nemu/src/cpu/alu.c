@@ -229,7 +229,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	set_ZF(res, data_size);
 	set_SF(res, data_size);
 	set_PF(res);
-	//set_mul_CF_OF(res, data_size);
+	set_mul_CF_OF(res, data_size);
 	
 	return res;
 #endif
