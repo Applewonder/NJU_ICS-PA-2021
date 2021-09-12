@@ -354,22 +354,40 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_sar(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	uint32_t tmp = sign_ext(dest, data_size);
-	if(!(sign(tmp))) {
-	    res = dest >> src;
-	    res = res & (0xFFFFFFFF >> (32 -data_size + src));
-	} else {
+// 	uint32_t tmp = sign_ext(dest, data_size);
+// 	if(!(sign(tmp))) {
+// 	    res = dest >> src;
+// 	    res = res & (0xFFFFFFFF >> (32 -data_size + src));
+// 	} else {
 	   // if (data_size <= src){
 	   // res = 0xFFFFFFFF >> (32 - data_size);
     // 	} else {
 	   // res = res | (0xFFFFFFFF << (data_size - src));
 	   // res = res & (0xFFFFFFFF >> (32 -data_size));
 	   // }
-	   for(int i = 0; i < src; i++) {
-	       dest /= 2;
-	   }
-	   res = dest;
-	}
+// 	   for(int i = 0; i < src; i++) {
+// 	       dest /= 2;
+// 	   }
+// 	   res = dest;
+// 	}
+    if (data_size == 8){
+        uint8_t k = (uint8_t)dest;
+        for(int i = 0; i < src; i++) {
+            k /= 2;
+        }
+        res = k;
+    } else if(data_size == 16) {
+        uint16_t m = (uint16_t)dest;
+        for(int i = 0; i < src; i++) {
+            m /= 2;
+        }
+        res = m;
+    } else {
+        for(int i = 0; i < src; i++) {
+            dest /= 2;
+        }
+        res = dest;
+    }
 	
 	set_ZF(res, data_size);
 	set_SF(res, data_size);
