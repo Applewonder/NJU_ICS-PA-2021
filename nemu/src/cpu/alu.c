@@ -158,6 +158,9 @@ void set_mul_CF_OF(uint64_t res, size_t data_size) {
     }
 }
 
+void set_imul_CF_OF(uint64_t res, size_t data_size) {
+    
+}
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
     uint32_t res = 0;
@@ -226,9 +229,6 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	uint64_t b = (uint64_t)dest;
     res = a * b;
  	
-	set_ZF(res, data_size);
-	set_SF(res, data_size);
-	set_PF(res);
 	set_mul_CF_OF(res, data_size);
 	
 	return res;
@@ -240,10 +240,10 @@ int64_t alu_imul(int32_t src, int32_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_imul(src, dest, data_size);
 #else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	fflush(stdout);
-	assert(0);
-	return 0;
+	int64_t res = 0;
+	res = src * dest;
+	
+	return res;
 #endif
 }
 
