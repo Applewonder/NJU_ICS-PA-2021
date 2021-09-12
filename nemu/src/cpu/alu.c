@@ -130,8 +130,32 @@ void set_shr_CF(uint32_t src, uint32_t dest, size_t data_size) {
     }
 }
 
-void set_mul_CF_OF(uint32_t src, uint32_t dest, size_t data_size) {
-    
+void set_mul_CF_OF(uint64_t res, size_t data_size) {
+    if(data_size == 32) {
+        if (res >> 32) {
+            cpu.eflags.CF = 1;
+            cpu.eflags.OF = 1;
+        } else {
+            cpu.eflags.CF = 0;
+            cpu.eflags.OF = 0;
+        }
+    } else if(data_size == 16) {
+        if (res >> 16) {
+            cpu.eflags.CF = 1;
+            cpu.eflags.OF = 1;
+        } else {
+            cpu.eflags.CF = 0;
+            cpu.eflags.OF = 0;
+        }
+    } else {
+        if (res >> 8) {
+            cpu.eflags.CF = 1;
+            cpu.eflags.OF = 1;
+        } else {
+            cpu.eflags.CF = 0;
+            cpu.eflags.OF = 0;
+        }
+    }
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
@@ -200,17 +224,12 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	uint64_t res = 0;
 	uint64_t a = (uint64_t)src;
 	uint64_t b = (uint64_t)dest;
-
-	res = a * b;
- 	//uint64_t res_t = __ref_alu_mul(src, dest, data_size);
-//   	if(res != res_t) {
-//   	    printf("src = %ud, dest = %ud, a = %llud, b = %llud, res = %llud, res_t = %llud", src, dest, a, b, res, res_t);
-//   	    fflush(stdout);
-//   	    return res_t;
-//   	    }
+    res = a * b;
+ 	
 	set_ZF(res, data_size);
 	set_SF(res, data_size);
 	set_PF(res);
+	set_mul_CF_OF(res, data_size);
 	
 	return res;
 #endif
