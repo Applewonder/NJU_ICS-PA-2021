@@ -204,14 +204,9 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	res = a * b;
 	uint64_t res_t = __ref_alu_mul(src, dest, data_size);
  	if(res != res_t) {
+ 	    printf("src = %ud, dest = %ud, a = %ud, b = %ud, res = ud, res_t = ud", src, dest, a, b, res, res_t);
  	    
- 	    printf("%" (PRIu32) "\n", src);
- 	    printf("%" (PRIu32) "\n", dest);
- 	    printf("%" (PRIu64) "\n", a);
- 	    printf("%" (PRIu64) "\n", b);
- 	    printf("%" (PRIu64) "\n", res);
- 	    printf("%" (PRIu64) "\n", res_t);
- 	    return res_t & (0xFFFFFFFF >> (64 - 2 * data_size));
+ 	    return res_t;
  	    }
 	set_ZF(res, data_size);
 	set_SF(res, data_size);
