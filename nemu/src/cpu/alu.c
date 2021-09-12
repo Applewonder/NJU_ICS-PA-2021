@@ -336,7 +336,7 @@ uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size)
 #else
 	uint32_t res = 0;
 	for(int i = 0; i < src; i++) {
-	    dest /= ;2
+	    dest /= 2;
 	}
 	res = dest;
 	
