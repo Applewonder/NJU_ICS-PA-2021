@@ -205,7 +205,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	uint64_t res_t = __ref_alu_mul(src, dest, data_size);
  	if(res != res_t) {
  	    printf("src = %ud, dest = %ud, a = %llud, b = %llud, res = %llud, res_t = %llud", src, dest, a, b, res, res_t);
- 	    
+ 	    fflush(stdout);
  	    return res_t;
  	    }
 	set_ZF(res, data_size);
