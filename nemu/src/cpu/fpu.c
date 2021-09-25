@@ -220,6 +220,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	    printf("tes = %f, res = %f", tes, res);
 	    printf("fa = %f, fb = %f", fa.fval, fb.fval);
 	    printf("a = %d, b = %d", a, b);
+	    printf("f.sign = %d, exp_res = %d, sig.res = %d", f.sign, exp_res, sig_res);
 	}
 	return internal_normalize(f.sign, exp_res, sig_res);
 }
