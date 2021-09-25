@@ -221,6 +221,8 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	    printf("fa = %f, fb = %f", fa.fval, fb.fval);
 	    printf("a = %d, b = %d", a, b);
 	    printf("f.sign = %d, exp_res = %d, sig.res = %d", f.sign, exp_res, sig_res);
+	    printf("fa.sign = %d, fa.exponent = %d, fa.fraction = %d", fa.sign, fa.exponent, fa.fraction);
+	    printf("fb.sign = %d, fb.exponent = %d, fb.fraction = %d", fb.sign, fb.exponent, fb.fraction);
 	}
 	return internal_normalize(f.sign, exp_res, sig_res);
 }
