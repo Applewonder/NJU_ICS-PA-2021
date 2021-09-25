@@ -218,6 +218,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 	float res = internal_normalize(f.sign, exp_res, sig_res);
 	if(tes != res) {
 	    printf("tes = %f, res = %f", tes, res);
+	    printf("fa = %f, fb = %f", fa.fval, fb.fval);
 	}
 	return internal_normalize(f.sign, exp_res, sig_res);
 }
