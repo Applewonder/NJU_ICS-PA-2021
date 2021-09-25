@@ -88,7 +88,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		    sig_grs >>= 3;
 		    sig_grs++;
 	    } else {
-	        if (sig_grs&0x0000000000000008 == 8) {
+	        if ((sig_grs & 0x0000000000000008) == 8) {
 	            sig_grs >>= 3;
 	            sig_grs++;
 	        } else {
