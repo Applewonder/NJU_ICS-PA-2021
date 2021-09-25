@@ -215,7 +215,8 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 
 	uint32_t exp_res = fb.exponent;
 	float tes = fa.fval + fb.fval;
-	FLOAT res.val = internal_normalize(f.sign, exp_res, sig_res);
+	FLOAT res;
+	res.val = internal_normalize(f.sign, exp_res, sig_res);
 	if(tes != res.fval) {
 	    printf("tes = %f, res = %f", tes, res);
 	    printf("fa = %f, fb = %f", fa.fval, fb.fval);
