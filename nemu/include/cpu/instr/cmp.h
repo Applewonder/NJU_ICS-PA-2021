@@ -3,5 +3,5 @@
 /*
 Put the declarations of `cmp' instructions here.
 */
-
+make_instr_impl_2op(cmp, i, rm, v)
 #endif
