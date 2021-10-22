@@ -10,4 +10,4 @@ static void instr_execute_2op()
 	
 	operand_write(&opr_dest);
 }
-make_instr_impl_2op(cmp, i, rm, v)
+make_instr_impl_2op(cmp, i, rm, bv)
