@@ -8,4 +8,4 @@ static void instr_execute_2op()
 	alu_sub(opr_dest.val, sign_ext(opr.src, datasize))
 	operand_write(&opr_dest);
 }
-//make_instr_impl_2op(cmp, i, rm, bv)
+make_instr_impl_2op(cmp, i, rm, bv)
