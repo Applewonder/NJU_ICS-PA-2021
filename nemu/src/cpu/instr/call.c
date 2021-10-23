@@ -4,6 +4,8 @@ Put the implementations of `call' instructions here.
 */
 int call_near(uint32_t eip, uint8_t opcode) 
 {
+     operand_read(&opr_src);
+     
      int len = 5;
      opr_src.data_size = opr_dest.data_size = 32;
      data_size = 32;
