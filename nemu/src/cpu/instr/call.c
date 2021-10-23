@@ -2,7 +2,7 @@
 /*
 Put the implementations of `call' instructions here.
 */
-void call_near(uint32_t eip, uint8_t opcode) 
+int call_near(uint32_t eip, uint8_t opcode) 
 {
     operand_read(&opr_src);
     int len = 1;
