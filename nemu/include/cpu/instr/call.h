@@ -3,5 +3,5 @@
 /*
 Put the declarations of `call' instructions here.
 */
-
+call_near(uint32_t eip, uint8_t opcode);
 #endif
