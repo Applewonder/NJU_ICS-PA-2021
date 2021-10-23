@@ -6,7 +6,7 @@ int call_near(uint32_t eip, uint8_t opcode)
 {
      opr_src.type = OPR_IMM;
      opr_src.addr = cpu.eip + 1;
-     operand_read(&opr_src)；
+     operand_read(&opr_src);
      
      opr_src.data_size = opr_dest.data_size = 32;
      data_size = 32;
