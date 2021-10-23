@@ -11,6 +11,7 @@ void call_near(uint32_t eip, uint8_t opcode)
     opr_dest.addr = cpu.esp;
     opr_dest.data_size = data_size;
     opr_dest.val = cpu.eip;
-    
+    operand_write(&opr_dest);
+}
     cpu.eip += opr_src.val;
 }
