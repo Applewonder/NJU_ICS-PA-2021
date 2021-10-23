@@ -13,4 +13,4 @@ static void instr_execute_1op()
     opr_dest.val = sign_ext(opr_src.val, data_size);
     operand_write(&opr_dest);
 }
-//make_instr_impl_1op(push, )
+make_instr_impl_1op(push, i, r)
