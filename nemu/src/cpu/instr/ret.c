@@ -2,9 +2,9 @@
 /*
 Put the implementations of `ret' instructions here.
 */
-/*int ret_near(uint32_t eip, uint8_t opcode)
+int ret_near(uint32_t eip, uint8_t opcode)
 {
-    opr_dest.type = OPR_MEM;
+    /*opr_dest.type = OPR_MEM;
     opr_dest.addr = cpu.esp;
     opr_dest.data_size = data_size;
     operand_read(&opr_dest);
@@ -17,4 +17,3 @@ Put the implementations of `ret' instructions here.
     }
     return 0;
 }
-*/
