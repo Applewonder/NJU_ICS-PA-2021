@@ -3,5 +3,5 @@
 /*
 Put the declarations of `ret' instructions here.
 */
-
+int ret_near(uint32_t eip, uint8_t opcode);
 #endif
