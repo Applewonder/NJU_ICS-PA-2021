@@ -2,3 +2,4 @@
 /*
 Put the implementations of `ret' instructions here.
 */
+int ret_near
