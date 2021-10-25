@@ -1,4 +1,5 @@
 #include "cpu/instr.h"
+#include <stdio.h>
 
 static void instr_execute_1op_cc_pass()
 {
