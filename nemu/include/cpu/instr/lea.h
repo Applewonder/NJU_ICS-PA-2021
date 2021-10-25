@@ -3,5 +3,5 @@
 /*
 Put the declarations of `lea' instructions here.
 */
-make_instr_func(lea_rm2r_v);
+int len(uint32_t eip, uint8_t opcode);
 #endif
