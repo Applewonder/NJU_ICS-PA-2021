@@ -13,7 +13,7 @@ make_instr_func(pop_r_v)
     OPERAND esp;
     esp.type = OPR_MEM;
     esp.addr = cpu.esp;
-    esp.data_size = data_size;
+    esp.data_size = 32;
     operand_read(&esp);
     
     OPERAND opr;
