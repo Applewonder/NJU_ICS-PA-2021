@@ -30,7 +30,7 @@ make_instr_func(jmp_short)
 
         
 
-        cpu.eip += rel.val + 2;
+        cpu.eip += r + 2;
 
         return 0;
 }
