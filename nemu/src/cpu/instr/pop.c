@@ -4,15 +4,15 @@ Put the implementations of `pop' instructions here.
 */
 static void instr_execute_1op()
 {
-    OPERAND opr;
-    opr.type = OPR_MEM;
-    opr.addr = cpu.esp;
-    opr.data_size = data_size;
-    operand_read(&opr);
+    opcode -= 0x58;
     
-    operand_read(&opr_dest);
-    opr_dest.val = opr.val;
-    operand_write(&opr_dest);
+    OPERAND reg;
+    opr.type = OPR_REG;
+    opr.addr = opcode;
+    opr.data_size = data_size;
+    opr.val = esp.val;
+    
+    operand_write(&opr);
     cpu.esp += 4;
 }
 make_instr_impl_1op(pop, r, v)
