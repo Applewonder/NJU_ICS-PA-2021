@@ -21,16 +21,16 @@ make_instr_func(jmp_near)
 
 make_instr_func(jmp_short)
 {
-        OPERAND rel;
-        rel.type = OPR_IMM;
-        rel.data_size = data_size;
-        rel.addr = eip + 1;
+        // OPERAND rel;
+        // rel.type = OPR_IMM;
+        // rel.data_size = data_size;
+        // rel.addr = eip + 1;
 
-        operand_read(&rel);
+        // operand_read(&rel);
 
         
 
-        cpu.eip += r + 2;
+        cpu.eip += 2;
 
         return 0;
 }
