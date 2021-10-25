@@ -9,3 +9,4 @@ static void instr_execute_2op()
 	alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
 }
 make_instr_impl_2op(cmp, i, rm, bv)
+make_instr_impl_2op(cmp, r, rm, v)
