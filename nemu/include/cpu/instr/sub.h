@@ -3,5 +3,5 @@
 /*
 Put the declarations of `sub' instructions here.
 */
-
+make_instr_func(mov_i2rm_bv);
 #endif
