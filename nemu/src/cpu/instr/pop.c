@@ -4,7 +4,7 @@ Put the implementations of `pop' instructions here.
 */
 static void instr_execute_1op()
 {
-    opcode = instr_fetch(eip + 1, 1);
+    int opcode = instr_fetch(cpu.eip + 1, 1);
     opcode -= 0x58;
     
     OPERAND opr;
