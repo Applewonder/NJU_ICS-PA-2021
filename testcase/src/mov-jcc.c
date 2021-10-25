@@ -1,5 +1,4 @@
 #include "trap.h"
-#include <stdio.h>
 
 int A[10];
 int b;
