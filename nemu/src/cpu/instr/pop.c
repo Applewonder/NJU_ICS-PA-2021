@@ -7,7 +7,7 @@ make_instr_func(pop_r_v)
 {
     int len = 1;
     
-    int opcode = instr_fetch(cpu.eip + 1, 1);
+    opcode = instr_fetch(cpu.eip + 1, 1);
     opcode -= 0x58;
     
     OPERAND esp;
