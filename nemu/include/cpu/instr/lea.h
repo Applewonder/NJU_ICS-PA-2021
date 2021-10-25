@@ -3,5 +3,5 @@
 /*
 Put the declarations of `lea' instructions here.
 */
-int len(uint32_t eip, uint8_t opcode);
+int lea(uint32_t eip, uint8_t opcode);
 #endif

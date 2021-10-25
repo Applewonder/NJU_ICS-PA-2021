@@ -3,7 +3,7 @@
 Put the implementations of `lea' instructions here.
 */
 
-int len(uint32_t eip, uint8_t opcode)
+int lea(uint32_t eip, uint8_t opcode)
 {
     int len = 1;
     decode_data_size_v;
