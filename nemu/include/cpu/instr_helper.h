@@ -206,7 +206,7 @@ static inline bool inv_cc();
 	inv_cc()
 
 #define condition_g \
-	cpu.eflags.ZF == 0 && cpu.eflags.SF == cpu.eflages.OF
+	cpu.eflags.ZF == 0 && cpu.eflags.SF == cpu.eflags.OF
 
 #define condition_ge \
 	inv_cc()
