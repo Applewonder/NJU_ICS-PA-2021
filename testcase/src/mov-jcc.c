@@ -13,7 +13,7 @@ int main()
 
 	b = A[3];
 	A[5] = b;
-    //printf("0 = %d, 1 = %d, 2 = %d, 3 = %d, 4 = %d", A[0], A[1], A[2], A[3], A[4]);
+
 	nemu_assert(A[0] == 0);
 	nemu_assert(A[1] >= 1);
 	nemu_assert(A[2] <= 2);
