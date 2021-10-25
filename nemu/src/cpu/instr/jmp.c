@@ -23,7 +23,7 @@ make_instr_func(jmp_short)
 {
         OPERAND rel;
         rel.type = OPR_IMM;
-        rel.data_size = data_size;
+        rel.data_size = 8;
         rel.addr = cpu.eip + 1;
 
         operand_read(&rel);
