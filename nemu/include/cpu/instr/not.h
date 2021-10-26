@@ -3,5 +3,5 @@
 /*
 Put the declarations of `not' instructions here.
 */
-
+make_instr_func(not_rm_v);
 #endif
