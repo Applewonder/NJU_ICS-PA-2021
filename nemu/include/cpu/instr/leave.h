@@ -3,5 +3,5 @@
 /*
 Put the declarations of `leave' instructions here.
 */
-
+int leave(uint32_t eip, uint8_t opcode);
 #endif
