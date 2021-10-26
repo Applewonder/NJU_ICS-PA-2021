@@ -25,7 +25,7 @@ int ret_near_imm16(uint32_t eip, uint8_t opcode)
     OPERAND opr;
     opr.type = OPR_MEM;
     opr.addr = cpu.esp;
-    opr.data_size = (imm.val * 4);
+    opr.data_size = 32;
     operand_read(&opr);
     cpu.esp += imm.val;
     
