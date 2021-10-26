@@ -17,7 +17,7 @@ make_instr_impl_2op(test, r, rm, b)
 make_instr_impl_2op(test, i, a, b)
 make_instr_impl_2op(test, i, a, v)
 
-make_instr_func(test_i2rm_v)
+int test_i2rm_v(uint32_t eip, uint8_t opcode)
 {
     int len = 1;
     decode_data_size_v;
@@ -39,5 +39,4 @@ make_instr_func(test_i2rm_v)
 	    operand_write(&opr_dest);
 	    return 6;
     }
-    
 }
