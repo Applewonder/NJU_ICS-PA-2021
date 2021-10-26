@@ -32,7 +32,7 @@ instr_func opcode_entry[256] = {
     /* 0x70 - 0x73*/ inv, inv, inv, inv,
     /* 0x74 - 0x77*/ je_short_, jne_short_, jna_short_, inv,
     /* 0x78 - 0x7b*/ inv, inv, inv, inv,
-    /* 0x7c - 0x7f*/ jl_short_, inv, jle_short_, jg_short_,
+    /* 0x7c - 0x7f*/ jl_short_, jge_short_, jle_short_, jg_short_,
     /* 0x80 - 0x83*/ group_1_b, group_1_v, nemu_trap, group_1_bv,
     /* 0x84 - 0x87*/ inv, test_r2rm_v, inv, inv,
     /* 0x88 - 0x8b*/ mov_r2rm_b, mov_r2rm_v, mov_rm2r_b, mov_rm2r_v,
