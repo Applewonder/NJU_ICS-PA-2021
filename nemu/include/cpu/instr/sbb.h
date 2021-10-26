@@ -3,5 +3,5 @@
 /*
 Put the declarations of `sbb' instructions here.
 */
-
+make_ins
 #endif
