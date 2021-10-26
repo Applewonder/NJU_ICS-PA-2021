@@ -306,7 +306,7 @@ uint32_t alu_and(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_and(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	res = dest & src;
+	res = sign_ext(dest, data_size) & sign_ext(src, data_size);
 	
 	cpu.eflags.CF = 0;
 	cpu.eflags.OF = 0;
