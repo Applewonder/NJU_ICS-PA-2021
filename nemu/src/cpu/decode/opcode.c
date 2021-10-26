@@ -30,7 +30,7 @@ instr_func opcode_entry[256] = {
     /* 0x68 - 0x6b*/ inv, inv, push_i_b, inv,
     /* 0x6c - 0x6f*/ inv, inv, inv, inv,
     /* 0x70 - 0x73*/ inv, inv, inv, inv,
-    /* 0x74 - 0x77*/ __ref_je_short_, __ref_jne_short_, jna_short_, inv,
+    /* 0x74 - 0x77*/ je_short_, jne_short_, jna_short_, inv,
     /* 0x78 - 0x7b*/ inv, inv, inv, inv,
     /* 0x7c - 0x7f*/ jl_short_, jge_short_, jle_short_, jg_short_,
     /* 0x80 - 0x83*/ group_1_b, group_1_v, nemu_trap, group_1_bv,
@@ -77,7 +77,7 @@ instr_func group_1_v_entry[8] =
 
 /* 0x83 */
 instr_func group_1_bv_entry[8] =
-    {__ref_add_i2rm_bv, inv, inv, inv, and_i2rm_bv, sub_i2rm_bv, inv, cmp_i2rm_bv};
+    {add_i2rm_bv, inv, inv, inv, and_i2rm_bv, sub_i2rm_bv, inv, cmp_i2rm_bv};
 
 /* 0xc0 */
 instr_func group_2_b_entry[8] =
@@ -109,7 +109,7 @@ instr_func group_3_b_entry[8] =
 
 /* 0xf7 */
 instr_func group_3_v_entry[8] =
-    {__ref_test_i2rm_v, inv, __ref_not_rm_v, inv, mul_rm2a_v, imul_rm2a_v, inv, idiv_rm2a_v};
+    {__ref_test_i2rm_v, inv, not_rm_v, inv, mul_rm2a_v, imul_rm2a_v, inv, idiv_rm2a_v};
 
 /* 0xff */
 instr_func group_5_indirect_entry[8] =
