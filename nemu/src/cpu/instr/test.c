@@ -39,3 +39,4 @@ int test_i2rm_v(uint32_t eip, uint8_t opcode)
 	    operand_write(&opr_dest);
 	    return 6;
     }
+}}
