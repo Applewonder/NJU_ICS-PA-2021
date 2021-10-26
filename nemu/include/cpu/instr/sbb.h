@@ -3,5 +3,5 @@
 /*
 Put the declarations of `sbb' instructions here.
 */
-make_ins
+make_instr_func(sbb_r2rm_b);
 #endif
