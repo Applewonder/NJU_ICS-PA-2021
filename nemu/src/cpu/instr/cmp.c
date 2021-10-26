@@ -20,7 +20,7 @@ int cmp_i2a_b(uint32_t eip, uint8_t opcode)
 {
     int len = 1;
     decode_data_size_b;
-    decode_operand_a2b;
+    decode_operand_i2a;
     operand_read(&opr_src);
 	operand_read(&opr_dest);
 	alu_sub(opr_src.val, opr_dest.val, data_size);
