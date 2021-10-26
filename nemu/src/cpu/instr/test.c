@@ -31,7 +31,7 @@ make_instr_func(test_i2rm_v)
 	    operand_write(&opr_dest);
 	    return 4;
     }else if(data_size == 32) {
-        perand_read(&opr_src);
+        operand_read(&opr_src);
 	    operand_read(&opr_dest);
 	    opr_dest.val = alu_and(opr_src.val, opr_dest.val, data_size);
 	    cpu.eflags.CF = 0;
