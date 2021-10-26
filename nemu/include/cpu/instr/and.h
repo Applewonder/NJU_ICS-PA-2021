@@ -4,4 +4,5 @@
 Put the declarations of `and' instructions here.
 */
 make_instr_func(and_i2rm_bv);
+make_instr_func(and_rm2r_b);
 #endif
