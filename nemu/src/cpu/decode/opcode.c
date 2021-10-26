@@ -188,7 +188,7 @@ instr_func opcode_2_byte_entry[256] = {
     /* 0x88 - 0x8b*/ inv, inv, inv, inv,
     /* 0x8c - 0x8f*/ jl_near, inv, jle_near, inv,
     /* 0x90 - 0x93*/ inv, inv, inv, inv,
-    /* 0x94 - 0x97*/ inv, inv, inv, inv,
+    /* 0x94 - 0x97*/ inv, setne_b, inv, inv,
     /* 0x98 - 0x9b*/ inv, inv, inv, inv,
     /* 0x9c - 0x9f*/ inv, inv, inv, inv,
     /* 0xa0 - 0xa3*/ inv, inv, inv, bt_r2rm_v,
