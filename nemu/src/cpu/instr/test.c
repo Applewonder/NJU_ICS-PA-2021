@@ -29,8 +29,9 @@ int test_i2rm_v(uint32_t eip, uint8_t opcode)
 	cpu.eflags.OF = 0;
 	operand_write(&opr_dest);
     if (data_size == 16) {
-	    return 4;
+        len = 4;
     }else if(data_size == 32) {
-	    return 6;
+	    len = 6;
     }
+    return len;
 }
