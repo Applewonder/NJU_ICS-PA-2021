@@ -33,4 +33,4 @@ int test_i2rm_v(uint32_t eip, uint8_t opcode)
     }else if(data_size == 32) {
 	    return 6;
     }
-}}
+}
