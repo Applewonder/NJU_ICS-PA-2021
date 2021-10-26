@@ -15,7 +15,7 @@ instr_func opcode_entry[256] = {
     /* 0x2c - 0x2f*/ inv, inv, inv, inv,
     /* 0x30 - 0x33*/ inv, xor_r2rm_v, inv, inv,
     /* 0x34 - 0x37*/ inv, inv, inv, inv,
-    /* 0x38 - 0x3b*/ cmp_r2rm_b, cmp_r2rm_v, cmp_rm2r_b, cmp_rm2r_v,
+    /* 0x38 - 0x3b*/ cmp_r2rm_b, __ref_cmp_r2rm_v, cmp_rm2r_b, __ref_cmp_rm2r_v,
     /* 0x3c - 0x3f*/ cmp_i2a_b, cmp_i2a_v, inv, inv,
     /* 0x40 - 0x43*/ inc_r_v, inc_r_v, inc_r_v, inc_r_v,
     /* 0x44 - 0x47*/ inc_r_v, inc_r_v, inc_r_v, inc_r_v,
@@ -32,7 +32,7 @@ instr_func opcode_entry[256] = {
     /* 0x70 - 0x73*/ inv, inv, inv, inv,
     /* 0x74 - 0x77*/ je_short_, jne_short_, jna_short_, inv,
     /* 0x78 - 0x7b*/ inv, inv, inv, inv,
-    /* 0x7c - 0x7f*/ jl_short_, jge_short_, jle_short_, jg_short_,
+    /* 0x7c - 0x7f*/ jl_short_, __ref_jge_short_, jle_short_, jg_short_,
     /* 0x80 - 0x83*/ group_1_b, group_1_v, nemu_trap, group_1_bv,
     /* 0x84 - 0x87*/ inv, test_r2rm_v, inv, inv,
     /* 0x88 - 0x8b*/ mov_r2rm_b, mov_r2rm_v, mov_rm2r_b, mov_rm2r_v,
@@ -59,7 +59,7 @@ instr_func opcode_entry[256] = {
     /* 0xdc - 0xdf*/ group_x87_dc, group_x87_dd, group_x87_de, group_x87_df,
     /* 0xe0 - 0xe3*/ inv, inv, inv, inv,
     /* 0xe4 - 0xe7*/ inv, inv, inv, inv,
-    /* 0xe8 - 0xeb*/ call_near, jmp_near, inv, jmp_short,
+    /* 0xe8 - 0xeb*/ __ref_call_near, jmp_near, inv, jmp_short,
     /* 0xec - 0xef*/ inv, inv, inv, inv,
     /* 0xf0 - 0xf3*/ inv, break_point, inv, rep_repe,
     /* 0xf4 - 0xf7*/ hlt, inv, group_3_b, group_3_v,
@@ -113,7 +113,7 @@ instr_func group_3_v_entry[8] =
 
 /* 0xff */
 instr_func group_5_indirect_entry[8] =
-    {__ref_inc_rm_v, __ref_dec_rm_v, inv, inv, inv, inv, push_rm_v, inv};
+    {inc_rm_v, dec_rm_v, inv, inv, inv, inv, push_rm_v, inv};
 
 instr_func group_7_entry[8] =
     {inv, inv, inv, inv, inv, inv, inv, inv};
@@ -186,7 +186,7 @@ instr_func opcode_2_byte_entry[256] = {
     /* 0x80 - 0x83*/ inv, inv, inv, inv,
     /* 0x84 - 0x87*/ inv, inv, jna_near, inv,
     /* 0x88 - 0x8b*/ inv, inv, inv, inv,
-    /* 0x8c - 0x8f*/ jl_near, inv, inv, inv,
+    /* 0x8c - 0x8f*/ __ref_jl_near, inv, inv, inv,
     /* 0x90 - 0x93*/ inv, inv, inv, inv,
     /* 0x94 - 0x97*/ inv, inv, inv, inv,
     /* 0x98 - 0x9b*/ inv, inv, inv, inv,
