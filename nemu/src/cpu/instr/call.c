@@ -21,12 +21,12 @@ int call_near(uint32_t eip, uint8_t opcode)
      return 0;
 }
 
-int call_near_indirect(uint32_t eip, uint8_t opcode) 
-{
-     opr_src.type = OPR_IMM;
-     opr_src.addr = cpu.eip + 1;
-     opr_src.data_size = 32;
-     operand_read(&opr_src);
+// int call_near_indirect(uint32_t eip, uint8_t opcode) 
+// {
+//      opr_src.type = OPR_IMM;
+//      opr_src.addr = cpu.eip + 1;
+//      opr_src.data_size = 32;
+//      operand_read(&opr_src);
      
      
-}
+// }
