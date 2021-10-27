@@ -42,5 +42,5 @@ make_instr_func(jmp_near_indirect)
         operand_read(&reg);
         cpu.eip = reg.val;
         
-        return 
+        return 2;
 }
