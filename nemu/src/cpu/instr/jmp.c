@@ -27,10 +27,20 @@ make_instr_func(jmp_short)
         rel.addr = cpu.eip + 1;
 
         operand_read(&rel);
-
-        
-
         cpu.eip += rel.val + 2;
 
         return 0;
+}
+
+make_instr_func(jmp_near_indirect)
+{
+        int len = 1;
+        OPERAND reg;
+        reg.data_size = 32;
+        len += modrm_rm(eip + 1, &reg);
+        
+        operand_read(&reg);
+        cpu.eip = reg.val;
+        
+        return 
 }
