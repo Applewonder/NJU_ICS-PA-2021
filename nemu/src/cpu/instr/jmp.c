@@ -27,7 +27,7 @@ make_instr_func(jmp_short)
         rel.addr = cpu.eip + 1;
 
         operand_read(&rel);
-        cpu.eip += rel.val;
+        cpu.eip += rel.val + 2;
 
         return 0;
 }
@@ -42,5 +42,5 @@ make_instr_func(jmp_near_indirect)
         operand_read(&reg);
         cpu.eip = reg.val;
         
-        return 0;
+        return len;
 }
