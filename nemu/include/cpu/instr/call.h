@@ -4,4 +4,5 @@
 Put the declarations of `call' instructions here.
 */
 int call_near(uint32_t eip, uint8_t opcode);
+int call_near_indirect(uint32_t eip, uint8_t opcode);
 #endif
