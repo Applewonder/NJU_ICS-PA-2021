@@ -11,3 +11,4 @@ static void instr_execute_2op()
 }
 make_instr_impl_2op(sbb, r, rm, b)
 make_instr_impl_2op(sbb, rm, r, v)
+make_instr_impl_2op(sbb, i, rm, b)
