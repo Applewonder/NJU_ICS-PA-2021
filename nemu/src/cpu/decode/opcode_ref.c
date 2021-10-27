@@ -113,7 +113,7 @@ instr_func __ref_group_3_v_entry[8] =
 
 /* 0xff */
 instr_func __ref_group_5_indirect_entry[8] =
-    {__ref_inc_rm_v, __ref_dec_rm_v, __ref_call_near_indirect, inv, inv, inv, __ref_push_rm_v, inv};
+    {__ref_inc_rm_v, __ref_dec_rm_v, __ref_call_near_indirect, inv, __ref_jmp_near_indirect, inv, __ref_push_rm_v, inv};
 
 instr_func __ref_group_7_entry[8] =
     {inv, inv, __ref_lgdt, __ref_lidt, inv, inv, inv, inv};
