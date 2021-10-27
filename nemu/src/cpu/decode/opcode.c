@@ -5,8 +5,8 @@ instr_func opcode_entry[256] = {
     /* 0x04 - 0x07*/ add_i2a_b, add_i2a_v, inv, inv,
     /* 0x08 - 0x0b*/ or_r2rm_b, or_r2rm_v, or_rm2r_b, or_rm2r_v,
     /* 0x0c - 0x0f*/ or_i2a_b, or_i2a_v, inv, opcode_2_byte,
-    /* 0x10 - 0x13*/ inv, adc_r2rm_v, inv, inv,
-    /* 0x14 - 0x17*/ inv, inv, inv, inv,
+    /* 0x10 - 0x13*/ adc_r2rm_b, adc_r2rm_v, adc_rm2r_b, adc_rm2r_v,
+    /* 0x14 - 0x17*/ adc_i2a_b, adc_i2a_v, inv, inv,
     /* 0x18 - 0x1b*/ sbb_r2rm_b, inv, inv, sbb_rm2r_v,
     /* 0x1c - 0x1f*/ inv, inv, inv, inv,
     /* 0x20 - 0x23*/ and_r2rm_b, and_r2rm_v, and_rm2r_b, and_rm2r_v,
@@ -105,7 +105,7 @@ instr_func group_2_cv_entry[8] =
 
 /* 0xf6 */
 instr_func group_3_b_entry[8] =
-    {test_i2rm_b, inv, inv, inv, inv, inv, inv, inv};
+    {test_i2rm_b, not_rm_b, inv, mul_rm2a_b, imul_rm2a_b, div_rm2a_b, idiv_rm2a_b};
 
 /* 0xf7 */
 instr_func group_3_v_entry[8] =
