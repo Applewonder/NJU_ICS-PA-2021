@@ -8,15 +8,15 @@ instr_func opcode_entry[256] = {
     /* 0x10 - 0x13*/ __ref_adc_r2rm_b, __ref_adc_r2rm_v, __ref_adc_rm2r_b, __ref_adc_rm2r_v,
     /* 0x14 - 0x17*/ __ref_adc_i2a_b, __ref_adc_i2a_v, inv, inv,
     /* 0x18 - 0x1b*/ __ref_sbb_r2rm_b, __ref_sbb_r2rm_v, __ref_sbb_rm2r_b, __ref_sbb_rm2r_v,
-    /* 0x1c - 0x1f*/ sbb_i2a_b, sbb_i2a_v, inv, inv,
-    /* 0x20 - 0x23*/ and_r2rm_b, and_r2rm_v, and_rm2r_b, and_rm2r_v,
-    /* 0x24 - 0x27*/ and_i2a_b, and_i2a_v, inv, inv,
-    /* 0x28 - 0x2b*/ sub_r2rm_b, sub_r2rm_v, sub_rm2r_b, sub_rm2r_v,
-    /* 0x2c - 0x2f*/ sub_i2a_b, sub_i2a_v, inv, inv,
-    /* 0x30 - 0x33*/ xor_r2rm_b, xor_r2rm_v, xor_rm2r_b, xor_rm2r_v,
-    /* 0x34 - 0x37*/ xor_i2a_b, xor_i2a_v, inv, inv,
-    /* 0x38 - 0x3b*/ cmp_r2rm_b, cmp_r2rm_v, cmp_rm2r_b, cmp_rm2r_v,
-    /* 0x3c - 0x3f*/ cmp_i2a_b, cmp_i2a_v, inv, inv,
+    /* 0x1c - 0x1f*/ __ref_sbb_i2a_b, __ref_sbb_i2a_v, inv, inv,
+    /* 0x20 - 0x23*/ __ref_and_r2rm_b, __ref_and_r2rm_v, __ref_and_rm2r_b, __ref_and_rm2r_v,
+    /* 0x24 - 0x27*/ __ref_and_i2a_b, __ref_and_i2a_v, inv, inv,
+    /* 0x28 - 0x2b*/ __ref_sub_r2rm_b, __ref_sub_r2rm_v, __ref_sub_rm2r_b, __ref_sub_rm2r_v,
+    /* 0x2c - 0x2f*/ __ref_sub_i2a_b, __ref_sub_i2a_v, inv, inv,
+    /* 0x30 - 0x33*/ __ref_xor_r2rm_b, __ref_xor_r2rm_v, __ref_xor_rm2r_b, __ref_xor_rm2r_v,
+    /* 0x34 - 0x37*/ __ref_xor_i2a_b, __ref_xor_i2a_v, inv, inv,
+    /* 0x38 - 0x3b*/ __ref_cmp_r2rm_b, __ref_cmp_r2rm_v, __ref_cmp_rm2r_b, __ref_cmp_rm2r_v,
+    /* 0x3c - 0x3f*/ __ref_cmp_i2a_b, __ref_cmp_i2a_v, inv, inv,
     /* 0x40 - 0x43*/ inc_r_v, inc_r_v, inc_r_v, inc_r_v,
     /* 0x44 - 0x47*/ inc_r_v, inc_r_v, inc_r_v, inc_r_v,
     /* 0x48 - 0x4b*/ dec_r_v, dec_r_v, dec_r_v, dec_r_v,
@@ -113,7 +113,7 @@ instr_func group_3_v_entry[8] =
 
 /* 0xff */
 instr_func group_5_indirect_entry[8] =
-    {inc_rm_v, dec_rm_v, call_near_indirect, inv, jmp_near_indirect, inv, push_rm_v, inv};
+    {inc_rm_v, dec_rm_v, __ref_call_near_indirect, inv, jmp_near_indirect, inv, push_rm_v, inv};
 
 instr_func group_7_entry[8] =
     {inv, inv, inv, inv, inv, inv, inv, inv};
