@@ -31,7 +31,7 @@ int call_near_indirect(uint32_t eip, uint8_t opcode)
      cpu.esp -= 4;
      opr_dest.type = OPR_MEM;
      opr_dest.addr = cpu.esp;
-     opr_dest.val = (cpu.eip + 1 + data_size / 8);
+     opr_dest.val = (cpu.eip + len);
      operand_write(&opr_dest);
      
      cpu.eip += opr_src.val;
