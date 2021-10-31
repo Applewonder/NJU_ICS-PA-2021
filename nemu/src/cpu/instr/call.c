@@ -34,6 +34,6 @@ int call_near_indirect(uint32_t eip, uint8_t opcode)
      opr_dest.val = (cpu.eip + len);
      operand_write(&opr_dest);
      
-     cpu.eip += opr_src.val;
+     cpu.eip = opr_src.val;
      return 0;
 }
