@@ -16,7 +16,10 @@ enum
 	EQ,
 	NUM,
 	REG,
-	SYMB
+	SYMB,
+	RV,
+	NE,
+	NEQ,
 
 	/* TODO: Add more token types */
 
@@ -34,6 +37,26 @@ static struct rule
 
 	{" +", NOTYPE}, // white space
 	{"\\+", '+'},
+	{"[0-9]{1,10}", NUM},
+	{"-", '-'},
+	{"\\*", '*'},
+	{"\\(", '('},
+	{"\\)", ')'},
+	{"==", EQ},
+	{"!=", NEQ},
+	{"&&", '&'},
+	{"\\|\\|", '|'},
+	{"\\!", '!'},
+	{"/", '/'}
+	{"\\$ebp", REG},
+	{"\\$esp", REG},
+	{"\\$eax", REG},
+	{"\\$edx", REG},
+	{"\\$ecx", REG},
+	{"\\$ebx", REG},
+	{"\\$esi", REG},
+	{"\\$edi", REG},
+	{"\b(?:(?:auto\s*|const\s*|unsigned\s*|signed\s*|register\s*|volatile\s*|static\s*|void\s*|short\s*|long\s*|char\s*|int\s*|float\s*|double\s*|_Bool\s*|complex\s*)+)(?:\s+\*?\*?\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*[\[;,=)]", SYMB}
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]))
@@ -93,13 +116,19 @@ static bool make_token(char *e)
 				/* TODO: Now a new token is recognized with rules[i]. 
 				 * Add codes to perform some actions with this token.
 				 */
-
+                
 				switch (rules[i].token_type)
 				{
+			    NOTYPE:
+			        break;
+			        
 				default:
 					tokens[nr_token].type = rules[i].token_type;
+					strncpy(tokens[nr_token].str, substr_start, substr_len);
 					nr_token++;
-				}
+					break;
+					
+			    }
 
 				break;
 			}
@@ -115,6 +144,257 @@ static bool make_token(char *e)
 	return true;
 }
 
+static bool check_parentheses(p, q) {
+    int a = 0;
+    int b = 0;
+    for (i = p; i <= q; i++) {
+        if(tokens[i].type == '(') a++;
+        if(tokens[i].type == ')') b++;
+    }
+    if (a == b) return true;
+    return false;
+}
+
+uint32_t eval(int p, int q, bool *success) {
+    if(p > q) {
+        *success = false
+    }
+    else if(p == q) { 
+        /* Single token.
+         * For now this token should be a number. 
+         * Return the value of the number.
+         */ 
+         if (tokens[p].type == NUM) {
+             uint32_t i = atoi(tokens[p].str);
+             return i;
+         }
+         if (tokens[p].type == REG) {
+             if (tokens[p].str[2] == 'a') {
+                 return cpu.eax;
+             } else if (tokens[p].str[2] == 'c') {
+                 return cpu.ecx;
+             } else if (tokens[p].str[2] == 'd' && tokens[p].str[3] == 'x') {
+                 return cpu.edx;
+             } else if (tokens[p].str[2] == 'd' && tokens[p].str[3] == 'i') {
+                 return cpu.edi;
+             } else if (tokens[p].str[2] == 'b' && tokens[p].str[3] == 'x') {
+                 return cpu.ebx;
+             } else if (tokens[p].str[2] == 'b' && tokens[p].str[3] == 'p') {
+                 return cpu.ebp;
+             } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'p') {
+                 return cpu.esp;
+             } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'i') {
+                 return cpu.esi;
+             } 
+         }
+         if (tokens[p].type == SYMB) {
+             return look_up_symtab(tokens[p].str, success);
+         }
+    }
+    else if(check_parentheses(p, q) == true) {
+        /* The expression is surrounded by a matched pair of parentheses. 
+         * If that is the case, just throw away the parentheses.
+         */
+        return eval(p + 1, q - 1); 
+    }
+    else {
+        /* We should do more things here. */
+        int count = 0;
+        for (i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == EQ) {
+                if(eval(p, i - 1, success) != eval(i + 1, q, success)) return 0;
+                return 1;
+            }
+        }
+        for (i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == NEQ) {
+                if(eval(p, i - 1, success) != eval(i + 1, q, success)) return 1;
+                return 0;
+            }
+        }
+        for (i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '|') {
+                if(eval(p, i - 1, success) || eval(i + 1, q, success)) return 1;
+                return 0;
+            }
+        }
+        for (i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '&') {
+                if(eval(p, i - 1, success) && eval(i + 1, q, success)) return 1;
+                return 0;
+            }
+        }
+        for (i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '!') {
+                if(!eval(p+1, q, success)) return 1;
+                return 0;
+            }
+        }
+        for (i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '(') {
+                for (j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        i = j;
+                        break;
+                }
+            }
+            if (tokens[i].type == '+') {
+                return eval(p, i - 1, success) + eval(i + 1, q, success);
+            }
+        }
+        for (i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '-') {
+                return eval(p, i - 1, success) - eval(i + 1, q, success);
+            }
+        }
+        for (i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '*') {
+                return eval(p, i - 1, success) * eval(i + 1, q, success);
+            }
+        }
+        for (i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '/') {
+                return eval(p, i - 1, success) / eval(i + 1, q, success);
+            }
+        }
+        if (tokens[p].type == RV) {
+            uint32_t m = eval(p + 1, q, success);
+            return vaddr_read(m, 0, 1);
+        }
+        if (tokens[p].type == NE) {
+            uint32_t m = eval(p + 1, q, success);
+            return -m;
+        }
+    }
+}
+
+
 uint32_t expr(char *e, bool *success)
 {
 	if (!make_token(e))
@@ -122,10 +402,25 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
+	
+	for(i = 0; i < nr_token; i++) {
+	    if (i == 0){
+	        if(tokens[0].type == '*') tokens[0].type = RV;
+	        if(tokens[0].type == '-') tokens[0].type = NE;
+	    }
+	    if (tokens[i].type == '-') {
+	        if(token[i-1].type == '(' || token[i-1].type == '+' || token[i-1].type == '-' || token[i-1].type == 'EQ' || token[i-1].type == '/' || token[i-1].type == '*') {
+	            token[i].type = NE;
+	        }
+	    }
+	    if (token[i].type == '*') {
+	        if(token[i-1].type != 'NUM' && token[i-1].type != ')' && token[i-1].type != 'REG') {
+	            token[i].type = RV;
+	        }
+	    }
+	}
 
-	printf("\nPlease implement expr at expr.c\n");
-	fflush(stdout);
-	assert(0);
+	uint32_t result = eval(0, nr_token, success);
 
-	return 0;
+	return result;
 }
