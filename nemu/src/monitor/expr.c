@@ -144,7 +144,7 @@ static bool make_token(char *e)
 	return true;
 }
 
-static bool check_parentheses(p, q) {
+static bool check_parentheses(int p, int q) {
     int a = 0;
     int b = 0;
     for (i = p; i <= q; i++) {
