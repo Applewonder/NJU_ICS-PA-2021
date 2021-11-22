@@ -23,7 +23,7 @@ typedef struct
 		{ // do not change the order of the registers
 			uint32_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
 		};
-	}CPU_STATE;
+	};
 
 	// EIP
 	uint32_t eip;

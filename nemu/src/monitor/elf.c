@@ -1,6 +1,7 @@
 #include "nemu.h"
 #include <stdlib.h>
 #include <elf.h>
+#include <elf.h>
 
 //char *exec_file = NULL;
 
