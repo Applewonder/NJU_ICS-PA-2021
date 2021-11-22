@@ -161,6 +161,7 @@ static bool check_parentheses(int p, int q) {
 uint32_t eval(int p, int q, bool *success) {
     if(p > q) {
         *success = false;
+        return 0;
     } else if(p == q) { 
         /* Single token.
          * For now this token should be a number. 
