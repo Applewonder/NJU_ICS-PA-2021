@@ -208,7 +208,7 @@ uint32_t eval(int p, int q, bool *success) {
             if (tokens[i].type == '(') {
                 count++;
                 for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == ')') {
+                    if (tokens[j].type == '(') {
                         count++;
                 }
                     if (tokens[j].type == ')') {
@@ -228,7 +228,7 @@ uint32_t eval(int p, int q, bool *success) {
             if (tokens[i].type == '(') {
                 count++;
                 for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == ')') {
+                    if (tokens[j].type == '(') {
                         count++;
                 }
                     if (tokens[j].type == ')') {
@@ -248,7 +248,7 @@ uint32_t eval(int p, int q, bool *success) {
             if (tokens[i].type == '(') {
                 count++;
                 for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == ')') {
+                    if (tokens[j].type == '(') {
                         count++;
                 }
                     if (tokens[j].type == ')') {
@@ -268,7 +268,7 @@ uint32_t eval(int p, int q, bool *success) {
             if (tokens[i].type == '(') {
                 count++;
                 for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == ')') {
+                    if (tokens[j].type == '(') {
                         count++;
                 }
                     if (tokens[j].type == ')') {
@@ -288,7 +288,7 @@ uint32_t eval(int p, int q, bool *success) {
             if (tokens[i].type == '(') {
                 count++;
                 for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == ')') {
+                    if (tokens[j].type == '(') {
                         count++;
                 }
                     if (tokens[j].type == ')') {
@@ -308,7 +308,7 @@ uint32_t eval(int p, int q, bool *success) {
             if (tokens[i].type == '(') {
                 count++;
                 for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == ')') {
+                    if (tokens[j].type == '(') {
                         count++;
                 }
                     if (tokens[j].type == ')') {
@@ -327,7 +327,7 @@ uint32_t eval(int p, int q, bool *success) {
             if (tokens[i].type == '(') {
                 count++;
                 for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == ')') {
+                    if (tokens[j].type == '(') {
                         count++;
                 }
                     if (tokens[j].type == ')') {
@@ -346,7 +346,7 @@ uint32_t eval(int p, int q, bool *success) {
             if (tokens[i].type == '(') {
                 count++;
                 for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == ')') {
+                    if (tokens[j].type == '(') {
                         count++;
                 }
                     if (tokens[j].type == ')') {
@@ -365,7 +365,7 @@ uint32_t eval(int p, int q, bool *success) {
             if (tokens[i].type == '(') {
                 count++;
                 for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == ')') {
+                    if (tokens[j].type == '(') {
                         count++;
                 }
                     if (tokens[j].type == ')') {
