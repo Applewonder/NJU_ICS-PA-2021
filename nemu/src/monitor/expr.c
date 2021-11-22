@@ -190,7 +190,8 @@ uint32_t eval(int p, int q, bool *success) {
              } 
          }
          if (tokens[p].type == SYMB) {
-             return look_up_fun_symtab(tokens[p].str, success);
+             uint32_t m = look_up_fun_symtab(tokens[p].str, success);
+             return m;
          }
     }
     else if(check_parentheses(p, q) == true) {
