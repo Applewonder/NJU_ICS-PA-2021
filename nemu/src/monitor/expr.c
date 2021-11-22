@@ -10,6 +10,8 @@
 #include <sys/types.h>
 #include <regex.h>
 
+extern CPU_STATE cpu;
+
 enum
 {
 	NOTYPE = 256,
