@@ -147,7 +147,7 @@ static bool make_token(char *e)
 static bool check_parentheses(int p, int q) {
     int a = 0;
     int b = 0;
-    for (i = p; i <= q; i++) {
+    for (int i = p; i <= q; i++) {
         if(tokens[i].type == '(') a++;
         if(tokens[i].type == ')') b++;
     }
@@ -157,9 +157,8 @@ static bool check_parentheses(int p, int q) {
 
 uint32_t eval(int p, int q, bool *success) {
     if(p > q) {
-        *success = false
-    }
-    else if(p == q) { 
+        *success = false;
+    } else if(p == q) { 
         /* Single token.
          * For now this token should be a number. 
          * Return the value of the number.
@@ -313,13 +312,6 @@ uint32_t eval(int p, int q, bool *success) {
                 if (count == 0) {
                     i = j;
                     break;
-                }
-            }
-            if (tokens[i].type == '(') {
-                for (j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == ')') {
-                        i = j;
-                        break;
                 }
             }
             if (tokens[i].type == '+') {
