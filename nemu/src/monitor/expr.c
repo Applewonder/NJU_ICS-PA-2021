@@ -199,198 +199,198 @@ uint32_t eval(int p, int q, bool *success) {
     }
     else {
         /* We should do more things here. */
-    //     int count = 0;
-    //     for (i = p; i <= q; i++) {
-    //         if (tokens[i].type == '(') {
-    //             count++;
-    //             for (j = i + 1; j <= q; j++) {
-    //                 if (tokens[j].type == ')') {
-    //                     count++;
-    //             }
-    //                 if (tokens[j].type == ')') {
-    //                     count--;
-    //             }
-    //             if (count == 0) {
-    //                 i = j;
-    //                 break;
-    //             }
-    //         }
-    //         if (tokens[i].type == EQ) {
-    //             if(eval(p, i - 1, success) != eval(i + 1, q, success)) return 0;
-    //             return 1;
-    //         }
-    //     }
-    //     for (i = p; i <= q; i++) {
-    //         if (tokens[i].type == '(') {
-    //             count++;
-    //             for (j = i + 1; j <= q; j++) {
-    //                 if (tokens[j].type == ')') {
-    //                     count++;
-    //             }
-    //                 if (tokens[j].type == ')') {
-    //                     count--;
-    //             }
-    //             if (count == 0) {
-    //                 i = j;
-    //                 break;
-    //             }
-    //         }
-    //         if (tokens[i].type == NEQ) {
-    //             if(eval(p, i - 1, success) != eval(i + 1, q, success)) return 1;
-    //             return 0;
-    //         }
-    //     }
-    //     for (i = p; i <= q; i++) {
-    //         if (tokens[i].type == '(') {
-    //             count++;
-    //             for (j = i + 1; j <= q; j++) {
-    //                 if (tokens[j].type == ')') {
-    //                     count++;
-    //             }
-    //                 if (tokens[j].type == ')') {
-    //                     count--;
-    //             }
-    //             if (count == 0) {
-    //                 i = j;
-    //                 break;
-    //             }
-    //         }
-    //         if (tokens[i].type == '|') {
-    //             if(eval(p, i - 1, success) || eval(i + 1, q, success)) return 1;
-    //             return 0;
-    //         }
-    //     }
-    //     for (i = p; i <= q; i++) {
-    //         if (tokens[i].type == '(') {
-    //             count++;
-    //             for (j = i + 1; j <= q; j++) {
-    //                 if (tokens[j].type == ')') {
-    //                     count++;
-    //             }
-    //                 if (tokens[j].type == ')') {
-    //                     count--;
-    //             }
-    //             if (count == 0) {
-    //                 i = j;
-    //                 break;
-    //             }
-    //         }
-    //         if (tokens[i].type == '&') {
-    //             if(eval(p, i - 1, success) && eval(i + 1, q, success)) return 1;
-    //             return 0;
-    //         }
-    //     }
-    //     for (i = p; i <= q; i++) {
-    //         if (tokens[i].type == '(') {
-    //             count++;
-    //             for (j = i + 1; j <= q; j++) {
-    //                 if (tokens[j].type == ')') {
-    //                     count++;
-    //             }
-    //                 if (tokens[j].type == ')') {
-    //                     count--;
-    //             }
-    //             if (count == 0) {
-    //                 i = j;
-    //                 break;
-    //             }
-    //         }
-    //         if (tokens[i].type == '!') {
-    //             if(!eval(p+1, q, success)) return 1;
-    //             return 0;
-    //         }
-    //     }
-    //     for (i = p; i <= q; i++) {
-    //         if (tokens[i].type == '(') {
-    //             count++;
-    //             for (j = i + 1; j <= q; j++) {
-    //                 if (tokens[j].type == ')') {
-    //                     count++;
-    //             }
-    //                 if (tokens[j].type == ')') {
-    //                     count--;
-    //             }
-    //             if (count == 0) {
-    //                 i = j;
-    //                 break;
-    //             }
-    //         }
-    //         if (tokens[i].type == '(') {
-    //             for (j = i + 1; j <= q; j++) {
-    //                 if (tokens[j].type == ')') {
-    //                     i = j;
-    //                     break;
-    //             }
-    //         }
-    //         if (tokens[i].type == '+') {
-    //             return eval(p, i - 1, success) + eval(i + 1, q, success);
-    //         }
-    //     }
-    //     for (i = p; i <= q; i++) {
-    //         if (tokens[i].type == '(') {
-    //             count++;
-    //             for (j = i + 1; j <= q; j++) {
-    //                 if (tokens[j].type == ')') {
-    //                     count++;
-    //             }
-    //                 if (tokens[j].type == ')') {
-    //                     count--;
-    //             }
-    //             if (count == 0) {
-    //                 i = j;
-    //                 break;
-    //             }
-    //         }
-    //         if (tokens[i].type == '-') {
-    //             return eval(p, i - 1, success) - eval(i + 1, q, success);
-    //         }
-    //     }
-    //     for (i = p; i <= q; i++) {
-    //         if (tokens[i].type == '(') {
-    //             count++;
-    //             for (j = i + 1; j <= q; j++) {
-    //                 if (tokens[j].type == ')') {
-    //                     count++;
-    //             }
-    //                 if (tokens[j].type == ')') {
-    //                     count--;
-    //             }
-    //             if (count == 0) {
-    //                 i = j;
-    //                 break;
-    //             }
-    //         }
-    //         if (tokens[i].type == '*') {
-    //             return eval(p, i - 1, success) * eval(i + 1, q, success);
-    //         }
-    //     }
-    //     for (i = p; i <= q; i++) {
-    //         if (tokens[i].type == '(') {
-    //             count++;
-    //             for (j = i + 1; j <= q; j++) {
-    //                 if (tokens[j].type == ')') {
-    //                     count++;
-    //             }
-    //                 if (tokens[j].type == ')') {
-    //                     count--;
-    //             }
-    //             if (count == 0) {
-    //                 i = j;
-    //                 break;
-    //             }
-    //         }
-    //         if (tokens[i].type == '/') {
-    //             return eval(p, i - 1, success) / eval(i + 1, q, success);
-    //         }
-    //     }
-    //     if (tokens[p].type == RV) {
-    //         uint32_t m = eval(p + 1, q, success);
-    //         return vaddr_read(m, 0, 1);
-    //     }
-    //     if (tokens[p].type == NE) {
-    //         uint32_t m = eval(p + 1, q, success);
-    //         return -m;
-    //     }
+        int count = 0;
+        for (int i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (int j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == EQ) {
+                if(eval(p, i - 1, success) != eval(i + 1, q, success)) return 0;
+                return 1;
+            }
+        }
+        for (int i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (int j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == NEQ) {
+                if(eval(p, i - 1, success) != eval(i + 1, q, success)) return 1;
+                return 0;
+            }
+        }
+        for (int i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (int j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '|') {
+                if(eval(p, i - 1, success) || eval(i + 1, q, success)) return 1;
+                return 0;
+            }
+        }
+        for (int i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (int j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '&') {
+                if(eval(p, i - 1, success) && eval(i + 1, q, success)) return 1;
+                return 0;
+            }
+        }
+        for (int i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (int j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '!') {
+                if(!eval(p+1, q, success)) return 1;
+                return 0;
+            }
+        }
+        for (int i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (int j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '(') {
+                for (j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        i = j;
+                        break;
+                }
+            }
+            if (tokens[i].type == '+') {
+                return eval(p, i - 1, success) + eval(i + 1, q, success);
+            }
+        }
+        for (int i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (int j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '-') {
+                return eval(p, i - 1, success) - eval(i + 1, q, success);
+            }
+        }
+        for (int i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (int j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '*') {
+                return eval(p, i - 1, success) * eval(i + 1, q, success);
+            }
+        }
+        for (int i = p; i <= q; i++) {
+            if (tokens[i].type == '(') {
+                count++;
+                for (int j = i + 1; j <= q; j++) {
+                    if (tokens[j].type == ')') {
+                        count++;
+                }
+                    if (tokens[j].type == ')') {
+                        count--;
+                }
+                if (count == 0) {
+                    i = j;
+                    break;
+                }
+            }
+            if (tokens[i].type == '/') {
+                return eval(p, i - 1, success) / eval(i + 1, q, success);
+            }
+        }
+        if (tokens[p].type == RV) {
+            uint32_t m = eval(p + 1, q, success);
+            return vaddr_read(m, 0, 1);
+        }
+        if (tokens[p].type == NE) {
+            uint32_t m = eval(p + 1, q, success);
+            return -m;
+        }
      }
 }
 
@@ -403,7 +403,7 @@ uint32_t expr(char *e, bool *success)
 		return 0;
 	}
 	
-	for(i = 0; i < nr_token; i++) {
+	for(int i = 0; i < nr_token; i++) {
 	    if (i == 0){
 	        if(tokens[0].type == '*') tokens[0].type = RV;
 	        if(tokens[0].type == '-') tokens[0].type = NE;
