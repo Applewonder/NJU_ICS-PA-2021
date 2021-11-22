@@ -120,6 +120,8 @@ static bool make_token(char *e)
 				switch (rules[i].token_type)
 				{
 			    NOTYPE:
+			        nr_token++;
+			        nr_token--;
 			        break;
 			        
 				default:
