@@ -409,13 +409,13 @@ uint32_t expr(char *e, bool *success)
 	        if(tokens[0].type == '-') tokens[0].type = NE;
 	    }
 	    if (tokens[i].type == '-') {
-	        if(token[i-1].type == '(' || token[i-1].type == '+' || token[i-1].type == '-' || token[i-1].type == 'EQ' || token[i-1].type == '/' || token[i-1].type == '*') {
-	            token[i].type = NE;
+	        if(tokens[i-1].type == '(' || token[i-1].type == '+' || token[i-1].type == '-' || token[i-1].type == 'EQ' || token[i-1].type == '/' || token[i-1].type == '*') {
+	            tokens[i].type = NE;
 	        }
 	    }
-	    if (token[i].type == '*') {
-	        if(token[i-1].type != 'NUM' && token[i-1].type != ')' && token[i-1].type != 'REG') {
-	            token[i].type = RV;
+	    if (tokens[i].type == '*') {
+	        if(tokens[i-1].type != 'NUM' && token[i-1].type != ')' && token[i-1].type != 'REG') {
+	            tokens[i].type = RV;
 	        }
 	    }
 	}
