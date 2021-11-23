@@ -194,10 +194,10 @@ uint32_t eval(int p, int q, bool *success) {
          * For now this token should be a number. 
          * Return the value of the number.
          */ 
-         printf("%d\n", 1);
+         printf("%d\n", 2);
          if (tokens[p].type == NUM) 
         {
-            printf("%d", 2);
+            printf("%d", 3);
              uint32_t i = atoi(tokens[p].str);
              return i;
         } else if (tokens[p].type == REG) 
@@ -229,7 +229,7 @@ uint32_t eval(int p, int q, bool *success) {
     }
     else if(check_parentheses(p, q) == true) 
     {
-        printf("%d\n", 1);
+        printf("%d\n", 4);
         /* The expression is surrounded by a matched pair of parentheses. 
          * If that is the case, just throw away the parentheses.
          */
