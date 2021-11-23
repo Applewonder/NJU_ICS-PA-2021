@@ -346,7 +346,7 @@ uint32_t eval(int p, int q, bool *success) {
         uint32_t m = eval(p + 1, q, success);
         return -m;
         }
-        success = false
+        success = false;
     }
     return 0;
 }
