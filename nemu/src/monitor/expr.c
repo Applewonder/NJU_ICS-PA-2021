@@ -180,11 +180,11 @@ int jumpparents(int i, int q) {
 }
 
 uint32_t eval(int p, int q, bool *success) {
-    printf("%s", ();
+    printf("(");
     for (int i = 0; i < nr_token; i++) {
 	    printf("%s", tokens[i].str);
 	}
-	printf("%s\n", ));
+	printf(")");
     if(p > q) 
     {
         *success = false;
