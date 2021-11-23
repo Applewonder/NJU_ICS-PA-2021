@@ -234,13 +234,13 @@ uint32_t eval(int p, int q, bool *success) {
                         m *= 16;
                     }
                 }
-                if (tokens[p].str[i] >= 65 && tokens[p].str[i] < 71) {
+                if (tokens[p].str[i] >= 'A' && tokens[p].str[i] <= 'Z') {
                     m = tokens[p].str[i] - 55;
                     for (int j = 0; j < l + 1 - i; j++) {
                         m *= 16;
                     }
                 }
-                if (tokens[p].str[i] >= 97 && tokens[p].str[i] < 103) {
+                if (tokens[p].str[i] >= 'a' && tokens[p].str[i] <= 'z') {
                     m = tokens[p].str[i] - 87;
                     for (int j = 0; j < l + 1 - i; j++) {
                         m *= 16;
