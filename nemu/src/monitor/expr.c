@@ -64,7 +64,7 @@ static struct rule
 	{"\\$ebx", REG},
 	{"\\$esi", REG},
 	{"\\$edi", REG},
-	{"\\b(?:(?:auto\\s*|const\\s*|unsigned\\s*|signed\\s*|register\\s*|volatile\\s*|static\\s*|void\\s*|short\\s*|long\\s*|char\\s*|int\\s*|float\\s*|double\\s*|_Bool\\s*|complex\\s*)+)(?:\\s+\\*?\\*?\\s*)([a-zA-Z_][a-zA-Z0-9_]*)\\s*[\\[;,=)]", SYMB}
+	{"(?:\\w+\\s+)([a-zA-Z_][a-zA-Z0-9_]*)", SYMB}
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]))
