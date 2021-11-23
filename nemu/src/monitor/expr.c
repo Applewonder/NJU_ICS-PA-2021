@@ -179,6 +179,7 @@ int jumpparents(int i, int q) {
 }
 
 uint32_t eval(int p, int q, bool *success) {
+    printf("%d", 1);
     if(p > q) 
     {
         *success = false;
