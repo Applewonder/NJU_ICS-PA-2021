@@ -378,6 +378,6 @@ uint32_t expr(char *e, bool *success)
 	    printf("%d\n", tokens[i].type);
 	}
 	printf("%d", nr_token);
-    uint32_t result = eval(0, nr_token, success);
+    uint32_t result = eval(0, nr_token - 1, success);
     return result;
 }
