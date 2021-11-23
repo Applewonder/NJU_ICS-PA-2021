@@ -21,7 +21,7 @@ enum
 	NOTYPE = 256,
 	EQ,
 	NUM,
-	//HNUM,
+	HNUM,
 	REG,
 	SYMB,
 	RV,
@@ -63,7 +63,7 @@ static struct rule
 	{"\\$ebx", REG},
 	{"\\$esi", REG},
 	{"\\$edi", REG},
-	//{"0[xX][0-9a-zA-Z]{1, 10}", HNUM},
+	{"0[xX][0-9a-zA-Z]{1, 10}", HNUM},
 	{"\\b(?:(?:auto\\s*|const\\s*|unsigned\\s*|signed\\s*|register\\s*|volatile\\s*|static\\s*|void\\s*|short\\s*|long\\s*|char\\s*|int\\s*|float\\s*|double\\s*|_Bool\\s*|complex\\s*)+)(?:\\s+\\*?\\*?\\s*)([a-zA-Z_][a-zA-Z0-9_]*)\\s*[\\[;,=)]", SYMB}
 };
 
@@ -221,35 +221,35 @@ uint32_t eval(int p, int q, bool *success) {
             } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'i') {
                 return cpu.esi;
             } 
-         } //else if (tokens[p].type == HNUM) 
-        // {
-        //     int l = strlen(tokens[p].str) - 2;
-        //     int hnumber = 0;
-        //     int m = 0;
-        //     for (int i = l + 1; i >= 2 ; i--) 
-        //     {
-        //         if (tokens[p].str[i] >= 48 && tokens[p].str[i] < 58) {
-        //             m = tokens[p].str[i] - 48;
-        //             for (int j = 0; j < l + 1 - i; j++) {
-        //                 m *= 16;
-        //             }
-        //         }
-        //         if (tokens[p].str[i] >= 65 && tokens[p].str[i] < 71) {
-        //             m = tokens[p].str[i] - 55;
-        //             for (int j = 0; j < l + 1 - i; j++) {
-        //                 m *= 16;
-        //             }
-        //         }
-        //         if (tokens[p].str[i] >= 97 && tokens[p].str[i] < 103) {
-        //             m = tokens[p].str[i] - 87;
-        //             for (int j = 0; j < l + 1 - i; j++) {
-        //                 m *= 16;
-        //             }
-        //         }
-        //         hnumber += m;
-        //     }
-        //     return hnumber;
-        // }
+         } else if (tokens[p].type == HNUM) 
+        {
+            int l = strlen(tokens[p].str) - 2;
+            int hnumber = 0;
+            int m = 0;
+            for (int i = l + 1; i >= 2 ; i--) 
+            {
+                if (tokens[p].str[i] >= 48 && tokens[p].str[i] < 58) {
+                    m = tokens[p].str[i] - 48;
+                    for (int j = 0; j < l + 1 - i; j++) {
+                        m *= 16;
+                    }
+                }
+                if (tokens[p].str[i] >= 65 && tokens[p].str[i] < 71) {
+                    m = tokens[p].str[i] - 55;
+                    for (int j = 0; j < l + 1 - i; j++) {
+                        m *= 16;
+                    }
+                }
+                if (tokens[p].str[i] >= 97 && tokens[p].str[i] < 103) {
+                    m = tokens[p].str[i] - 87;
+                    for (int j = 0; j < l + 1 - i; j++) {
+                        m *= 16;
+                    }
+                }
+                hnumber += m;
+            }
+            return hnumber;
+        }
         else if (tokens[p].type == SYMB)
         {
              uint32_t m = look_up_symtab(tokens[p].str, success);
