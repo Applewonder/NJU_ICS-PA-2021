@@ -117,7 +117,6 @@ static bool make_token(char *e)
 		    
 			if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0)
 			{
-			    printf("%d", rules[i].token_type);
 				char *substr_start = e + position;
 				int substr_len = pmatch.rm_eo;
 
@@ -380,9 +379,9 @@ uint32_t expr(char *e, bool *success)
 	if(nr_token == 0) {
 	    printf("%d", 1);
 	}
-	for (int i = 0; i < nr_token; i++) {
-	    printf("%s", tokens[i].str);
-	}
+// 	for (int i = 0; i < nr_token; i++) {
+// 	    printf("%s", tokens[i].str);
+// 	}
 	for(int i = 0; i < nr_token; i++) 
 	{
 	    if (i == 0)
