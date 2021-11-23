@@ -297,7 +297,6 @@ uint32_t eval(int p, int q, bool *success) {
                 i = jumpparents(i, q);
             }
             if (tokens[i].type == '*') {
-                printf("%d - 1 * %d + 1", i, i);
                 return eval(p, i - 1, success) * eval(i + 1, q, success);
             }
         }
@@ -329,9 +328,6 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
-	for (int i = 0; i < nr_token; i++) {
-	    printf("%s", tokens[i].str);
-	}
 	for(int i = 0; i < nr_token; i++) 
 	{
 	    if (i == 0)
@@ -354,10 +350,6 @@ uint32_t expr(char *e, bool *success)
 	        }
 	    }
 	}
-	for (int i = 0; i < nr_token; i++) {
-	    printf("%d\n", tokens[i].type);
-	}
-	printf("%d", nr_token);
     uint32_t result = eval(0, nr_token - 1, success);
     return result;
 }
