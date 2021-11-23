@@ -127,7 +127,7 @@ static bool make_token(char *e)
 				/* TODO: Now a new token is recognized with rules[i]. 
 				 * Add codes to perform some actions with this token.
 				 */
-                assert(0);
+                
 				switch (rules[i].token_type)
 				{
 			    case NOTYPE:
