@@ -1,7 +1,7 @@
 #include "nemu.h"
 #include "cpu/reg.h"
 #include "memory/memory.h"
-
+#include "elf.h"
 #include <stdlib.h>
 
 /* We use the POSIX regex functions to process regular expressions.
