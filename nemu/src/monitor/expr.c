@@ -157,16 +157,19 @@ static bool make_token(char *e)
 
 static bool check_parentheses(int p, int q, bool* success) {
     if (tokens[p].type != '(' || tokens[q].type != ')') return false;
-    int a = 0;
-    int b = 0;
-    for (int i = p; i <= q; i++) {
+    int a = 1;
+    int b = 1;
+    bool state = true;
+    for (int i = p + 1; i <= q - 1; i++) {
         if(tokens[i].type == '(') a++;
         if(tokens[i].type == ')') b++;
+        if(a < b) state = false;
     }
-    printf("%d, %d", a, b);
-    if (a == b) return true;
-    assert(0);
-    *success = false;
+    if (a != b) {
+        *success = false;
+        return false;
+    }
+    if (a == b && state) return true;
     return false;
 }
 
@@ -209,6 +212,7 @@ uint32_t eval(int p, int q, bool *success) {
         if (tokens[p].type == NUM) 
         {
              uint32_t i = atoi(tokens[p].str);
+             
              return i;
         } else if (tokens[p].type == REG) 
         {
