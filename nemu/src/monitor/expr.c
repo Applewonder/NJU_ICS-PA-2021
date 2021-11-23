@@ -250,7 +250,7 @@ uint32_t eval(int p, int q, bool *success) {
         //     }
         //     return hnumber;
         // }
-        else  
+        else if (tokens[p].type == SYMB)
         {
              uint32_t m = look_up_symtab(tokens[p].str, success);
              return m;
@@ -347,13 +347,14 @@ uint32_t eval(int p, int q, bool *success) {
         if (tokens[p].type == RV) {
             uint32_t m = eval(p + 1, q, success);
             return vaddr_read(m, 0, 1);
-        }
-        if (tokens[p].type == NE) {
+        } 
+        if(tokens[p].type == NE) {
             uint32_t m = eval(p + 1, q, success);
             return -m;
         }
         
     }
+    *success = false;
     return 0;
 }
 
