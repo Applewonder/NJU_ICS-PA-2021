@@ -329,7 +329,7 @@ uint32_t expr(char *e, bool *success)
 		return 0;
 	}
 	for (int i = 0; i < nr_token; i++) {
-	    printf("%s\n", tokens[i].str);
+	    printf("%s", tokens[i].str);
 	}
 	for(int i = 0; i < nr_token; i++) 
 	{
