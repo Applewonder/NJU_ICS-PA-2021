@@ -44,7 +44,7 @@ static struct rule
 
 	{" +", NOTYPE}, // white space
 	{"\\+", '+'},
-	{"0[xX][0-9a-fA-F]+", HNUM},
+	{"0[xX][0-9a-fA-F]{1,16}", HNUM},
 	{"[0-9]{1,10}", NUM},
 	{"-", '-'},
 	{"\\*", '*'},
