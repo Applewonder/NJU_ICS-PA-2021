@@ -295,6 +295,7 @@ uint32_t eval(int p, int q, bool *success) {
                 i = jumpparents(i, q);
             }
             if (tokens[i].type == '+') {
+                printf("%d", i);
                 return eval(p, i - 1, success) + eval(i + 1, q, success);
             }
         }
