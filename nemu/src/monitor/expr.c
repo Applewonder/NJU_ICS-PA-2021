@@ -279,7 +279,7 @@ uint32_t eval(int p, int q, bool *success) {
                 return 0;
             }
         }
-        printf("%d\n", 9;
+        printf("%d\n", 9);
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
                 i = jumpparents(i, q);
