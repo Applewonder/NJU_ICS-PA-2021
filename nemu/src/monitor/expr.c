@@ -203,12 +203,12 @@ uint32_t eval(int p, int q, bool *success) {
         } else if (tokens[p].type == REG) 
         {
             if (tokens[p].str[2] == 'a') {
-                printf("%d", cpu.eax);
+                printf("%d\n", cpu.eax);
                 return cpu.eax;
             } else if (tokens[p].str[2] == 'c') {
                  return cpu.ecx;
             } else if (tokens[p].str[2] == 'd' && tokens[p].str[3] == 'x') {
-                printf("%d", cpu.edx);
+                printf("%d\n", cpu.edx);
                  return cpu.edx;
             } else if (tokens[p].str[2] == 'd' && tokens[p].str[3] == 'i') {
                  return cpu.edi;
