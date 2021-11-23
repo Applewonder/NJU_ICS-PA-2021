@@ -198,7 +198,7 @@ uint32_t eval(int p, int q, bool *success) {
          * For now this token should be a number. 
          * Return the value of the number.
          */ 
-        assert(0);
+        
         if (tokens[p].type == NUM) 
         {
              uint32_t i = atoi(tokens[p].str);
@@ -256,8 +256,9 @@ uint32_t eval(int p, int q, bool *success) {
         }
         else if (tokens[p].type == SYMB)
         {
-             uint32_t m = look_up_symtab(tokens[p].str, success);
-             return m;
+            assert(0);
+            uint32_t m = look_up_symtab(tokens[p].str, success);
+            return m;
         } 
         else 
         {
