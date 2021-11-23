@@ -180,11 +180,6 @@ int jumpparents(int i, int q) {
 }
 
 uint32_t eval(int p, int q, bool *success) {
-    printf("(");
-    for(int i = p; i <= q; i++) {
-        printf("%s", tokens[i].str);
-    }
-    printf(")\n");
     if(p > q) 
     {
         *success = false;
@@ -198,17 +193,14 @@ uint32_t eval(int p, int q, bool *success) {
          if (tokens[p].type == NUM) 
         {
              uint32_t i = atoi(tokens[p].str);
-             printf("%d\n", i);
              return i;
         } else if (tokens[p].type == REG) 
         {
             if (tokens[p].str[2] == 'a') {
-                printf("%d\n", cpu.eax);
                 return cpu.eax;
             } else if (tokens[p].str[2] == 'c') {
                  return cpu.ecx;
             } else if (tokens[p].str[2] == 'd' && tokens[p].str[3] == 'x') {
-                printf("%d\n", cpu.edx);
                  return cpu.edx;
             } else if (tokens[p].str[2] == 'd' && tokens[p].str[3] == 'i') {
                  return cpu.edi;
@@ -287,7 +279,6 @@ uint32_t eval(int p, int q, bool *success) {
                 i = jumpparents(i, q);
             }
             if (tokens[i].type == '+') {
-                printf("%d", i);
                 return eval(p, i - 1, success) + eval(i + 1, q, success);
             }
         }
@@ -305,7 +296,6 @@ uint32_t eval(int p, int q, bool *success) {
             }
             if (tokens[i].type == '*') {
                 uint32_t m = eval(p, i - 1, success) * eval(i + 1, q, success);
-                printf("%ud", m);
                 return m;
             }
         }
