@@ -163,6 +163,7 @@ static bool check_parentheses(int p, int q, bool* success) {
         if(tokens[i].type == '(') a++;
         if(tokens[i].type == ')') b++;
     }
+    printf("%d, %d", a, b);
     if (a == b) return true;
     assert(0);
     *success = false;
