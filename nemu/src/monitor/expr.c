@@ -21,7 +21,7 @@ enum
 	NOTYPE = 256,
 	EQ,
 	NUM,
-	//HNUM,
+	HNUM,
 	REG,
 	SYMB,
 	RV,
