@@ -152,7 +152,7 @@ static bool make_token(char *e)
 	return true;
 }
 
-static bool check_parentheses(int p, int q) {
+static bool check_parentheses(int p, int q, bool* success) {
     if (tokens[p].type != '(' || tokens[q].type != ')') return false;
     int a = 0;
     int b = 0;
@@ -161,6 +161,7 @@ static bool check_parentheses(int p, int q) {
         if(tokens[i].type == ')') b++;
     }
     if (a == b) return true;
+    *success = false;
     return false;
 }
 
@@ -220,7 +221,10 @@ uint32_t eval(int p, int q, bool *success) {
                 return cpu.esp;
             } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'i') {
                 return cpu.esi;
-            } 
+            } else {
+                *success = false;
+                return 0;
+            }
         } else if (tokens[p].type == HNUM) 
         {
             int l = strlen(tokens[p].str) - 2;
@@ -254,9 +258,14 @@ uint32_t eval(int p, int q, bool *success) {
         {
              uint32_t m = look_up_symtab(tokens[p].str, success);
              return m;
+        } 
+        else 
+        {
+            *success = false;
+            return 0;
         }
     }
-    else if(check_parentheses(p, q) == true) 
+    else if(check_parentheses(p, q, success) == true) 
     {
         /* The expression is surrounded by a matched pair of parentheses. 
          * If that is the case, just throw away the parentheses.
