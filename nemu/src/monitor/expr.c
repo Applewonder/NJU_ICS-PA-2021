@@ -373,7 +373,7 @@ uint32_t eval(int p, int q, bool *success) {
             uint32_t m = eval(p + 1, q, success);
             return -m;
         }
-        assert(0);
+        
         *success = false;
     }
     assert(0);
