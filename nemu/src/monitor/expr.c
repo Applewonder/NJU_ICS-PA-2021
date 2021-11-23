@@ -164,6 +164,7 @@ static bool check_parentheses(int p, int q, bool* success) {
         if(tokens[i].type == ')') b++;
     }
     if (a == b) return true;
+    assert(0);
     *success = false;
     return false;
 }
