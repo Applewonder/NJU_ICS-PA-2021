@@ -198,7 +198,8 @@ uint32_t eval(int p, int q, bool *success) {
          * For now this token should be a number. 
          * Return the value of the number.
          */ 
-         if (tokens[p].type == NUM) 
+        assert(0);
+        if (tokens[p].type == NUM) 
         {
              uint32_t i = atoi(tokens[p].str);
              return i;
@@ -375,7 +376,6 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
-	
 	if(nr_token == 0) {
 	    printf("%d", 1);
 	}
