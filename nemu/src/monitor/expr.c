@@ -238,7 +238,7 @@ uint32_t eval(int p, int q, bool *success) {
     }
     else 
     {
-        printf("%d\n", 1);
+        printf("%d\n", 5);
         /* We should do more things here. */
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
@@ -249,7 +249,7 @@ uint32_t eval(int p, int q, bool *success) {
                 return 1;
             }
         }
-        printf("%d\n", 1);
+        printf("%d\n", 6);
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
                 i = jumpparents(i, q);
@@ -259,6 +259,7 @@ uint32_t eval(int p, int q, bool *success) {
                 return 0;
             }
         }
+        printf("%d\n", 7);
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
                 i = jumpparents(i, q);
@@ -268,6 +269,7 @@ uint32_t eval(int p, int q, bool *success) {
                 return 0;
             }
         }
+        printf("%d\n", 8);
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
                 i = jumpparents(i, q);
@@ -277,6 +279,7 @@ uint32_t eval(int p, int q, bool *success) {
                 return 0;
             }
         }
+        printf("%d\n", 9;
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
                 i = jumpparents(i, q);
@@ -286,6 +289,7 @@ uint32_t eval(int p, int q, bool *success) {
                 return 0;
             }
         }
+        printf("%d\n", 10);
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
                 i = jumpparents(i, q);
@@ -294,6 +298,7 @@ uint32_t eval(int p, int q, bool *success) {
                 return eval(p, i - 1, success) + eval(i + 1, q, success);
             }
         }
+        printf("%d\n", 11);
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
                 i = jumpparents(i, q);
@@ -302,6 +307,7 @@ uint32_t eval(int p, int q, bool *success) {
                 return eval(p, i - 1, success) - eval(i + 1, q, success);
             }
         }
+        printf("%d\n", 12);
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
                 i = jumpparents(i, q);
@@ -310,6 +316,7 @@ uint32_t eval(int p, int q, bool *success) {
                 return eval(p, i - 1, success) * eval(i + 1, q, success);
             }
         }
+        printf("%d\n", 13);
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
                 i = jumpparents(i, q);
@@ -318,11 +325,12 @@ uint32_t eval(int p, int q, bool *success) {
                 return eval(p, i - 1, success) / eval(i + 1, q, success);
             }
         }
+        printf("%d\n", 14);
         if (tokens[p].type == RV) {
             uint32_t m = eval(p + 1, q, success);
             return vaddr_read(m, 0, 1);
         }
-        
+        printf("%d\n", 15);
         uint32_t m = eval(p + 1, q, success);
         return -m;
         
