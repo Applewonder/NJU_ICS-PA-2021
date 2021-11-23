@@ -164,7 +164,8 @@ static bool check_parentheses(int p, int q) {
 
 int jumpparents(int i, int q) {
     int count = 1;
-    for (int j = i + 1; j <= q; j++) {
+    int j = i + 1;
+    for (; j <= q; j++) {
         if (tokens[j].type == '(') {
             count++;
         }
