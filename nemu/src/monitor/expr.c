@@ -164,6 +164,7 @@ static bool check_parentheses(int p, int q, bool* success) {
         if(tokens[i].type == ')') b++;
     }
     if (a == b) return true;
+    assert(0);
     *success = false;
     return false;
 }
@@ -189,6 +190,7 @@ int jumpparents(int i, int q) {
 uint32_t eval(int p, int q, bool *success) {
     if(p > q) 
     {
+        assert(0);
         *success = false;
         return 0;
     } else if(p == q) 
@@ -221,6 +223,7 @@ uint32_t eval(int p, int q, bool *success) {
             } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'i') {
                 return cpu.esi;
             } else {
+                assert(0);
                 *success = false;
                 return 0;
             }
@@ -247,6 +250,7 @@ uint32_t eval(int p, int q, bool *success) {
                         m *= 16;
                     }
                 } else {
+                    assert(0);
                     *success = false;
                 }
                 hnumber += m;
@@ -261,6 +265,7 @@ uint32_t eval(int p, int q, bool *success) {
         } 
         else 
         {
+            assert(0);
             *success = false;
             return 0;
         }
@@ -362,6 +367,7 @@ uint32_t eval(int p, int q, bool *success) {
             uint32_t m = eval(p + 1, q, success);
             return -m;
         }
+        assert(0);
         *success = false;
     }
     assert(0);
@@ -374,6 +380,7 @@ uint32_t expr(char *e, bool *success)
 {
 	if (!make_token(e))
 	{
+	    assert(0);
 		*success = false;
 		return 0;
 	}
