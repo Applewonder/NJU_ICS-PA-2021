@@ -215,35 +215,35 @@ uint32_t eval(int p, int q, bool *success) {
             } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'i') {
                 return cpu.esi;
             } 
-        } else if (tokens[p].type == HNUM) 
-        {
-            int l = strlen(tokens[p].str) - 2;
-            int hnumber = 0;
-            int m = 0;
-            for (int i = l + 1; i >= 2 ; i--) 
-            {
-                if (tokens[p].str[i] >= 48 && tokens[p].str[i] < 58) {
-                    m = tokens[p].str[i] - 48;
-                    for (int j = 0; j < l + 1 - i; j++) {
-                        m *= 16;
-                    }
-                }
-                if (tokens[p].str[i] >= 65 && tokens[p].str[i] < 71) {
-                    m = tokens[p].str[i] - 55;
-                    for (int j = 0; j < l + 1 - i; j++) {
-                        m *= 16;
-                    }
-                }
-                if (tokens[p].str[i] >= 97 && tokens[p].str[i] < 103) {
-                    m = tokens[p].str[i] - 87;
-                    for (int j = 0; j < l + 1 - i; j++) {
-                        m *= 16;
-                    }
-                }
-                hnumber += m;
-            }
-            return hnumber;
-        }
+         } //else if (tokens[p].type == HNUM) 
+        // {
+        //     int l = strlen(tokens[p].str) - 2;
+        //     int hnumber = 0;
+        //     int m = 0;
+        //     for (int i = l + 1; i >= 2 ; i--) 
+        //     {
+        //         if (tokens[p].str[i] >= 48 && tokens[p].str[i] < 58) {
+        //             m = tokens[p].str[i] - 48;
+        //             for (int j = 0; j < l + 1 - i; j++) {
+        //                 m *= 16;
+        //             }
+        //         }
+        //         if (tokens[p].str[i] >= 65 && tokens[p].str[i] < 71) {
+        //             m = tokens[p].str[i] - 55;
+        //             for (int j = 0; j < l + 1 - i; j++) {
+        //                 m *= 16;
+        //             }
+        //         }
+        //         if (tokens[p].str[i] >= 97 && tokens[p].str[i] < 103) {
+        //             m = tokens[p].str[i] - 87;
+        //             for (int j = 0; j < l + 1 - i; j++) {
+        //                 m *= 16;
+        //             }
+        //         }
+        //         hnumber += m;
+        //     }
+        //     return hnumber;
+        // }
         else  
         {
              uint32_t m = look_up_symtab(tokens[p].str, success);
