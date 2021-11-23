@@ -117,7 +117,6 @@ static bool make_token(char *e)
 		    
 			if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0)
 			{
-			    assert(0);
 				char *substr_start = e + position;
 				int substr_len = pmatch.rm_eo;
 
@@ -152,6 +151,7 @@ static bool make_token(char *e)
 			return false;
 		}
 	}
+	assert(0);
 	return true;
 }
 
