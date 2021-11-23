@@ -217,7 +217,7 @@ uint32_t eval(int p, int q, bool *success) {
             } 
         } else if (tokens[p].type == HNUM) 
         {
-            int l = strlen(tokens.str) - 2;
+            int l = strlen(tokens[p].str) - 2;
             int hnumber = 0;
             int m = 0;
             for (int i = l + 1; i >= 2 ; i--) 
