@@ -173,8 +173,7 @@ uint32_t eval(int p, int q, bool *success) {
          if (tokens[p].type == NUM) {
              uint32_t i = atoi(tokens[p].str);
              return i;
-         }
-         if (tokens[p].type == REG) {
+         } else if (tokens[p].type == REG) {
              if (tokens[p].str[2] == 'a') {
                  return cpu.eax;
              } else if (tokens[p].str[2] == 'c') {
@@ -192,8 +191,7 @@ uint32_t eval(int p, int q, bool *success) {
              } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'i') {
                  return cpu.esi;
              } 
-         }
-         if (tokens[p].type == SYMB) {
+         } else  {
              uint32_t m = look_up_symtab(tokens[p].str, success);
              return m;
          }
