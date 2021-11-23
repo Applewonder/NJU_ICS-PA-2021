@@ -198,7 +198,7 @@ uint32_t eval(int p, int q, bool *success) {
          if (tokens[p].type == NUM) 
         {
              uint32_t i = atoi(tokens[p].str);
-             printf("%d", i);
+             printf("%d\n", i);
              return i;
         } else if (tokens[p].type == REG) 
         {
