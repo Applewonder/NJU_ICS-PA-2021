@@ -147,7 +147,6 @@ static bool make_token(char *e)
 			return false;
 		}
 	}
-
 	return true;
 }
 
@@ -327,7 +326,9 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
-	
+	for (int i = 0; i < nr_token; i++) {
+	    printf("%s\n", tokens[i].str);
+	}
 	for(int i = 0; i < nr_token; i++) 
 	{
 	    if (i == 0)
