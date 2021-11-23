@@ -256,7 +256,7 @@ uint32_t eval(int p, int q, bool *success) {
         else if (tokens[p].type == SYMB)
         {
             uint32_t m = look_up_symtab(tokens[p].str, success);
-            //printf("%ud", m);
+            printf("%ud\n", m);
             return m;
         } 
         else 
