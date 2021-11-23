@@ -124,7 +124,7 @@ static bool make_token(char *e)
                 
 				switch (rules[i].token_type)
 				{
-			    NOTYPE:
+			    case:NOTYPE:
 			        
 			        break;
 			        
@@ -410,24 +410,28 @@ uint32_t expr(char *e, bool *success)
 		return 0;
 	}
 	
-	for(int i = 0; i < nr_token; i++) {
-	    if (i == 0){
+	for(int i = 0; i < nr_token; i++) 
+	{
+	    if (i == 0)
+	    {
 	        if(tokens[0].type == '*') tokens[0].type = RV;
 	        if(tokens[0].type == '-') tokens[0].type = NE;
 	    }
-	    if (tokens[i].type == '-') {
-	        if(tokens[i-1].type == '(' || tokens[i-1].type == '+' || tokens[i-1].type == '-' || tokens[i-1].type == EQ || tokens[i-1].type == '/' || tokens[i-1].type == '*') {
+	    if (tokens[i].type == '-') 
+	    {
+	        if(tokens[i-1].type == '(' || tokens[i-1].type == '+' || tokens[i-1].type == '-' || tokens[i-1].type == EQ || tokens[i-1].type == '/' || tokens[i-1].type == '*') 
+	        {
 	            tokens[i].type = NE;
 	        }
 	    }
-	    if (tokens[i].type == '*') {
-	        if(tokens[i-1].type != NUM && tokens[i-1].type != ')' && tokens[i-1].type != REG) {
+	    if (tokens[i].type == '*') 
+	    {
+	        if(tokens[i-1].type != NUM && tokens[i-1].type != ')' && tokens[i-1].type != REG) 
+	        {
 	            tokens[i].type = RV;
 	        }
 	    }
 	}
-
-	uint32_t result = eval(0, nr_token, success);
-
-	return result;
+    uint32_t result = eval(0, nr_token, success);
+    return result;
 }
