@@ -245,6 +245,7 @@ uint32_t eval(int p, int q, bool *success) {
                 return 1;
             }
         }
+        printf("%d\n", 1);
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
                 i = jumpparents(i, q);
