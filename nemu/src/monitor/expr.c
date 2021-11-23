@@ -187,11 +187,6 @@ int jumpparents(int i, int q) {
 
 
 uint32_t eval(int p, int q, bool *success) {
-    printf("(");
-    for (int i = p; i <= q; i++) {
-        printf("%s", tokens[i].str);
-    }
-    printf(")\n");
     if(p > q) 
     {
         *success = false;
