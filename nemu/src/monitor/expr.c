@@ -360,5 +360,6 @@ uint32_t expr(char *e, bool *success)
 	    }
 	}
     uint32_t result = eval(0, nr_token - 1, success);
+    printf("%d\n", result);
     return result;
 }
