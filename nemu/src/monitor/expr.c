@@ -221,7 +221,7 @@ uint32_t eval(int p, int q, bool *success) {
             } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'i') {
                 return cpu.esi;
             } 
-         } else if (tokens[p].type == HNUM) 
+        } else if (tokens[p].type == HNUM) 
         {
             int l = strlen(tokens[p].str) - 2;
             int hnumber = 0;
@@ -233,18 +233,18 @@ uint32_t eval(int p, int q, bool *success) {
                     for (int j = 0; j < l + 1 - i; j++) {
                         m *= 16;
                     }
-                }
-                if (tokens[p].str[i] >= 'A' && tokens[p].str[i] <= 'Z') {
+                } else if (tokens[p].str[i] >= 'A' && tokens[p].str[i] <= 'Z') {
                     m = tokens[p].str[i] - 55;
                     for (int j = 0; j < l + 1 - i; j++) {
                         m *= 16;
                     }
-                }
-                if (tokens[p].str[i] >= 'a' && tokens[p].str[i] <= 'z') {
+                } else if (tokens[p].str[i] >= 'a' && tokens[p].str[i] <= 'z') {
                     m = tokens[p].str[i] - 87;
                     for (int j = 0; j < l + 1 - i; j++) {
                         m *= 16;
                     }
+                } else {
+                    *success = false;
                 }
                 hnumber += m;
             }
