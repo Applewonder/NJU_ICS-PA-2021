@@ -180,47 +180,54 @@ int jumpparents(int i, int q) {
 }
 
 uint32_t eval(int p, int q, bool *success) {
-    if(p > q) {
+    if(p > q) 
+    {
         *success = false;
         return 0;
-    } else if(p == q) { 
+    } else if(p == q) 
+    { 
         /* Single token.
          * For now this token should be a number. 
          * Return the value of the number.
          */ 
-         if (tokens[p].type == NUM) {
+         if (tokens[p].type == NUM) 
+        {
              uint32_t i = atoi(tokens[p].str);
              return i;
-         } else if (tokens[p].type == REG) {
-             if (tokens[p].str[2] == 'a') {
+        } else if (tokens[p].type == REG) 
+        {
+            if (tokens[p].str[2] == 'a') {
                  return cpu.eax;
-             } else if (tokens[p].str[2] == 'c') {
+            } else if (tokens[p].str[2] == 'c') {
                  return cpu.ecx;
-             } else if (tokens[p].str[2] == 'd' && tokens[p].str[3] == 'x') {
+            } else if (tokens[p].str[2] == 'd' && tokens[p].str[3] == 'x') {
                  return cpu.edx;
-             } else if (tokens[p].str[2] == 'd' && tokens[p].str[3] == 'i') {
+            } else if (tokens[p].str[2] == 'd' && tokens[p].str[3] == 'i') {
                  return cpu.edi;
-             } else if (tokens[p].str[2] == 'b' && tokens[p].str[3] == 'x') {
+            } else if (tokens[p].str[2] == 'b' && tokens[p].str[3] == 'x') {
                  return cpu.ebx;
-             } else if (tokens[p].str[2] == 'b' && tokens[p].str[3] == 'p') {
+            } else if (tokens[p].str[2] == 'b' && tokens[p].str[3] == 'p') {
                  return cpu.ebp;
-             } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'p') {
+            } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'p') {
                  return cpu.esp;
-             } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'i') {
+            } else if (tokens[p].str[2] == 's' && tokens[p].str[3] == 'i') {
                  return cpu.esi;
-             } 
-         } else  {
+            } 
+        } else  
+        {
              uint32_t m = look_up_symtab(tokens[p].str, success);
              return m;
-         }
+        }
     }
-    else if(check_parentheses(p, q) == true) {
+    else if(check_parentheses(p, q) == true) 
+    {
         /* The expression is surrounded by a matched pair of parentheses. 
          * If that is the case, just throw away the parentheses.
          */
         return eval(p + 1, q - 1, success); 
     }
-    else {
+    else 
+    {
         /* We should do more things here. */
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
