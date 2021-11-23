@@ -184,7 +184,7 @@ uint32_t eval(int p, int q, bool *success) {
     for(int i = p; i <= q; i++) {
         printf("%s", tokens[i].str);
     }
-    printf(")");
+    printf(")\n");
     if(p > q) 
     {
         *success = false;
