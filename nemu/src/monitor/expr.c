@@ -357,7 +357,7 @@ uint32_t eval(int p, int q, bool *success) {
             }
             if (tokens[i].type == '*') {
                 uint32_t m = eval(p, i - 1, success) * eval(i + 1, q, success);
-                printf("%d", m);
+                //printf("%d", m);
                 return m;
             }
         }
