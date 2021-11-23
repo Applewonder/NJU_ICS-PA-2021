@@ -357,11 +357,11 @@ uint32_t eval(int p, int q, bool *success) {
             uint32_t m = eval(p + 1, q, success);
             return vaddr_read(m, 0, 1);
         } 
-        if(tokens[p].type == NE) {
+        if (tokens[p].type == NE) {
             uint32_t m = eval(p + 1, q, success);
             return -m;
         }
-        
+        *success = false;
     }
     *success = false;
     return 0;
