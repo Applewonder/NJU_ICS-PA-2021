@@ -44,6 +44,7 @@ static struct rule
 
 	{" +", NOTYPE}, // white space
 	{"\\+", '+'},
+	{"0[xX][0-9a-fA-F]{1, 16}", HNUM},
 	{"[0-9]{1,10}", NUM},
 	{"-", '-'},
 	{"\\*", '*'},
@@ -63,7 +64,6 @@ static struct rule
 	{"\\$ebx", REG},
 	{"\\$esi", REG},
 	{"\\$edi", REG},
-	{"0[xX][0-9a-fA-F]{1, 16}", HNUM},
 	{"\\b(?:(?:auto\\s*|const\\s*|unsigned\\s*|signed\\s*|register\\s*|volatile\\s*|static\\s*|void\\s*|short\\s*|long\\s*|char\\s*|int\\s*|float\\s*|double\\s*|_Bool\\s*|complex\\s*)+)(?:\\s+\\*?\\*?\\s*)([a-zA-Z_][a-zA-Z0-9_]*)\\s*[\\[;,=)]", SYMB}
 };
 
