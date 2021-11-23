@@ -336,7 +336,6 @@ uint32_t eval(int p, int q, bool *success) {
                 i = jumpparents(i, q);
             }
             if (tokens[i].type == '+') {
-                assert(0);
                 return eval(p, i - 1, success) + eval(i + 1, q, success);
             }
         }
@@ -354,6 +353,7 @@ uint32_t eval(int p, int q, bool *success) {
             }
             if (tokens[i].type == '*') {
                 uint32_t m = eval(p, i - 1, success) * eval(i + 1, q, success);
+                printf("%d", m);
                 return m;
             }
         }
