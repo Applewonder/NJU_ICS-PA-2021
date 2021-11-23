@@ -375,6 +375,7 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
+	assert(0);
 	if(nr_token == 0) {
 	    printf("%d", 1);
 	}
