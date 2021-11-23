@@ -356,6 +356,7 @@ uint32_t expr(char *e, bool *success)
 	for (int i = 0; i < nr_token; i++) {
 	    printf("%d\n", tokens[i].type);
 	}
+	printf("%d", nr_token);
     uint32_t result = eval(0, nr_token, success);
     return result;
 }
