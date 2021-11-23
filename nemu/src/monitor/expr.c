@@ -12,6 +12,7 @@
 
 
 uint32_t look_up_symtab(char *sym, bool *success);
+int jumpparents(int p, int q);
 
 extern CPU_STATE cpu;
 
@@ -161,6 +162,22 @@ static bool check_parentheses(int p, int q) {
     return false;
 }
 
+int jumpparents(int i, int q) {
+    int count = 1;
+    for (int j = i + 1; j <= q; j++) {
+        if (tokens[j].type == '(') {
+            count++;
+        }
+        if (tokens[j].type == ')') {
+            count--;
+        }
+        if (count == 0) {
+            break;
+        }
+    }
+    return j;
+}
+
 uint32_t eval(int p, int q, bool *success) {
     if(p > q) {
         *success = false;
@@ -204,22 +221,9 @@ uint32_t eval(int p, int q, bool *success) {
     }
     else {
         /* We should do more things here. */
-        int count = 0;
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
-                count++;
-                for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == '(') {
-                        count++;
-                    }
-                    if (tokens[j].type == ')') {
-                        count--;
-                    }
-                    if (count == 0) {
-                        i = j;
-                        break;
-                    }
-                }
+                i = jumpparents(i, q);
             }
             if (tokens[i].type == EQ) {
                 if(eval(p, i - 1, success) != eval(i + 1, q, success)) return 0;
@@ -228,19 +232,7 @@ uint32_t eval(int p, int q, bool *success) {
         }
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
-                count++;
-                for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == '(') {
-                        count++;
-                    }
-                    if (tokens[j].type == ')') {
-                        count--;
-                    }
-                    if (count == 0) {
-                        i = j;
-                        break;
-                    }
-                }
+                i = jumpparents(i, q);
             }
             if (tokens[i].type == NEQ) {
                 if(eval(p, i - 1, success) != eval(i + 1, q, success)) return 1;
@@ -249,19 +241,7 @@ uint32_t eval(int p, int q, bool *success) {
         }
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
-                count++;
-                for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == '(') {
-                        count++;
-                    }
-                    if (tokens[j].type == ')') {
-                        count--;
-                    }
-                    if (count == 0) {
-                        i = j;
-                        break;
-                    }
-                }
+                i = jumpparents(i, q);
             }
             if (tokens[i].type == '|') {
                 if(eval(p, i - 1, success) || eval(i + 1, q, success)) return 1;
@@ -270,19 +250,7 @@ uint32_t eval(int p, int q, bool *success) {
         }
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
-                count++;
-                for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == '(') {
-                        count++;
-                    }
-                    if (tokens[j].type == ')') {
-                        count--;
-                    }
-                    if (count == 0) {
-                        i = j;
-                        break;
-                    }
-                }
+                i = jumpparents(i, q);
             }
             if (tokens[i].type == '&') {
                 if(eval(p, i - 1, success) && eval(i + 1, q, success)) return 1;
@@ -291,19 +259,7 @@ uint32_t eval(int p, int q, bool *success) {
         }
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
-                count++;
-                for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == '(') {
-                        count++;
-                    }
-                    if (tokens[j].type == ')') {
-                        count--;
-                    }
-                    if (count == 0) {
-                        i = j;
-                        break;
-                    }
-                }
+                i = jumpparents(i, q);
             }
             if (tokens[i].type == '!') {
                 if(!eval(p+1, q, success)) return 1;
@@ -312,19 +268,7 @@ uint32_t eval(int p, int q, bool *success) {
         }
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
-                count++;
-                for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == '(') {
-                        count++;
-                    }
-                    if (tokens[j].type == ')') {
-                        count--;
-                    }
-                    if (count == 0) {
-                        i = j;
-                        break;
-                    }
-                }
+                i = jumpparents(i, q);
             }
             if (tokens[i].type == '+') {
                 return eval(p, i - 1, success) + eval(i + 1, q, success);
@@ -332,19 +276,7 @@ uint32_t eval(int p, int q, bool *success) {
         }
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
-                count++;
-                for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == '(') {
-                        count++;
-                    }
-                    if (tokens[j].type == ')') {
-                        count--;
-                    }
-                    if (count == 0) {
-                        i = j;
-                        break;
-                    }
-                }
+                i = jumpparents(i, q);
             }
             if (tokens[i].type == '-') {
                 return eval(p, i - 1, success) - eval(i + 1, q, success);
@@ -353,19 +285,7 @@ uint32_t eval(int p, int q, bool *success) {
         //int p = search('*');
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
-                count++;
-                for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == '(') {
-                        count++;
-                    }
-                    if (tokens[j].type == ')') {
-                        count--;
-                    }
-                    if (count == 0) {
-                        i = j;
-                        break;
-                    }
-                }
+                i = jumpparents(i, q);
             }
             if (tokens[i].type == '*') {
                 return eval(p, i - 1, success) * eval(i + 1, q, success);
@@ -373,18 +293,7 @@ uint32_t eval(int p, int q, bool *success) {
         }
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
-                count++;
-                for (int j = i + 1; j <= q; j++) {
-                    if (tokens[j].type == '(') {
-                        count++;
-                }
-                    if (tokens[j].type == ')') {
-                        count--;
-                }
-                if (count == 0) {
-                    i = j;
-                    break;
-                }
+                i = jumpparents(i, q);
             }
             if (tokens[i].type == '/') {
                 return eval(p, i - 1, success) / eval(i + 1, q, success);
@@ -398,7 +307,7 @@ uint32_t eval(int p, int q, bool *success) {
         uint32_t m = eval(p + 1, q, success);
         return -m;
         
-        }
+        
     }
 }
 
