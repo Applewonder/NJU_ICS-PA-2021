@@ -290,7 +290,6 @@ uint32_t eval(int p, int q, bool *success) {
                 return eval(p, i - 1, success) - eval(i + 1, q, success);
             }
         }
-        //int p = search('*');
         for (int i = p; i <= q; i++) {
             if (tokens[i].type == '(') {
                 i = jumpparents(i, q);
@@ -317,6 +316,7 @@ uint32_t eval(int p, int q, bool *success) {
         
         
     }
+    return 0;
 }
 
 
