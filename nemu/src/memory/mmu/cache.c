@@ -37,7 +37,7 @@ int not_exist(uint32_t as, uint32_t t, paddr_t paddr, uint32_t caddr, size_t len
             memcpy(Cache[as][i].data, hw_mem + l, 64);
             Cache[as][i].vabit = true;
             Cache[as][i].tag = t;
-             uint32_t mr;
+             uint32_t mr = 0;
              uint32_t nr = 0;
              memcpy(&mr, Cache[as][i].data + caddr, len);
              memcpy(&nr, hw_mem + paddr, len);
@@ -118,6 +118,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    uint32_t loc = locate_cache(as, t);
 	    uint32_t mres = hw_mem_read(paddr, len) >> (64 - caddr)*8;
 	    uint32_t tres = hw_mem_read(paddr, len) - (mres << (64 - caddr)*8);
+	    assert(hw_mem_read(paddr + 64 - caddr, len - 64 + caddr) == mres);
 	    assert(hw_mem_read(paddr, len) == (mres << (64 - caddr)*8) + tres);
 	    if(suc) {
 	         memcpy(&lres, Cache[as][loc].data + caddr, 64 - caddr);
