@@ -80,6 +80,7 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
 // read data from cache
 uint32_t cache_read(paddr_t paddr, size_t len)
 {
+    assert('0');
     uint32_t t = paddr >> 13;
     uint32_t caddr = paddr % 64;
     uint32_t as = (paddr >> 6) % 128;
