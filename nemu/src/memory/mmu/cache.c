@@ -28,11 +28,11 @@ uint32_t locate_cache(uint32_t as, uint32_t t) {
 	return -1;
 }
 
-void not_exist(uint32_t as, uint32_t t) {
+void not_exist(uint32_t as, uint32_t t, paddr_t paddr) {
     uint32_t l;
     srand((unsigned)time(NULL));
     int ran = rand() % 8;
-    l = (t << 13) + (as << 6);
+    l = (paddr / 64) << 6;
     for (int i = 0; i < 8; i++) {
         if(!Cache[as][i].vabit) {
             memcpy(Cache[as][i].data, hw_mem + l, 64);
@@ -110,11 +110,11 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    } else{
 	        not_exist(as, t);
 	        uint32_t rloc = locate_cache(as, t);
-	        printf("%d\n", rloc);
+	        //printf("%d\n", rloc);
 	        assert(suc);
 	        memcpy(&res, Cache[as][rloc].data + caddr, len);
-	        printf("%d\n", res);
-	        printf("%d\n", hw_mem_read(paddr, len));
+	        //printf("%d\n", res);
+	        //printf("%d\n", hw_mem_read(paddr, len));
 	        assert(res == hw_mem_read(paddr, len));
 	    }
 	} else if(len > 64 - caddr) {
