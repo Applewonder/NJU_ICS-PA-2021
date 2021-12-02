@@ -50,6 +50,7 @@ void init_cache()
 // write data to cache
 void cache_write(paddr_t paddr, size_t len, uint32_t data)
 {
+    assert('0');
 	uint32_t t = paddr >> 13;
     uint32_t caddr = paddr % 64;
     uint32_t as = (paddr >> 6) % 128;
