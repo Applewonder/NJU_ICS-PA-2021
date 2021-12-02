@@ -24,13 +24,13 @@ void not_exist(uint32_t as, uint32_t t) {
     l = (t << 13) + (as << 6);
     for (int i = 0; i < 8; i++) {
         if(!Cache[as][i].vabit) {
-            memcpy(Cache[as][i].data, (uint_32t*)l, 64);
+            memcpy(Cache[as][i].data, hw_mem + l, 64);
             Cache[as][i].vabit = true;
             Cache[as][i].tag = t;
             return;
         }
     }
-    memcpy(Cache[as][ran].data, (uint_32t*)l, 64);
+    memcpy(Cache[as][ran].data, hw_mem + l, 64);
     Cache[as][ran].tag = t;
     return;
 }
