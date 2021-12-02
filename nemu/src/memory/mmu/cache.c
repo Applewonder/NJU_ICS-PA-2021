@@ -5,7 +5,7 @@ static bool suc = false;
 
 uint32_t locate_cache(bool suc, uint32_t as, uint32_t t) {
     suc = false;
-	for (i = 0; i < 8; i++) {
+	for (int i = 0; i < 8; i++) {
 	    if (Cache[as][i].tag == t) {
 	        if (Cache[as][i].vabit) {
 	            suc = true;
@@ -51,7 +51,7 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
     uint32_t as = (paddr >> 6) % 128;
     memcpy(hw_mem + paddr, &data, len);
     if (len <= 64 - caddr) {
-        uint32_t loc = locate_cache(suc，as, t);
+        uint32_t loc = locate_cache(suc, as, t);
         if (suc) {
             memcpy(Cache[as][loc].data + caddr, &data, len);
             } 
@@ -62,7 +62,7 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
 	    if(suc) {
 	        memcpy(Cache[as][loc].data + caddr, &lres, 64 - caddr);
 	    }
-	    uint32_t ias = (paddr + 64 - caddr >> 6) % 128;
+	    uint32_t ias = ((paddr + 64 - caddr) >> 6) % 128;
 	    uint32_t it = (paddr + 64 - caddr) >> 13;
 	    uint32_t icaddr = (paddr + 64 -caddr) % 64;
 	    uint32_t iloc = locate_cache(suc, ias, it);
@@ -99,7 +99,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	        uint32_t rloc = locate_cache(suc, as, t);
 	        memcpy(&lres, Cache[as][rloc].data + caddr, 64 - caddr);
 	    }
-	    uint32_t ias = (paddr + 64 - caddr >> 6) % 128;
+	    uint32_t ias = ((paddr + 64 - caddr) >> 6) % 128;
 	    uint32_t it = (paddr + 64 - caddr) >> 13;
 	    uint32_t icaddr = (paddr + 64 -caddr) % 64;
 	    uint32_t iloc = locate_cache(suc, ias, it);
