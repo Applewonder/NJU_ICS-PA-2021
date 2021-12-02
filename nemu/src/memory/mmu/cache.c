@@ -76,8 +76,8 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
             } 
     } else if(len > 64 - caddr){
         
-        uint32_t lres = data % (64 - caddr);
-        uint32_t rres = data >> (64 - caddr);
+        uint32_t rres = data >> (64 - caddr)*8;
+        uint32_t lres = data  - (rres << (64 - caddr)*8);
 	    uint32_t loc = locate_cache(as, t);
 	    
 	    if(suc) {
