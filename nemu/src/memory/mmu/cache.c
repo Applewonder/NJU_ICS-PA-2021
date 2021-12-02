@@ -111,6 +111,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	        not_exist(as, t);
 	        uint32_t rloc = locate_cache(suc, as, t);
 	        printf("%d\n", rloc);
+	        assert(suc);
 	        memcpy(&res, Cache[as][rloc].data + caddr, len);
 	        printf("%d\n", res);
 	        printf("%d\n", hw_mem_read(paddr, len));
