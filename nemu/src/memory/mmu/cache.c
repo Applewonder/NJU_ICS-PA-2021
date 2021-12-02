@@ -118,6 +118,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    uint32_t loc = locate_cache(as, t);
 	    uint32_t mres = hw_mem_read(paddr, len) >> (64 - caddr)*8;
 	    uint32_t tres = hw_mem_read(paddr, len) - (mres << (64 - caddr)*8);
+	    printf("%x %x\n", mres, rres);
 	    //assert(hw_mem_read(paddr + 64 - caddr, len - 64 + caddr) == mres);
 	    //assert(hw_mem_read(paddr, len) == (mres << (64 - caddr)*8) + tres);
 	    if(suc) {
