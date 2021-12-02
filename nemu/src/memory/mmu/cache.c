@@ -8,6 +8,7 @@ static bool suc = false;
 uint32_t locate_cache(bool suc, uint32_t as, uint32_t t) {
     suc = false;
 	for (int i = 0; i < 8; i++) {
+	   assert('0');
 	    if (Cache[as][i].tag == t) {
 	        if (Cache[as][i].vabit) {
 	            suc = true;
@@ -21,6 +22,7 @@ uint32_t locate_cache(bool suc, uint32_t as, uint32_t t) {
 void not_exist(uint32_t as, uint32_t t) {
     uint32_t l;
     int ran = rand() % 8;
+    assert('0');
     l = (t << 13) + (as << 6);
     for (int i = 0; i < 8; i++) {
         if(!Cache[as][i].vabit) {
