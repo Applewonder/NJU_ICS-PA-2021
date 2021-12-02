@@ -43,7 +43,7 @@ void not_exist(uint32_t as, uint32_t t) {
 // init the cache
 void init_cache()
 {
-    assert(0);
+    
 	for (int i = 0; i < 128; i++) {
 	    for (int j = 0; j < 8; j++) {
 	        Cache[i][j].vabit = false;
