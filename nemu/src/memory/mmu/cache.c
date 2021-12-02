@@ -113,16 +113,18 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	        assert(res == hw_mem_read(paddr, len));
 	    }
 	} else if(len > 64 - caddr) {
-	    assert(0);
 	    uint32_t lres = 0;
 	    uint32_t rres = 0;
 	    uint32_t loc = locate_cache(as, t);
+	    uint32_t mres = hw_mem_read(paddr, len) >> (64 - caddr);
+	    uint32_t tres = hw_mem_read(paddr, len) - (mres << (64 - caddr));
 	    if(suc) {
 	        memcpy(&lres, Cache[as][loc].data + caddr, 64 - caddr);
 	    } else{
 	         uint32_t rloc = not_exist(as, t, paddr, caddr, len);
 	         memcpy(&lres, Cache[as][rloc].data + caddr, 64 - caddr);
 	    }
+	    assert(tres == lres);
 	    uint32_t ias = ((paddr + 64 - caddr) >> 6) % 128;
 	    uint32_t it = (paddr + 64 - caddr) >> 13;
 	    uint32_t icaddr = (paddr + 64 -caddr) % 64;
@@ -133,6 +135,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	        uint32_t irloc =not_exist(ias, it, paddr + 64 - caddr, icaddr, len - 64 + caddr);
 	        memcpy(&rres, Cache[ias][irloc].data + icaddr, len - 64 + caddr);
 	    }
+	    assert(mres == rres);
 	    res = (rres << (64 - caddr)) + lres;
 	    assert(res == hw_mem_read(paddr, len));
 	}
