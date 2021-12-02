@@ -32,13 +32,13 @@ void not_exist(uint32_t as, uint32_t t) {
     uint32_t l;
     srand((unsigned)time(NULL));
     int ran = rand() % 8;
-    
     l = (t << 13) + (as << 6);
     for (int i = 0; i < 8; i++) {
         if(!Cache[as][i].vabit) {
             memcpy(Cache[as][i].data, hw_mem + l, 64);
             Cache[as][i].vabit = true;
             Cache[as][i].tag = t;
+            printf("%d", i);
             return;
         }
     }
@@ -110,7 +110,10 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    } else{
 	        not_exist(as, t);
 	        uint32_t rloc = locate_cache(suc, as, t);
+	        printf("%d", rloc);
 	        memcpy(&res, Cache[as][rloc].data + caddr, len);
+	        printf("%d", res);
+	        printf("%d", hw_mem_read(paddr, len));
 	        assert(res == hw_mem_read(paddr, len));
 	    }
 	} else if(len > 64 - caddr) {
