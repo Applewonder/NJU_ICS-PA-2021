@@ -7,8 +7,9 @@ static bool suc = false;
 
 uint32_t locate_cache(bool suc, uint32_t as, uint32_t t) {
     suc = false;
+    assert('0');
 	for (int i = 0; i < 8; i++) {
-	   assert('0');
+	   
 	    if (Cache[as][i].tag == t) {
 	        if (Cache[as][i].vabit) {
 	            suc = true;
