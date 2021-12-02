@@ -146,7 +146,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	        printf("-----> mres = %d, rres = %d\n", mres, rres);
 	    }
 	    
-	    if(mres != rres) exit(0);
+	    //if(mres != rres) exit(0);
 	    assert(mres == rres);
 	    res = (rres << (64 - caddr)*8) + lres;
 	    assert(res == hw_mem_read(paddr, len));
