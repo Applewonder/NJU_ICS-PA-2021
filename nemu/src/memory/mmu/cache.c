@@ -59,7 +59,7 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
     uint32_t caddr = paddr % 64;
     uint32_t as = (paddr >> 6) % 128;
     memcpy(hw_mem + paddr, &data, len);
-    
+    printf("%d", len);
     if (len <= 64 - caddr) {
         uint32_t loc = locate_cache(suc, as, t);
         if (suc) {
