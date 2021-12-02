@@ -140,7 +140,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	        uint32_t irloc = not_exist(ias, it, paddr + 64 - caddr, icaddr, len - 64 + caddr);
 	        memcpy(&rres, Cache[ias][irloc].data + icaddr, len - 64 + caddr);
 	    }
-	    //assert(mres == rres);
+	    assert(mres == rres);
 	    res = (rres << (64 - caddr)*8) + lres;
 	    assert(res == hw_mem_read(paddr, len));
 	}
