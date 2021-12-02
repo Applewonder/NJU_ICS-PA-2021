@@ -5,6 +5,12 @@
 
 #ifdef CACHE_ENABLED
 
+typedef struct {
+    bool vabit;
+    uint32_t tag;
+    uint8_t data[64];
+} CacheLine
+
 // init the cache
 void init_cache();
 
