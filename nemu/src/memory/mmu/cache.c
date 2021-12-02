@@ -117,7 +117,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    uint32_t rres = 0;
 	    uint32_t loc = locate_cache(as, t);
 	    uint32_t mres = hw_mem_read(paddr, len) >> (64 - caddr)*8;
-	    //uint32_t tres = hw_mem_read(paddr, len) - (mres << (64 - caddr)*8);
+	    uint32_t tres = hw_mem_read(paddr, len) - (mres << (64 - caddr)*8);
 	    //assert(hw_mem_read(paddr + 64 - caddr, len - 64 + caddr) == mres);
 	    //assert(hw_mem_read(paddr, len) == (mres << (64 - caddr)*8) + tres);
 	    if(suc) {
@@ -126,7 +126,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	         uint32_t rloc = not_exist(as, t, paddr, caddr, len);
 	         memcpy(&lres, Cache[as][rloc].data + caddr, 64 - caddr);
 	    }
-	    //assert(tres == lres);
+	    assert(tres == lres);
 	    uint32_t ias = ((paddr + 64 - caddr) >> 6) % 128;
 	    uint32_t it = (paddr + 64 - caddr) >> 13;
 	    uint32_t icaddr = (paddr + 64 -caddr) % 64;
@@ -142,7 +142,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    }
 	    //assert(mres == rres);
 	    if(mres != rres) {
-	        printf("mres = %d, rres = %d\n", mres, rres);
+	        printf("-----> mres = %d, rres = %d\n", mres, rres);
 	        assert(0);
 	    }
 	    
