@@ -1,9 +1,9 @@
 #include "memory/mmu/cache.h"
-
+#include "memory/memory.h"
 CacheLine Cache[128][8];
 static bool suc = false;
 
-uint32_t locate_cache(bool suc，uint32_t as, uint32_t t) {
+uint32_t locate_cache(bool suc, uint32_t as, uint32_t t) {
     suc = false;
 	for (i = 0; i < 8; i++) {
 	    if (Cache[as][i].tag == t) {
@@ -18,18 +18,17 @@ uint32_t locate_cache(bool suc，uint32_t as, uint32_t t) {
 
 void not_exist(uint32_t as, uint32_t t) {
     uint32_t l;
-    uint32_t r;
     int ran = rand() % 8;
-    l = t << 13 + as << 6;
+    l = (t << 13) + (as << 6);
     for (int i = 0; i < 8; i++) {
         if(!Cache[as][i].vabit) {
-            memcpy(Cache[as][i].data, l, 64);
+            memcpy(Cache[as][i].data, &l, 64);
             Cache[as][i].vabit = true;
             Cache[as][i].tag = t;
             return;
         }
     }
-    memcpy(Cache[as][ran].data, l, 64);
+    memcpy(Cache[as][ran].data, &l, 64);
     Cache[as][ran].tag = t;
     return;
 }
