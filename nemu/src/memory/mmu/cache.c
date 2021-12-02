@@ -107,16 +107,13 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    uint32_t loc = locate_cache(as, t);
 	    if(suc) {
 	        memcpy(&res, Cache[as][loc].data + caddr, len);
-	        //assert(res == hw_mem_read(paddr, len));
 	    } else{
 	        uint32_t rloc = not_exist(as, t, paddr, caddr, len);
-	        //printf("%d\n", rloc);
 	        memcpy(&res, Cache[as][rloc].data + caddr, len);
-	        //printf("%d\n", res);
-	        //printf("%d\n", hw_mem_read(paddr, len));
 	        assert(res == hw_mem_read(paddr, len));
 	    }
 	} else if(len > 64 - caddr) {
+	    assert(0);
 	    uint32_t lres = 0;
 	    uint32_t rres = 0;
 	    uint32_t loc = locate_cache(as, t);
