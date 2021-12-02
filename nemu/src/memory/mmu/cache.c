@@ -1,6 +1,7 @@
 #include "memory/mmu/cache.h"
 #include "memory/memory.h"
 #include <stdlib.h>
+#include <time.h>
 
 CacheLine Cache[128][8];
 static bool suc = false;
@@ -22,6 +23,7 @@ uint32_t locate_cache(bool suc, uint32_t as, uint32_t t) {
 
 void not_exist(uint32_t as, uint32_t t) {
     uint32_t l;
+    srand((unsigned)time(NULL));
     int ran = rand() % 8;
     assert('0');
     l = (t << 13) + (as << 6);
