@@ -112,7 +112,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     uint32_t t = paddr >> 13;
     uint32_t caddr = paddr % 64;
     uint32_t as = (paddr >> 6) % 128;
-    uint32_t res;
+    uint32_t res = 0;
 	if (len <= 64 - caddr) {
 	    uint32_t loc = locate_cache(as, t);
 	    if(suc) {
