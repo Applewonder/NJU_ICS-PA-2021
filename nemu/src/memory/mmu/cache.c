@@ -149,7 +149,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    if(mres != rres) exit(0);
 	    //assert(mres == rres);
 	    res = (rres << (64 - caddr)*8) + lres;
-	    //assert(res == hw_mem_read(paddr, len));
+	    assert(res == hw_mem_read(paddr, len));
 	}
 	return res;
 }
