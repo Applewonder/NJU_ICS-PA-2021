@@ -108,7 +108,6 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    } else{
 	        uint32_t rloc = not_exist(as, t, paddr);
 	        //printf("%d\n", rloc);
-	        assert(suc);
 	        memcpy(&res, Cache[as][rloc].data + caddr, len);
 	        //printf("%d\n", res);
 	        //printf("%d\n", hw_mem_read(paddr, len));
