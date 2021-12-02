@@ -44,8 +44,8 @@ int not_exist(uint32_t as, uint32_t t, paddr_t paddr, uint32_t caddr, size_t len
             Cache[as][i].vabit = true;
             Cache[as][i].tag = t;
             //printf("%d", i);
-            uint32_t mr;
-            uint32_t nr;
+            uint32_t mr = 0;
+            uint32_t nr = 0;
             memcpy(&mr, Cache[as][i].data + caddr, len);
             memcpy(&nr, hw_mem + paddr, len);
             assert(mr == nr);
