@@ -8,7 +8,7 @@ static bool suc = false;
 
 uint32_t locate_cache(bool suc, uint32_t as, uint32_t t) {
     suc = false;
-    assert('0');
+    assert(0);
 	for (int i = 0; i < 8; i++) {
 	   
 	    if (Cache[as][i].tag == t) {
@@ -25,7 +25,7 @@ void not_exist(uint32_t as, uint32_t t) {
     uint32_t l;
     srand((unsigned)time(NULL));
     int ran = rand() % 8;
-    assert('0');
+    assert(0);
     l = (t << 13) + (as << 6);
     for (int i = 0; i < 8; i++) {
         if(!Cache[as][i].vabit) {
@@ -43,7 +43,7 @@ void not_exist(uint32_t as, uint32_t t) {
 // init the cache
 void init_cache()
 {
-    assert('0');
+    assert(0);
 	for (int i = 0; i < 128; i++) {
 	    for (int j = 0; j < 8; j++) {
 	        Cache[i][j].vabit = false;
@@ -54,7 +54,7 @@ void init_cache()
 // write data to cache
 void cache_write(paddr_t paddr, size_t len, uint32_t data)
 {
-    assert('0');
+    assert(0);
 	uint32_t t = paddr >> 13;
     uint32_t caddr = paddr % 64;
     uint32_t as = (paddr >> 6) % 128;
@@ -84,7 +84,7 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
 // read data from cache
 uint32_t cache_read(paddr_t paddr, size_t len)
 {
-    assert('0');
+    assert(0);
     uint32_t t = paddr >> 13;
     uint32_t caddr = paddr % 64;
     uint32_t as = (paddr >> 6) % 128;
