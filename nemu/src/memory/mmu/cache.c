@@ -78,7 +78,7 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
         
         uint32_t rres = data >> (64 - caddr)*8;
         uint32_t lres = data  - (rres << (64 - caddr)*8);
-        assert(lres + rres << (64 - caddr)*8 == data)
+        assert((lres + (rres << (64 - caddr)*8)) == data)
 	    uint32_t loc = locate_cache(as, t);
 	    
 	    if(suc) {
