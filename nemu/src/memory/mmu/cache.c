@@ -26,11 +26,15 @@ uint32_t locate_cache(uint32_t as, uint32_t t) {
 	return -1;
 }
 
+    //uint32_t t = paddr >> 13;
+    //uint32_t caddr = paddr % 64;
+    //uint32_t as = (paddr >> 6) % 128;
 int not_exist(uint32_t as, uint32_t t, paddr_t paddr, uint32_t caddr, size_t len) {
     uint32_t l;
     srand((unsigned)time(NULL));
     int ran = rand() % 8;
     l = (paddr / 64) << 6;
+    assert(paddr == l+caddr);
     for (int i = 0; i < 8; i++) {
         if(!Cache[as][i].vabit) {
             memcpy(Cache[as][i].data, hw_mem + l, 64);
