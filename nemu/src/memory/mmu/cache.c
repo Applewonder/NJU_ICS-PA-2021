@@ -116,10 +116,10 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    uint32_t lres = 0;
 	    uint32_t rres = 0;
 	    uint32_t loc = locate_cache(as, t);
-	    uint32_t mres = hw_mem_read(paddr, len) >> (64 - caddr)*8;
-	    uint32_t tres = hw_mem_read(paddr, len) - (mres << (64 - caddr)*8);
-	    assert(hw_mem_read(paddr + 64 - caddr, len - 64 + caddr) == mres);
-	    assert(hw_mem_read(paddr, len) == (mres << (64 - caddr)*8) + tres);
+	    //uint32_t mres = hw_mem_read(paddr, len) >> (64 - caddr)*8;
+	    //uint32_t tres = hw_mem_read(paddr, len) - (mres << (64 - caddr)*8);
+	    //assert(hw_mem_read(paddr + 64 - caddr, len - 64 + caddr) == mres);
+	    //assert(hw_mem_read(paddr, len) == (mres << (64 - caddr)*8) + tres);
 	    if(suc) {
 	         memcpy(&lres, Cache[as][loc].data + caddr, 64 - caddr);
 	    } else{
@@ -130,7 +130,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    uint32_t ias = ((paddr + 64 - caddr) >> 6) % 128;
 	    uint32_t it = (paddr + 64 - caddr) >> 13;
 	    uint32_t icaddr = (paddr + 64 -caddr) % 64;
-	    assert(paddr + 64 - caddr == (it << 13) + (ias << 6));
+	    //assert(paddr + 64 - caddr == (it << 13) + (ias << 6));
 	    uint32_t iloc = locate_cache(ias, it);
 	    
 	    if(suc) {
