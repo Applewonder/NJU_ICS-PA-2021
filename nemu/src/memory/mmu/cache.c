@@ -129,12 +129,12 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    uint32_t it = (paddr + 64 - caddr) >> 13;
 	    uint32_t icaddr = (paddr + 64 -caddr) % 64;
 	    assert(paddr + 64 - caddr == (it << 13) + (ias << 6));
-	    assert(suc);
 	    uint32_t iloc = locate_cache(ias, it);
-	    assert(suc);
+	    
 	    if(suc) {
 	        memcpy(&rres, Cache[ias][iloc].data + icaddr, len - 64 + caddr);
 	    } else{
+	        assert(0);
 	        uint32_t irloc = not_exist(ias, it, paddr + 64 - caddr, icaddr, len - 64 + caddr);
 	        memcpy(&rres, Cache[ias][irloc].data + icaddr, len - 64 + caddr);
 	    }
