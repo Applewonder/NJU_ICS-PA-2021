@@ -127,8 +127,8 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	        assert(res == hw_mem_read(paddr, len));
 	    }
 	} else if(len > 64 - caddr) {
-	    uint32_t lres;
-	    uint32_t rres;
+	    uint32_t lres = 0;
+	    uint32_t rres = 0;
 	    uint32_t loc = locate_cache(as, t);
 	    if(suc) {
 	        memcpy(&lres, Cache[as][loc].data + caddr, 64 - caddr);
