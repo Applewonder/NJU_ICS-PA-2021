@@ -143,6 +143,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    //assert(mres == rres);
 	    if(mres != rres) {
 	        printf("mres = %d, rres = %d\n", mres, rres);
+	        assert(0);
 	    }
 	    
 	    res = (rres << (64 - caddr)*8) + lres;
