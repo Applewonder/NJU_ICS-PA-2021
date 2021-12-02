@@ -1,6 +1,6 @@
 #include "memory/mmu/cache.h"
 #include "memory/memory.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 CacheLine Cache[128][8];
 static bool suc = false;
