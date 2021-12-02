@@ -9,7 +9,7 @@ typedef struct {
     bool vabit;
     uint32_t tag;
     uint8_t data[64];
-} CacheLine
+} CacheLine;
 
 // init the cache
 void init_cache();
