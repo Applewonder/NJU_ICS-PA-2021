@@ -112,7 +112,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	        uint32_t irloc = locate_cache(suc, ias, it);
 	        memcpy(&rres, Cache[ias][irloc].data + icaddr, len - 64 + caddr);
 	    }
-	    res = (rres << (64 - caddr) + lres);
+	    res = (rres << (64 - caddr)) + lres;
 	}
 	return res;
 }
