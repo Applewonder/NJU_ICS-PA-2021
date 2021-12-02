@@ -1,5 +1,7 @@
 #include "memory/mmu/cache.h"
 #include "memory/memory.h"
+#include <stdio.h>
+
 CacheLine Cache[128][8];
 static bool suc = false;
 
@@ -86,7 +88,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    } else{
 	        not_exist(as, t);
 	        uint32_t rloc = locate_cache(suc, as, t);
-	        memcpy(&ret, Cache[as][rloc].data + caddr, len);
+	        memcpy(&res, Cache[as][rloc].data + caddr, len);
 	    }
 	} else if(len > 64 - caddr) {
 	    uint32_t lres;
@@ -110,7 +112,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	        uint32_t irloc = locate_cache(suc, ias, it);
 	        memcpy(&rres, Cache[ias][irloc].data + icaddr, len - 64 + caddr);
 	    }
-	    res = rres << (64 - caddr) + lres;
+	    res = (rres << (64 - caddr) + lres);
 	}
 	return res;
 }
