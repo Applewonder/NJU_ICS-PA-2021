@@ -137,7 +137,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	        memcpy(&rres, Cache[ias][irloc].data + icaddr, len - 64 + caddr);
 	    }
 	    res = (rres << (64 - caddr)) + lres;
-	    //assert(res == hw_mem_read(paddr, len));
+	    assert(res == hw_mem_read(paddr, len));
 	}
 	return res;
 }
