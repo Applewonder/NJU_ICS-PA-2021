@@ -62,11 +62,12 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
     
     if (len <= 64 - caddr) {
         uint32_t loc = locate_cache(suc, as, t);
-        assert(0);
+        
         if (suc) {
             memcpy(Cache[as][loc].data + caddr, &data, len);
             } 
     } else {
+        assert(0);
         uint32_t lres = data % (64 - caddr);
         uint32_t rres = data >> (64 - caddr);
 	    uint32_t loc = locate_cache(suc, as, t);
