@@ -141,7 +141,6 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	        uint32_t irloc = not_exist(ias, it, paddr + 64 - caddr, icaddr, len - 64 + caddr);
 	        memcpy(&rres, Cache[ias][irloc].data + icaddr, len - 64 + caddr);
 	    }
-	    printf("%x %x\n", mres, rres);
 	    //assert(mres == rres);
 	    if(mres != rres) {
 	        printf("-----> mres = %d, rres = %d\n", mres, rres);
@@ -149,7 +148,6 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	    
 	    if(mres != rres) exit(0);
 	    //assert(mres == rres);
-	       printf("2 : %x %x\n", mres, rres);
 	    res = (rres << (64 - caddr)*8) + lres;
 	    //assert(res == hw_mem_read(paddr, len));
 	}
