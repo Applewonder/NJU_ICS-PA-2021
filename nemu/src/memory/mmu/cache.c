@@ -6,12 +6,12 @@
 CacheLine Cache[128][8];
 static bool suc = false;
 
-uint32_t hw_mem_read(paddr_t paddr, size_t len)
-{
-	uint32_t ret = 0;
-	memcpy(&ret, hw_mem + paddr, len);
-	return ret;
-}//调试用
+// uint32_t hw_mem_read(paddr_t paddr, size_t len)
+// {
+// 	uint32_t ret = 0;
+// 	memcpy(&ret, hw_mem + paddr, len);
+// 	return ret;
+// }//调试用
 
 uint32_t locate_cache(bool suc, uint32_t as, uint32_t t) {
     suc = false;
