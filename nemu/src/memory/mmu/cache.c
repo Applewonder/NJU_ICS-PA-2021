@@ -126,7 +126,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	         uint32_t rloc = not_exist(as, t, paddr, caddr, len);
 	         memcpy(&lres, Cache[as][rloc].data + caddr, 64 - caddr);
 	    }
-	    assert(tres == lres);
+	    //assert(tres == lres);
 	    uint32_t ias = ((paddr + 64 - caddr) >> 6) % 128;
 	    uint32_t it = (paddr + 64 - caddr) >> 13;
 	    uint32_t icaddr = (paddr + 64 -caddr) % 64;
