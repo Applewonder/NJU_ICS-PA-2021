@@ -70,10 +70,11 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
         uint32_t lres = data % (64 - caddr);
         uint32_t rres = data >> (64 - caddr);
 	    uint32_t loc = locate_cache(suc, as, t);
-	    assert(0);
+	    
 	    if(suc) {
 	        memcpy(Cache[as][loc].data + caddr, &lres, 64 - caddr);
 	    }
+	    assert(0);
 	    uint32_t ias = ((paddr + 64 - caddr) >> 6) % 128;
 	    uint32_t it = (paddr + 64 - caddr) >> 13;
 	    uint32_t icaddr = (paddr + 64 -caddr) % 64;
