@@ -26,9 +26,6 @@ uint32_t locate_cache(uint32_t as, uint32_t t) {
 	return -1;
 }
 
-    //uint32_t t = paddr >> 13;
-    //uint32_t caddr = paddr % 64;
-    //uint32_t as = (paddr >> 6) % 128;
 int not_exist(uint32_t as, uint32_t t, paddr_t paddr, uint32_t caddr, size_t len) {
     uint32_t l;
     srand((unsigned)time(NULL));
@@ -37,10 +34,10 @@ int not_exist(uint32_t as, uint32_t t, paddr_t paddr, uint32_t caddr, size_t len
     assert(paddr == l+caddr);
     for (int i = 0; i < 8; i++) {
         if(!Cache[as][i].vabit) {
-            //memcpy(Cache[as][i].data, hw_mem + l, 64);
-            for (int j = 0; j < 64; j++) {
-                Cache[as][i].data[j] = hw_mem[l+j];
-            }
+            memcpy(Cache[as][i].data, hw_mem + l, 64);
+            // for (int j = 0; j < 64; j++) {
+            //     Cache[as][i].data[j] = hw_mem[l+j];
+            // }
             Cache[as][i].vabit = true;
             Cache[as][i].tag = t;
             //printf("%d", i);
