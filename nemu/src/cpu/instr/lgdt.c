@@ -11,9 +11,9 @@ make_instr_func(lgdt)
     opr.sreg = SREG_DS;
     opr.data_size = 16;
     operand_read(&opr);
-    cpu.GDTR.limit = opr.val;
+    cpu.gdtr.limit = opr.val;
     opr.addr += 2;
     opr.data_size = 32;
     operand_read(&opr);
-    cpu.GDTR.base = opr.val;
+    cpu.gdtr.base = opr.val;
 }
