@@ -14,7 +14,7 @@ make_instr_func(lgdt)
     //assert(0);
     operand_read(&opr);
     
-    assert(0);
+    //assert(0);
     cpu.gdtr.limit = opr.val;
     opr.addr = 0x0003004e;
     opr.data_size = 32;
