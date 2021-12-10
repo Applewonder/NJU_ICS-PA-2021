@@ -4,11 +4,12 @@ Put the implementations of `lgdt' instructions here.
 */
 make_instr_func(lgdt)
 {
+    int len = 2;
     OPERAND opr;
     
     opr.type = OPR_MEM;
     //opr.addr = 0x0003004c;
-    modrm_rm(eip + 2, &opr);
+    len += modrm_rm(eip + 2, &opr);
     //assert(opr.addr == 0x0003004c);
     opr.sreg = SREG_DS;
     opr.data_size = 16;
@@ -21,5 +22,5 @@ make_instr_func(lgdt)
     opr.data_size = 32;
     operand_read(&opr);
     cpu.gdtr.base = opr.val;
-    return 7;
+    return len;
 }
