@@ -16,4 +16,5 @@ make_instr_func(lgdt)
     opr.data_size = 32;
     operand_read(&opr);
     cpu.gdtr.base = opr.val;
+    return 7;
 }
