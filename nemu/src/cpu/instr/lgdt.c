@@ -4,12 +4,12 @@ Put the implementations of `lgdt' instructions here.
 */
 make_instr_func(lgdt)
 {
-    uint32_t addr = vaddr_read(eip + 3, 1, 4);
     OPERAND opr;
     
     opr.type = OPR_MEM;
     opr.addr = 0x0003004c;
-    assert(addr == 0x0003004c);
+    modrm_rm(eip + 2, &opr);
+    assert(opr.addr == 0x0003004c);
     opr.sreg = SREG_DS;
     opr.data_size = 16;
     //assert(0);
