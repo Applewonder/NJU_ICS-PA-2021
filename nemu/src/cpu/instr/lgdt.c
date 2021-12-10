@@ -7,7 +7,7 @@ make_instr_func(lgdt)
     OPERAND opr;
     
     opr.type = OPR_MEM;
-    opr.addr = 0x0003004c;
+    //opr.addr = 0x0003004c;
     modrm_rm(eip + 2, &opr);
     assert(opr.addr == 0x0003004c);
     opr.sreg = SREG_DS;
