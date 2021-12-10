@@ -7,6 +7,7 @@ make_instr_func(lgdt)
     uint32_t addr = vaddr_read(eip + 3, 1, 4);
     OPERAND opr;
     opr.val = vaddr_read(addr, 1, 2);
+    assert(0);
     cpu.gdtr.limit = opr.val;
     opr.addr += 2;
     opr.data_size = 32;
