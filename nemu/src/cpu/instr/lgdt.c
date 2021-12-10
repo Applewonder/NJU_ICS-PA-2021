@@ -4,7 +4,7 @@ Put the implementations of `lgdt' instructions here.
 */
 make_instr_func(lgdt)
 {
-    int len = 2;
+    int len = 1;
     OPERAND opr;
     printf("%x\n", eip);
     opr.type = OPR_MEM;
