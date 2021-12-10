@@ -29,7 +29,7 @@ uint32_t paddr_read(paddr_t paddr, size_t len)
 #else
 	    ret = hw_mem_read(paddr, len);
 #endif
-        assert(0);
+        //assert(0);
 	    return ret;
 }
 
