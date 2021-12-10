@@ -12,6 +12,7 @@
 	{                                                                \
 		uint8_t op_code;                                             \
 		modrm_opcode(eip + 1, &op_code);                             \
+		printf("------------->%x", eip);                                           \
 		return concat3(__ref_, name, _entry)[op_code](eip, op_code); \
 	}
 

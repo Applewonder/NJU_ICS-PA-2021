@@ -6,7 +6,7 @@ make_instr_func(lgdt)
 {
     int len = 2;
     OPERAND opr;
-    printf("%x", eip);
+    printf("%x\n", eip);
     opr.type = OPR_MEM;
     //opr.addr = 0x0003004c;
     len += modrm_rm(eip + 2, &opr);
