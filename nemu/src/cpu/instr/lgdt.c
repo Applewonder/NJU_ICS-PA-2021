@@ -4,7 +4,7 @@ Put the implementations of `lgdt' instructions here.
 */
 make_instr_func(lgdt)
 {
-    uint32_t addr = vaddr_read(eip + 3, 1, 8);
+    uint32_t addr = vaddr_read(eip + 3, 1, 32);
     OPERAND opr;
     opr.type = OPR_MEM;
     opr.addr = addr;
