@@ -10,7 +10,6 @@ make_instr_func(lgdt)
     opr.addr = addr;
     opr.sreg = SREG_DS;
     opr.data_size = 16;
-    assert(0);
     operand_read(&opr);
     assert(0);
     cpu.gdtr.limit = opr.val;
