@@ -4,12 +4,16 @@ Put the implementations of `lgdt' instructions here.
 */
 make_instr_func(lgdt)
 {
-    printf("---->x");
     uint32_t addr = vaddr_read(eip + 3, 1, 4);
-    printf("%x", addr);
     OPERAND opr;
     
-    opr.val = vaddr_read(addr, 1, 2);
+    opr.type = OPR_MEM;
+    opr.addr = addr;
+    opr.sreg = SREG_DS;
+    opr.data_size = 16;
+    assert(0);
+    operand_read(&opr);
+    
     assert(0);
     cpu.gdtr.limit = opr.val;
     opr.addr += 2;
