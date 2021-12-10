@@ -4,10 +4,11 @@ Put the implementations of `lgdt' instructions here.
 */
 make_instr_func(lgdt)
 {
+    printf("---->x");
     uint32_t addr = vaddr_read(eip + 3, 1, 4);
+    printf("%x", addr);
     OPERAND opr;
     
-    printf("%x", addr);
     opr.val = vaddr_read(addr, 1, 2);
     assert(0);
     cpu.gdtr.limit = opr.val;
