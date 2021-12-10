@@ -7,7 +7,7 @@ make_instr_func(lgdt)
     uint32_t addr = vaddr_read(eip + 3, 1, 4);
     OPERAND opr;
     assert(0);
-    printf("%x" addr);
+    printf("%x", addr);
     opr.val = vaddr_read(addr, 1, 2);
     assert(0);
     cpu.gdtr.limit = opr.val;
