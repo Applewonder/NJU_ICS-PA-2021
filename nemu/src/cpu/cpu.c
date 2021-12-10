@@ -127,6 +127,7 @@ int exec_inst()
 	uint8_t opcode = 0;
 	// get the opcode
 	opcode = instr_fetch(cpu.eip, 1);
+	printf("-------------> %x\n", cpu.eip);    
 //printf("opcode = %x, eip = %x\n", opcode, cpu.eip);
 // instruction decode and execution
 #ifdef NEMU_REF_INSTR
