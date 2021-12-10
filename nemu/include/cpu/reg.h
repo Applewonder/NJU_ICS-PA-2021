@@ -70,13 +70,13 @@ typedef struct
 	} CR0;
 	
 	//GDTR
-	typedef struct {
+	struct {
 	    uint32_t limit :16;
 	    uint32_t base :32;
     }GDTR;
 	
 	//SegReg
-    typedef struct {
+    struct {
     	// the 16-bit visible part, i.e., the selector
     	union {
     		uint16_t val;
