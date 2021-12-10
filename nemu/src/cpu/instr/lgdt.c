@@ -6,12 +6,7 @@ make_instr_func(lgdt)
 {
     uint32_t addr = vaddr_read(eip + 3, 1, 4);
     OPERAND opr;
-    opr.type = OPR_MEM;
-    opr.addr = addr;
-    opr.sreg = SREG_DS;
-    opr.data_size = 16;
-    operand_read(&opr);
-    assert(0);
+    opr.val = vaddr_read(addr, 1, 2);
     cpu.gdtr.limit = opr.val;
     opr.addr += 2;
     opr.data_size = 32;
