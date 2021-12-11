@@ -22,7 +22,8 @@ void load_sreg(uint8_t sreg)
 // 	 cpu.segReg[sreg].type = cpu.gdtr.base[cpu.segReg[sreg].index].type;
 // 	 cpu.segReg[sreg].privilege_level = cpu.gdtr.base[cpu.segReg[sreg].index].privilege_level;
 // 	 cpu.segReg[sreg].soft_use = cpu.gdtr.base[cpu.segReg[sreg].index].soft_use;
-    SegDesc seg.val[0] = vaddr_read(cpu.gdtr.base + cpu.segReg[sreg].index * 8, sreg, 4);
+    SegDesc seg;
+    seg.val[0] = vaddr_read(cpu.gdtr.base + cpu.segReg[sreg].index * 8, sreg, 4);
     seg.val[1] = vaddr_read(cpu.gdtr.base + cpu.segReg[sreg].index * 8 + 32, sreg, 4);
     assert(seg.granularity == 1);
     cpu.segReg[sreg].base = (seg.base_31_24 << 24) + (seg.base_23_16 << 16) + seg.base_15_0;
