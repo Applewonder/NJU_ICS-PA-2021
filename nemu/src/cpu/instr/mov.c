@@ -77,16 +77,16 @@ make_instr_func(mov_srm162r_l) {
         return len;
 }
 
-make_instr_func(mov_rm2s_w) {
-        int len = 1;
-        OPERAND rm, s;
-        rm.data_size = 16;
-        rm.data_size = 16;
-        len += modrm_r_rm(eip + 1, &r, &rm);
-        operand_read(&rm);
-        r.val = sign_ext(rm.val, 16);
-        operand_write(&r);
+// make_instr_func(mov_rm2s_w) {
+//         int len = 1;
+//         OPERAND rm, s;
+//         rm.data_size = 16;
+//         rm.data_size = 16;
+//         len += modrm_r_rm(eip + 1, &r, &rm);
+//         operand_read(&rm);
+//         r.val = sign_ext(rm.val, 16);
+//         operand_write(&r);
 
-	print_asm_2("mov", "", len, &rm, &r);
-        return len;
-}
+// 	print_asm_2("mov", "", len, &rm, &r);
+//         return len;
+// }
