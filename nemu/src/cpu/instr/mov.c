@@ -84,7 +84,7 @@ make_instr_func(mov_rm2s_w) {
         len += modrm_rm(eip + 1, &rm);
         operand_read(&rm);
         printf("------>%d\n", rm.val);
-        assert(rm.val == 8);
+        //assert(rm.val == 8);
         cpu.ds.val = rm.val;
         
         return len;
