@@ -18,11 +18,12 @@ make_instr_func(lgdt)
     
     //assert(0);
     cpu.gdtr.limit = opr.val;
-    printf("%x", cpu.gdtr.limit);
+    printf("limit = %x\n", cpu.gdtr.limit);
     opr.addr += 2;
     opr.data_size = 32;
     
     operand_read(&opr);
+    printf("base = %x\n", opr.val);
     //assert(0);
     cpu.gdtr.base = opr.val;
     return len;
