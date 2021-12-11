@@ -35,5 +35,5 @@ void load_sreg(uint8_t sreg)
     cpu.segReg[sreg].privilege_level = seg.privilege_level;
     cpu.segReg[sreg].soft_use = seg.soft_use;
     assert(cpu.segReg[sreg].base == 0);
-    assert(cpu.segReg[sreg].limit == 0xffffffff);
+    assert(cpu.segReg[sreg].limit == 0xfffff);
  }
