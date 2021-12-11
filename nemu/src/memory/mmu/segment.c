@@ -23,8 +23,8 @@ void load_sreg(uint8_t sreg)
 // 	 cpu.segReg[sreg].privilege_level = cpu.gdtr.base[cpu.segReg[sreg].index].privilege_level;
 // 	 cpu.segReg[sreg].soft_use = cpu.gdtr.base[cpu.segReg[sreg].index].soft_use;
     SegDesc seg;
-    seg.val[1] = vaddr_read(cpu.gdtr.base + cpu.segReg[sreg].index * 8, sreg, 4);
-    seg.val[0] = vaddr_read(cpu.gdtr.base + cpu.segReg[sreg].index * 8 + 32, sreg, 4);
+    seg.val[0] = vaddr_read(cpu.gdtr.base + cpu.segReg[sreg].index * 8, sreg, 4);
+    seg.val[1] = vaddr_read(cpu.gdtr.base + cpu.segReg[sreg].index * 8 + 32, sreg, 4);
     printf("index = %x\n", cpu.segReg[sreg].index);
     printf("granularity = %x, reg.base = %x, %x, %x, val[1] = %x, val[2]%x\n", seg.granularity, seg.base_31_24, seg.base_23_16, seg.base_15_0, seg.val[0], seg.val[1]);
     //assert(seg.granularity == 1);
