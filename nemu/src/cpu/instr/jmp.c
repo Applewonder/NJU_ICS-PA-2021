@@ -47,7 +47,7 @@ make_instr_func(jmp_near_indirect)
 
 make_instr_func(jmp_far_imm)
 {
-        cpu.segReg[1] = (1 << 3);
+        cpu.cs.val = (1 << 3);
         OPERAND reg;
         reg.data_size = 32;
         reg.type = OPR_IMM;
