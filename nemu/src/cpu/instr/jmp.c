@@ -47,13 +47,13 @@ make_instr_func(jmp_near_indirect)
 
 make_instr_func(jmp_far_imm)
 {
+        cpu.cs = (1 << 3);
         OPERAND reg;
         reg.data_size = 32;
-        
-        
-        
+        reg.type = OPR_IMM;
+        reg.addr = eip + 1;
+        reg.sreg = SREG_CS;
         operand_read(&reg);
         cpu.eip = reg.val;
-        
         return 0;
 }
