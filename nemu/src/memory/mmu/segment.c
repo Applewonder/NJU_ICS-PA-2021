@@ -25,7 +25,7 @@ void load_sreg(uint8_t sreg)
     SegDesc seg;
     seg.val[0] = vaddr_read(cpu.gdtr.base + cpu.segReg[sreg].index * 8, sreg, 4);
     seg.val[1] = vaddr_read(cpu.gdtr.base + cpu.segReg[sreg].index * 8 + 32, sreg, 4);
-    printf("%x", cpu.segReg[sreg].index);
+    printf("index = %x\n", cpu.segReg[sreg].index);
     printf("%x\n", seg.val[0]);
     printf("%x\n", seg.val[1]);
     //assert(seg.granularity == 1);
