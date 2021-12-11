@@ -80,13 +80,13 @@ make_instr_func(mov_srm162r_l) {
 
 make_instr_func(mov_rm2s_w) {
         int len = 1;
-        OPERAND rm;
+        OPERAND rm, s;
         rm.data_size = 16;
-        len += modrm_rm(eip + 1, &rm);
+        len += modrm_opcode_rm(eip, &s, &rm);
         operand_read(&rm);
         printf("------>%d\n", rm.val);
-        printf("------>%d\n", rm.val);
-        printf("------>%d\n", rm.addr);
+        
+        printf("------>%d\n", s.addr);
         
         // cpu.segReg[s.addr].val = rm.val;
         
@@ -95,7 +95,7 @@ make_instr_func(mov_rm2s_w) {
 
 make_instr_func(mov_r2c_l) {
         int len = 1;
-        OPERAND r;
+        OPERAND r，s;
         r.data_size = 32;
         len += modrm_rm(eip + 1, &r);
         operand_read(&r);
