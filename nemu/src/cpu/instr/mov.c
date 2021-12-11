@@ -87,7 +87,7 @@ make_instr_func(mov_rm2s_w) {
         printf("------>%d\n", rm.val);
         printf("------>%d\n", s.addr);
         
-        cpu.segReg[s.addr] = rm.val;
+        cpu.segReg[s.addr].val = rm.val;
         
         return len;
 }
