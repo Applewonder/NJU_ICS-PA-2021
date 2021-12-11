@@ -82,7 +82,7 @@ make_instr_func(mov_rm2s_w) {
         int len = 2;
         OPERAND rm;
         rm.data_size = 16;
-        len += modrm_rm(eip + 1, &rm);
+        len += modrm_rm(eip, &rm);
         operand_read(&rm);
         printf("------>%d\n", rm.val);
         
