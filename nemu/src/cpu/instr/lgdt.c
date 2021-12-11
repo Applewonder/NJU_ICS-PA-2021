@@ -12,18 +12,18 @@ make_instr_func(lgdt)
     len += modrm_rm(eip + 1, &opr);
     //assert(opr.addr == 0x0003004c);
     opr.sreg = SREG_DS;
-    opr.data_size = 16;
+    opr.data_size = 32;
     //assert(0);
     operand_read(&opr);
     
     //assert(0);
     cpu.gdtr.limit = opr.val;
-    printf("limit = %x\n", cpu.gdtr.limit);
-    opr.addr += 2;
+    printf("base = %x\n", cpu.gdtr.limit);
+    opr.addr += 4;
     opr.data_size = 32;
     
     operand_read(&opr);
-    printf("base = %x\n", opr.val);
+    printf("limit = %x\n", opr.val);
     //assert(0);
     cpu.gdtr.base = opr.val;
     return len;
