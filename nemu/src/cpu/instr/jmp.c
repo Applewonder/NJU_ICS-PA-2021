@@ -53,8 +53,9 @@ make_instr_func(jmp_far_imm)
         reg.type = OPR_IMM;
         reg.addr = eip + 1;
         reg.sreg = SREG_CS;
-        assert(0);
+        //assert(0);
         operand_read(&reg);
+        assert(0);
         cpu.eip = reg.val;
         load_sreg(1);
         return 0;
