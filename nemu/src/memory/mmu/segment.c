@@ -27,7 +27,7 @@ void load_sreg(uint8_t sreg)
     seg.val[1] = vaddr_read(cpu.gdtr.base + cpu.segReg[sreg].index * 8 + 32, sreg, 4);
     //printf("%x\n", seg.val[0]);
     //printf("%x\n", seg.val[1]);
-    assert(seg.granularity == 1);
+    //assert(seg.granularity == 1);
     cpu.segReg[sreg].base = (seg.base_31_24 << 24) + (seg.base_23_16 << 16) + seg.base_15_0;
     cpu.segReg[sreg].limit = (seg.limit_19_16 << 16) + seg.limit_15_0;
     cpu.segReg[sreg].type = seg.type;
