@@ -94,9 +94,9 @@ make_instr_func(mov_rm2s_w) {
 
 make_instr_func(mov_r2c_l) {
         int len = 1;
-        OPERAND r，s;
+        OPERAND r;
         r.data_size = 32;
-        len += modrm_rm(eip + 1, eip, &r);
+        len += modrm_rm(eip + 1,  &r);
         operand_read(&r);
         cpu.cr0.val = r.val;
         
