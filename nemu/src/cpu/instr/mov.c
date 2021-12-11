@@ -82,12 +82,12 @@ make_instr_func(mov_rm2s_w) {
         int len = 2;
         OPERAND rm, s;
         rm.data_size = 16;
-        len += modrm_rm_r(eip + 1, &rm, &s);
+        len += modrm_r_rm(eip + 1, &rm, &s);
         operand_read(&rm);
         printf("------>%d\n", rm.val);
         printf("------>%d\n", s.addr);
         
-        cpu.Segreg[s.addr] = rm.val;
+        cpu.segReg[s.addr] = rm.val;
         
         return len;
 }
