@@ -87,7 +87,7 @@ make_instr_func(mov_rm2s_w) {
         printf("------>%d\n", rm.val);
         uint32_t m = instr_fetch(eip + 1, 1);
         int tag = (m >> 3) % 8;
-        //assert()
+        assert(0);
         printf("------>%d\n", tag);
         cpu.segReg[tag].val = rm.val;
         return len;
