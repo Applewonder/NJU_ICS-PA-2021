@@ -44,3 +44,16 @@ make_instr_func(jmp_near_indirect)
         
         return 0;
 }
+
+make_instr_func(jmp_far_imm)
+{
+        OPERAND reg;
+        reg.data_size = 32;
+        reg.type 
+        len += modrm_rm(eip + 1, &reg);
+        
+        operand_read(&reg);
+        cpu.eip = reg.val;
+        
+        return 0;
+}
