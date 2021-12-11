@@ -84,12 +84,14 @@ make_instr_func(mov_rm2s_w) {
         rm.data_size = 16;
         len += modrm_rm(eip+1, &rm);
         operand_read(&rm);
-        printf("------>%d\n", rm.val);
+        //printf("------>%d\n", rm.val);
         uint32_t m = instr_fetch(eip + 1, 1);
         int tag = (m >> 3) % 8;
         //assert(0);
-        printf("------>%d\n", tag);
+        //printf("------>%d\n", tag);
         cpu.segReg[tag].val = rm.val;
+        load_sreg(tag);
+        
         return len;
 }
 
