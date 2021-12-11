@@ -6,10 +6,10 @@ make_instr_func(lgdt)
 {
     int len = 1;
     OPERAND opr;
-    printf("%x\n", eip);
+    //printf("%x\n", eip);
     opr.type = OPR_MEM;
     //opr.addr = 0x0003004c;
-    len += modrm_rm(eip + 2, &opr);
+    len += modrm_rm(eip + 1, &opr);
     //assert(opr.addr == 0x0003004c);
     opr.sreg = SREG_DS;
     opr.data_size = 16;
