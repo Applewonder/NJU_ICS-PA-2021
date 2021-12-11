@@ -51,7 +51,7 @@ make_instr_func(jmp_far_imm)
         OPERAND reg;
         reg.data_size = 32;
         reg.type = OPR_IMM;
-        reg.addr = eip + 1;
+        reg.addr = eip;
         reg.sreg = SREG_CS;
         operand_read(&reg);
         cpu.eip = reg.val;
