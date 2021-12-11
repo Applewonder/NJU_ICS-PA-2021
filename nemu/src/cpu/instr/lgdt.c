@@ -22,7 +22,7 @@ make_instr_func(lgdt)
     opr.data_size = 32;
     
     operand_read(&opr);
-    assert(0);
+    //assert(0);
     cpu.gdtr.base = opr.val;
     return len;
 }
