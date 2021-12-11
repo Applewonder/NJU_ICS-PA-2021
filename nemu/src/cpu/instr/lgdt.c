@@ -13,7 +13,7 @@ make_instr_func(lgdt)
     //assert(opr.addr == 0x0003004c);
     opr.sreg = SREG_DS;
     opr.data_size = 16;
-    //assert(0);
+    assert(0);
     operand_read(&opr);
     
     //assert(0);
