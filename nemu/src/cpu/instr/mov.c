@@ -79,14 +79,15 @@ make_instr_func(mov_srm162r_l) {
 }
 
 make_instr_func(mov_rm2s_w) {
-        int len = 1;
-        OPERAND rm;
+        int len = 2;
+        OPERAND rm, s;
         rm.data_size = 16;
-        len += modrm_rm(eip + 1, &rm);
+        len += modrm_rm_r(eip + 1, &rm, &s);
         operand_read(&rm);
-        //printf("------>%d\n", rm.val);
-        //assert(rm.val == 8);
-        cpu.ds.val = rm.val;
+        printf("------>%d\n", rm.val);
+        printf("------>%d\n", s.addr);
+        
+        cpu.Segreg[s.addr] = rm.val;
         
         return len;
 }

@@ -55,5 +55,6 @@ make_instr_func(jmp_far_imm)
         reg.sreg = SREG_CS;
         operand_read(&reg);
         cpu.eip = reg.val;
+        load_sreg(1);
         return 0;
 }

@@ -19,9 +19,6 @@ typedef union {
 		uint32_t val;
 	} CR0;
 	
-	
-    
-	
 //GDTR
 typedef	struct {
     	    uint32_t limit :16;
