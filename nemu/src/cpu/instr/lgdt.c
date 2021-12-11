@@ -18,6 +18,7 @@ make_instr_func(lgdt)
     
     //assert(0);
     cpu.gdtr.limit = opr.val;
+    printf("%x", cpu.gdtr.limit);
     opr.addr += 2;
     opr.data_size = 32;
     
