@@ -67,10 +67,10 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 			assert(0);	
 		} else {
 			paddr_t hwaddr = page_translate(laddr);
-			paddr_write(hwaddr, len);	
+			paddr_write(hwaddr, len, data);	
 		}
 	}  
-	paddr_write(laddr, len);
+	paddr_write(laddr, len, data);
 }
 
 uint32_t vaddr_read(vaddr_t vaddr, uint8_t sreg, size_t len)
