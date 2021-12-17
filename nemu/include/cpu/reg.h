@@ -5,13 +5,13 @@
 
 //CR3
 typedef union {
-    struct
-    {
-        uint32_t pdbr : 20;
-        uint32_t reserved : 12;
-    }
-    uint32_t val;
-}CR3;
+        struct
+        {
+            uint32_t pdbr : 20;
+            uint32_t reserved : 12;
+        };
+        uint32_t val;
+    }CR3;
 
 //CR0
 typedef union {
