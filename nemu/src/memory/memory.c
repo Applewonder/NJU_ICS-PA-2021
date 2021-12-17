@@ -50,7 +50,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 			/* this is a special case, you can handle it later. */				
 			assert(0);	
 		} else {
-			paddr_t hwaddr = page_translate(addr);
+			paddr_t hwaddr = page_translate(laddr);
 			return paddr_read(hwaddr, len);	
 		}
 	}  
