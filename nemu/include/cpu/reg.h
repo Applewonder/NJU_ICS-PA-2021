@@ -11,7 +11,7 @@ typedef union {
         uint32_t reserved : 12;
     }
     uint32_t val;
-}CR3
+}CR3;
 
 //CR0
 typedef union {
