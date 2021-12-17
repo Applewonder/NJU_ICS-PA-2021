@@ -10,11 +10,11 @@ paddr_t page_translate(laddr_t laddr)
 	uint32_t offset = laddr % 12;
 	uint32_t m = (cpu.cr3.pdbr << 12) + 8*dir;
 	PDE t;
-	t.val = hw_mem_read(m, 4);
+	memcpy(&t.val, hw_mem + m, 4);
 	assert(t.present == 1);
 	PTE l;
 	m = (t.page_frame << 12) + 8*page;
-	l.val = hw_mem_read(m, 4);
+	memcpy(&l.val, hw_mem + m, 4);
 	assert(l.present == 1);
 	paddr_t result = (l.page_frame << 12) + offset;
 	return result;
