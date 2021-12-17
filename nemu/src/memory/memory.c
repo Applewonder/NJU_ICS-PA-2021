@@ -59,7 +59,6 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 
 void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 {
-	paddr_write(laddr, len, data);
 	assert(len == 1 || len == 2 || len == 4);	
 	if( cpu.cr0.pg == 1 ) {
 		if (laddr % 4096 + len >= 4096) {
