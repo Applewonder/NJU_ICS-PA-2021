@@ -44,6 +44,16 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data)
 
 uint32_t laddr_read(laddr_t laddr, size_t len)
 {
+    assert(len == 1 || len == 2 || len == 4);	
+	if( cpu.cr0.pg == 1 ) {
+		if (laddr % 4096 + len >= 4096) {
+			/* this is a special case, you can handle it later. */				
+			assert(0);	
+		} else {
+			hwaddr_t hwaddr = page_translate(addr);
+			return hwaddr_read(hwaddr, len);	
+		}
+	}  
 	return paddr_read(laddr, len);
 }
 
