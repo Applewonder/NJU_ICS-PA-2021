@@ -63,7 +63,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
     //     }
     //     return paddr_read(addr, len);
     // }
-	//return paddr_read(laddr, len);
+	return paddr_read(laddr, len);
 }
 
 void laddr_write(laddr_t laddr, size_t len, uint32_t data)
