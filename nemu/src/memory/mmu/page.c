@@ -18,7 +18,7 @@ paddr_t page_translate(laddr_t laddr)
 	m = (t.page_frame << 12) + 8*page;
 	memcpy(&l.val, hw_mem + m, 4);
 	
-	assert(0);
+	//assert(0);
 	assert(l.present == 1);
 	paddr_t result = (l.page_frame << 12) + offset;
 	assert(0);
