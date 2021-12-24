@@ -10,7 +10,8 @@ paddr_t page_translate(laddr_t laddr)
 	uint32_t offset = laddr % 4096;
 	uint32_t m = (cpu.cr3.pdbr << 12) + 4*dir;
 	PDE t;
-	
+	printf("laddr = -------->%x\n", laddr);
+	fflush(stdout);
 	printf("page = -------->%x\n", page);
 	fflush(stdout);
 	
