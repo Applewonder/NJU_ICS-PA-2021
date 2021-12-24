@@ -11,6 +11,9 @@ paddr_t page_translate(laddr_t laddr)
 	uint32_t m = (cpu.cr3.pdbr << 12) + 4*dir;
 	PDE t;
 	
+	printf("page = -------->%x\n", page);
+	fflush(stdout);
+	
 	memcpy(&t.val, hw_mem + m, 4);
 	
 	assert(t.present == 1);
