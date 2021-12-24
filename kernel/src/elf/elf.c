@@ -32,7 +32,7 @@ uint32_t loader()
 	/* Load each program segment */
 	ph = (void *)elf + elf->e_phoff;
 	eph = ph + elf->e_phnum;
-	uint32_t prog_start = mm_malloc(ph.vaddr, ph->p_memsz);
+	uint32_t prog_start = mm_malloc(ph->vaddr, ph->p_memsz);
 	for (; ph < eph; ph++)
 	{
 		if (ph->p_type == PT_LOAD)
