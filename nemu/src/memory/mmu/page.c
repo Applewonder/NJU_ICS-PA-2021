@@ -6,8 +6,8 @@ paddr_t page_translate(laddr_t laddr)
 {
 #ifndef TLB_ENABLED
 	uint32_t dir = laddr >> 22;
-	uint32_t page = (laddr >> 12) % 10;
-	uint32_t offset = laddr % 12;
+	uint32_t page = (laddr >> 12) % 1024;
+	uint32_t offset = laddr % 4096;
 	uint32_t m = (cpu.cr3.pdbr << 12) + 8*dir;
 	PDE t;
 	memcpy(&t.val, hw_mem + m, 4);
