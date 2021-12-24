@@ -73,7 +73,6 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 			paddr_write(hwaddr, len, data);	
 		}
 	} else{
-	    assert(0);
 	    paddr_write(laddr, len, data);
 	}
 }
