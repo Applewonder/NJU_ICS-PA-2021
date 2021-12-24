@@ -61,7 +61,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
         if (((laddr + len -1)&0xfff) < (laddr & 0xfff)) {
             assert(0);
         }
-        return paddr_read(laddr, len);
+        return paddr_read(addr, len);
     }
 	return paddr_read(laddr, len);
 }
