@@ -17,9 +17,10 @@ paddr_t page_translate(laddr_t laddr)
 	PTE l;
 	m = (t.page_frame << 12) + 8*page;
 	memcpy(&l.val, hw_mem + m, 4);
-	assert(0);
+	
 	assert(l.present == 1);
 	paddr_t result = (l.page_frame << 12) + offset;
+	assert(0);
 	return result;
 #else
 	return tlb_read(laddr) | (laddr & PAGE_MASK);
