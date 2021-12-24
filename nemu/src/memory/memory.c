@@ -69,6 +69,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 			/* this is a special case, you can handle it later. */				
 			assert(0);	
 		} else {
+		    assert(0);
 			paddr_t hwaddr = page_translate(laddr);
 			paddr_write(hwaddr, len, data);	
 		}
