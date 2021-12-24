@@ -18,12 +18,12 @@ paddr_t page_translate(laddr_t laddr)
 	m = (t.page_frame << 12) + 4*page;
 	memcpy(&l.val, hw_mem + m, 4);
 	
-	assert(0);
-	//printf("-------->%d", l.present);
-	assert(l.present == 1);
-	assert(0);
+	//assert(0);
+	printf("-------->%d", l.present);
+// 	assert(l.present == 1);
+// 	assert(0);
 	paddr_t result = (l.page_frame << 12) + offset;
-	assert(0);
+// 	assert(0);
 	return result;
 #else
 	return tlb_read(laddr) | (laddr & PAGE_MASK);
