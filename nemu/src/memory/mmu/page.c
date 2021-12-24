@@ -21,7 +21,7 @@ paddr_t page_translate(laddr_t laddr)
 	PTE l;
 	
 	
-//	m = (t.page_frame << 12) + 4*page;
+	m = (t.page_frame << 12) + 4*page;
 	
 	printf("m = -------->%x\n", m);
 	fflush(stdout);
