@@ -32,14 +32,14 @@ uint32_t loader()
 	/* Load each program segment */
 	ph = (void *)elf + elf->e_phoff;
 	eph = ph + elf->e_phnum;
-	
+	uint32_t prog_start = mm_malloc(ph->p_vaddr, ph->p_memsz);
 	for (; ph < eph; ph++)
 	{
 		if (ph->p_type == PT_LOAD)
 		{
 
 			// remove this panic!!!
-			uint32_t prog_start = mm_malloc(ph->p_vaddr, ph->p_memsz);
+			
 /* TODO: copy the segment from the ELF file to its proper memory area */
             memcpy((void *)elf + prog_start, (void *)elf + ph->p_offset, ph->p_filesz);
 /* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz) */
