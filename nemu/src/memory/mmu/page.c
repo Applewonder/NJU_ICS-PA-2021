@@ -10,6 +10,7 @@ paddr_t page_translate(laddr_t laddr)
 	uint32_t offset = laddr % 4096;
 	uint32_t m = (cpu.cr3.pdbr << 12) + 8*dir;
 	PDE t;
+	assert(0);
 	memcpy(&t.val, hw_mem + m, 4);
 	assert(t.present == 1);
 	PTE l;
