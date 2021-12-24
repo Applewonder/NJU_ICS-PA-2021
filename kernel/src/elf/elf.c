@@ -39,11 +39,11 @@ uint32_t loader()
 		{
 
 			// remove this panic!!!
-			uint32_t prog_start = mm_malloc(ph->p_vaddr, ph->p_memsz);
+			//uint32_t prog_start = mm_malloc(ph->p_vaddr, ph->p_memsz);
 /* TODO: copy the segment from the ELF file to its proper memory area */
-            memcpy((void *)elf + prog_start, (void *)elf + ph->p_offset, ph->p_filesz);
+            memcpy((void *)elf + ph->p_vaddr, (void *)elf + ph->p_offset, ph->p_filesz);
 /* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz) */
-            memset((void *)elf + prog_start + ph->p_filesz, 0, ph->p_memsz - ph->p_filesz);
+            memset((void *)elf + ph->p_vaddr + ph->p_filesz, 0, ph->p_memsz - ph->p_filesz);
 #ifdef IA32_PAGE
 			/* Record the program break for future use */
 			extern uint32_t brk;

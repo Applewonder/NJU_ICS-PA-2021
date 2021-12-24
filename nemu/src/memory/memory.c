@@ -45,36 +45,36 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data)
 uint32_t laddr_read(laddr_t laddr, size_t len)
 {
     //assert(0);
-    assert(len == 1 || len == 2 || len == 4);	
-	if( cpu.cr0.pg == 1 ) {
-		if (laddr % 4096 + len >= 4096) {
-			/* this is a special case, you can handle it later. */				
-			assert(0);	
-		} else {
-			paddr_t hwaddr = page_translate(laddr);
-			assert(0);
-			return paddr_read(hwaddr, len);	
-		}
-	}  
+//     assert(len == 1 || len == 2 || len == 4);	
+// 	if( cpu.cr0.pg == 1 ) {
+// 		if (laddr % 4096 + len >= 4096) {
+// 			/* this is a special case, you can handle it later. */				
+// 			assert(0);	
+// 		} else {
+// 			paddr_t hwaddr = page_translate(laddr);
+// 			assert(0);
+// 			return paddr_read(hwaddr, len);	
+// 		}
+// 	}  
 	return paddr_read(laddr, len);
 }
 
 void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 {
     //assert(0);
-	assert(len == 1 || len == 2 || len == 4);	
-	if( cpu.cr0.pg == 1 ) {
-	    assert(0);
-		if (laddr % 4096 + len >= 4096) {
-			/* this is a special case, you can handle it later. */				
-			assert(0);	
-		} else {
-			paddr_t hwaddr = page_translate(laddr);
-			paddr_write(hwaddr, len, data);	
-		}
-	} else{
+// 	assert(len == 1 || len == 2 || len == 4);	
+// 	if( cpu.cr0.pg == 1 ) {
+// 	    assert(0);
+// 		if (laddr % 4096 + len >= 4096) {
+// 			/* this is a special case, you can handle it later. */				
+// 			assert(0);	
+// 		} else {
+// 			paddr_t hwaddr = page_translate(laddr);
+// 			paddr_write(hwaddr, len, data);	
+// 		}
+// 	} else{
 	    paddr_write(laddr, len, data);
-	}
+// 	}
 }
 
 uint32_t vaddr_read(vaddr_t vaddr, uint8_t sreg, size_t len)

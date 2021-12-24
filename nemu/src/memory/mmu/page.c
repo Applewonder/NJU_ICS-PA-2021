@@ -28,7 +28,7 @@ paddr_t page_translate(laddr_t laddr)
 	printf("t.page_frame-------->%x\n", t.page_frame);
 	fflush(stdout);
 	
-	l.val = paddr_read(m, 4);
+	memcpy(&l.val, hw_mem + m, 4);
 
 	//assert(0);
 //	printf("-------->%d", l.present);
