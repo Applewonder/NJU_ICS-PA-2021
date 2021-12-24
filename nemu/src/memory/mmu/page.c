@@ -16,10 +16,10 @@ paddr_t page_translate(laddr_t laddr)
 	fflush(stdout);
 	
 	memcpy(&t.val, hw_mem + m, 4);
-	assert(0);
+	//assert(0);
 	assert(t.present == 1);
 	PTE l;
-	
+	assert(0);
 	
 	m = (t.page_frame << 12) + 4*page;
 	
