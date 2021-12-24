@@ -17,7 +17,7 @@ paddr_t page_translate(laddr_t laddr)
 	PTE l;
 	m = (t.page_frame << 12) + 4*page;
 	memcpy(&l.val, hw_mem + m, 4);
-	printf("-------->%x\n", hw_mem + m);
+	printf("-------->%x\n", m);
 	fflush(stdout);
 	//assert(0);
 //	printf("-------->%d", l.present);
