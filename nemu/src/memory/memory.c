@@ -56,7 +56,6 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 			return paddr_read(hwaddr, len);	
 		}
 	}  
-	assert(0);
 	return paddr_read(laddr, len);
 }
 
