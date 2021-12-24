@@ -18,11 +18,12 @@ paddr_t page_translate(laddr_t laddr)
 	
 	
 	m = (t.page_frame << 12) + 4*page;
-	printf("-------->%x\n", m);
+	printf("m = -------->%x\n", m);
+	fflush(stdout);
+	printf("t.page_frame-------->%x\n", t.page_frame);
 	fflush(stdout);
 	memcpy(&l.val, hw_mem + m, 4);
-	printf("-------->%x\n", m);
-	fflush(stdout);
+
 	//assert(0);
 //	printf("-------->%d", l.present);
 // 	assert(l.present == 1);
