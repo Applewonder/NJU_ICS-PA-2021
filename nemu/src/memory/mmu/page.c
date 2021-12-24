@@ -16,7 +16,7 @@ paddr_t page_translate(laddr_t laddr)
 	fflush(stdout);
 	
 	memcpy(&t.val, hw_mem + m, 4); //这里报seg fault
-	assert(0);//这里加断点
+	//assert(0);//这里加断点
 	assert(t.present == 1);
 	PTE l;
 	assert(0);
