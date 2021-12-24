@@ -20,7 +20,7 @@ run-kernel: nemu
 
 debug: nemu
 	$(call git_commit, "debug", $(TIME_MAKE))
-	gdb -ex=run --args ./nemu/nemu --testcase add
+	gdb -ex=run --args ./nemu/nemu --testcase mov-c --kernel --autorun
 
 game:
 	$(call git_commit, "compile game", $(TIME_MAKE))
