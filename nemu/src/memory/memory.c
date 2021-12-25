@@ -46,23 +46,23 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 {
     //assert(0);
     assert(len == 1 || len == 2 || len == 4);	
-	if( cpu.cr0.pg == 1 ) {
-		if (((laddr + len -1)&0xfff) < (laddr & 0xfff)) {
-			/* this is a special case, you can handle it later. */				
-			assert(0);	
-		} else {
-			paddr_t hwaddr = page_translate(laddr);
-			assert(0);
-			return paddr_read(hwaddr, len);	
-		}
-	}  
-    // if(cpu.cr0.pg == 1) {
-    //     uint32_t addr = page_translate(laddr);
-    //     if (((laddr + len -1)&0xfff) < (laddr & 0xfff)) {
-    //         assert(0);
-    //     }
-    //     return paddr_read(addr, len);
-    // }
+// 	if( cpu.cr0.pg == 1 ) {
+// 		if (((laddr + len -1)&0xfff) < (laddr & 0xfff)) {
+// 			/* this is a special case, you can handle it later. */				
+// 			assert(0);	
+// 		} else {
+// 			paddr_t hwaddr = page_translate(laddr);
+// 			assert(0);
+// 			return paddr_read(hwaddr, len);	
+// 		}
+// 	}  
+    if(cpu.cr0.pg == 1) {
+        uint32_t addr = page_translate(laddr);
+        if (((laddr + len -1)&0xfff) < (laddr & 0xfff)) {
+            assert(0);
+        }
+        return paddr_read(addr, len);
+    }
 	return paddr_read(laddr, len);
 }
 
