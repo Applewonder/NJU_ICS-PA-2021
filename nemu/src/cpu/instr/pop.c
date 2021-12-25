@@ -24,7 +24,7 @@ static void instr_execute_1op()
     // operand_write(&opr);
     // cpu.esp += 4;
     opr_dest.addr = cpu.esp;
-    opr_dest.type = OPR.MEM;
+    opr_dest.type = OPR_MEM;
     operand_read(&opr_dest);
     opr_src.val = opr_dest.val;
     operand_write(&opr_src);
