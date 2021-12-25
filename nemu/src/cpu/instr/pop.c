@@ -7,7 +7,7 @@ static void instr_execute_1op()
 {
     int len = 1;
     
-    
+    uint32_t opcode = instr_fetch(cpu.eip, 1);
     opcode -= 0x58;
     
     OPERAND esp;
