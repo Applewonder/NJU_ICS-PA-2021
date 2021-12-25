@@ -3,7 +3,7 @@
 Put the implementations of `pop' instructions here.
 */
 
-make_instr_func(pop_r_v)
+static void instr_execute_1op()
 {
     int len = 1;
     
@@ -27,3 +27,5 @@ make_instr_func(pop_r_v)
     
     return len;
 }
+
+make_instr_imp1_1op(pop, r, v);
