@@ -18,7 +18,7 @@ static void instr_execute_1op()
     OPERAND opr;
     opr.type = OPR_REG;
     opr.addr = opcode;
-    opr.data_size = data_size;
+    opr.data_size = 32;
     opr.val = esp.val;
     
     operand_write(&opr);
