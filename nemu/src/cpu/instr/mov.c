@@ -97,21 +97,25 @@ make_instr_func(mov_rm2s_w) {
 
 make_instr_func(mov_r2c_l) {
         int len = 1;
-        OPERAND r;
+        OPERAND r, c;
         r.data_size = 32;
-        len += modrm_rm(eip + 1,  &r);
+        c.data_size = 32;
+        len += modrm_r_rm(eip + 1,  &c, &r);
         operand_read(&r);
-        cpu.cr0.val = r.val;
+        c.val = r.val;
+        operand_write(&c);
         
         return len;
 }
 
 make_instr_func(mov_c2r_l) {
         int len = 1;
-        OPERAND r;
+        OPERAND r, c;
         r.data_size = 32;
-        len += modrm_rm(eip + 1, &r);
-        r.val = cpu.cr0.val;
+        c.data_size = 32;
+        len += modrm_r_rm(eip + 1, &r, &c);
+        operand_read(&c);
+        r.val = c.val;
         operand_write(&r);
         
         return len;
