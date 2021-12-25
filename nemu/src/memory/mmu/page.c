@@ -30,7 +30,6 @@ paddr_t page_translate(laddr_t laddr)
 	fflush(stdout);
 	printf("t.page_frame-------->%x\n", t.page_frame);
 	fflush(stdout);
-	assert(0);
 	memcpy(&l.val, hw_mem + m, 4);
 
 	//assert(0);
