@@ -45,7 +45,7 @@ paddr_t page_translate(laddr_t laddr)
     uint32_t a = (uint32_t)hw_mem + (cpu.cr3.pdbr<<12) + 4*(laddr >> 22);
     printf("------>%x\n", a);
     fflush(stdout);
-    printf("------>%x\n", 4*(laddr >> 22);
+    printf("------>%x\n", 4*(laddr >> 22));
     fflush(stdout);
     PDE* b = (PDE*) a;
     PDE t;
