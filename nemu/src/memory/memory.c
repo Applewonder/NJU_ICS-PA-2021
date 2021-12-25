@@ -58,15 +58,6 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 			return paddr_read(hwaddr, len);	
 		}
 	}  
-    // printf("----->laddr = %x\n", laddr);
-    // fflush(stdout);
-    // if(cpu.cr0.pg == 1) {
-    //     uint32_t addr = page_translate(laddr);
-    //     if (((laddr + len -1)&0xfff) < (laddr & 0xfff)) {
-    //         assert(0);
-    //     }
-    //     return paddr_read(addr, len);
-    // }
 	return paddr_read(laddr, len);
 }
 
@@ -81,7 +72,6 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 			uint32_t addr_2 = page_translate(laddr + rest);
 			uint32_t data_1 = data >> (8*rest);
 			uint32_t data_2 = data % (8*rest);
-			//printf("addr = %x\n, addr_2 = %x\n", laddr, addr_2);
 			paddr_write(addr_1, rest, data_2);
 			paddr_write(addr_2, len - rest, data_1);
 			
