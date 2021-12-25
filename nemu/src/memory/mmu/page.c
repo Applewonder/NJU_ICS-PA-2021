@@ -50,8 +50,6 @@ paddr_t page_translate(laddr_t laddr)
     // fflush(stdout);
     
     PDE* b = (PDE*) a;
-    printf("------>%x\n", t.val);
-    fflush(stdout);
     printf("------>%x\n", a);
     fflush(stdout);
     assert(b->present == 1);
