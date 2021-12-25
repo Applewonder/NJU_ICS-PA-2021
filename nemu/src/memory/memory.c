@@ -81,7 +81,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 			uint32_t addr_2 = page_translate(laddr + rest);
 			uint32_t data_1 = data >> (8*rest);
 			uint32_t data_2 = data % (8*rest);
-			printf("addr = %x\n, addr_2 = %x\n", laddr, addr_2);
+			//printf("addr = %x\n, addr_2 = %x\n", laddr, addr_2);
 			paddr_write(addr_1, rest, data_2);
 			paddr_write(addr_2, len - rest, data_1);
 			
