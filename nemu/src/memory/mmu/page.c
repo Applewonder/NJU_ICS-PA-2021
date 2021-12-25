@@ -37,7 +37,6 @@ paddr_t page_translate(laddr_t laddr)
 	assert(l.present == 1);
  //	assert(0);
 	paddr_t result = (l.page_frame << 12) + offset;
-	assert(0);
 	return result;
 //     printf("------>%x\n", laddr);
 //     fflush(stdout);
