@@ -41,7 +41,7 @@ paddr_t page_translate(laddr_t laddr)
     PDE* b = (PDE*) a;
     PDE t;
     memcpy(&t.val, hw_mem + a, 4); 
-    printf("------>%x\n", a);
+    printf("------>%x\n", t.val);
     fflush(stdout);
     printf("------>%x\n", a);
     fflush(stdout);
