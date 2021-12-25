@@ -46,7 +46,7 @@ paddr_t page_translate(laddr_t laddr)
     uint32_t a = (uint32_t)hw_mem + (cpu.cr3.pdbr<<12) + 4*(laddr >> 22);
     
     PDE* b = (PDE*) a;
-    assert(b->present == 1);
+   // assert(b->present == 1);
     a = (uint32_t)hw_mem + 4*((laddr >> 12)&0x3ff) + (b -> page_frame << 12);
     PTE* res = (PTE*)a;
     assert(res->present == 1);
