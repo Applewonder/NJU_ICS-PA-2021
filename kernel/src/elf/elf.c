@@ -41,7 +41,7 @@ uint32_t loader()
 			// remove this panic!!!
 			uint32_t prog_start = mm_malloc(ph->p_vaddr, ph->p_memsz);
 /* TODO: copy the segment from the ELF file to its proper memory area */
-            memcpy((void *)prog_start, (void *)elf + ph->p_offset, ph->p_filesz);
+            memcpy((void *)prog_start, (void *)ph->p_offset, ph->p_filesz);
 /* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz) */
             if (ph->p_filesz < ph->p_memsz) {
                 memset((void *)prog_start + ph->p_filesz, 0, ph->p_memsz - ph->p_filesz);
