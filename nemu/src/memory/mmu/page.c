@@ -14,6 +14,11 @@ paddr_t page_translate(laddr_t laddr)
 	fflush(stdout);
 	printf("page = -------->%x\n", page);
 	fflush(stdout);
+	printf("m = -------->%x\n", m);
+	fflush(stdout);
+	printf("offset-------->%x\n", offset);
+	fflush(stdout);
+	assert(0);
 	
 	memcpy(&t.val, hw_mem + m, 4); //这里报seg fault
 	//assert(0);//这里加断点
