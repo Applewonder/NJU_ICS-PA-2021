@@ -56,6 +56,8 @@ uint32_t laddr_read(laddr_t laddr, size_t len)
 // 			return paddr_read(hwaddr, len);	
 // 		}
 // 	}  
+    printf("----->laddr = %x\n", laddr);
+    fflush(stdout);
     if(cpu.cr0.pg == 1) {
         uint32_t addr = page_translate(laddr);
         if (((laddr + len -1)&0xfff) < (laddr & 0xfff)) {
