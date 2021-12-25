@@ -50,6 +50,7 @@ paddr_t page_translate(laddr_t laddr)
     a = (uint32_t)hw_mem + 4*((laddr >> 12)&0x3ff) + (b -> page_frame << 12);
     PTE* res = (PTE*)a;
     assert(res->present == 1);
+    assert(0);
     return (laddr&0xfff) + (res->page_frame << 12);
 #else
 	return tlb_read(laddr) | (laddr & PAGE_MASK);
