@@ -100,8 +100,9 @@ make_instr_func(mov_r2c_l) {
         OPERAND r, c;
         r.data_size = 32;
         c.data_size = 32;
-        c.type = OPR_CREG;
+        
         len += modrm_r_rm(eip + 1,  &c, &r);
+        c.type = OPR_CREG;
         operand_read(&r);
         c.val = r.val;
         operand_write(&c);
