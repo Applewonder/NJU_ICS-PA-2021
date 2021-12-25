@@ -23,7 +23,6 @@ paddr_t page_translate(laddr_t laddr)
 	//assert(0);//这里加断点
 	assert(t.present);
 	PTE l;
-	assert(0);
 	
 	m = (t.page_frame << 12) + 4*page;
 	
