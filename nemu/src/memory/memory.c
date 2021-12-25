@@ -75,7 +75,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data)
     //assert(0);
 	assert(len == 1 || len == 2 || len == 4);	
 	if( cpu.cr0.pg == 1 ) {
-		if (laddr % 4096 + len >= 4096) {
+		if (((laddr + len -1)&0xfff) < (laddr & 0xfff)) {
 		    uint32_t rest = 0x1000 - (laddr & 0xfff);
 		    uint32_t addr_1 = page_translate(laddr);
 			uint32_t addr_2 = page_translate(laddr + rest);
