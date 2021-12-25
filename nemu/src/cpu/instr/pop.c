@@ -5,7 +5,6 @@ Put the implementations of `pop' instructions here.
 
 static void instr_execute_1op()
 {
-    int len = 1;
     
     uint32_t opcode = instr_fetch(cpu.eip, 1);
     opcode -= 0x58;
@@ -25,7 +24,7 @@ static void instr_execute_1op()
     operand_write(&opr);
     cpu.esp += 4;
     
-    return len;
+    
 }
 
 make_instr_imp1_1op(pop, r, v);
