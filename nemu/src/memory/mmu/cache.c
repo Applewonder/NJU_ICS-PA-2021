@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+/*
 CacheLine Cache[128][8];
 static bool suc = false;
 
@@ -118,3 +119,4 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 	}
 	return res;
 }
+*/

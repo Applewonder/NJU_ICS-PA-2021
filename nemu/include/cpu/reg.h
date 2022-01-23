@@ -34,6 +34,11 @@ typedef	struct {
     	    uint32_t base :32;
     }GDTR;
 	
+typedef	struct {
+    	    uint32_t limit :16;
+    	    uint32_t base :32;
+    }IDTR;
+    
 //SegReg
 typedef struct {
     	// the 16-bit visible part, i.e., the selector

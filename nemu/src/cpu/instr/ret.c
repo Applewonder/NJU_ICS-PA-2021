@@ -8,6 +8,8 @@ int ret_near(uint32_t eip, uint8_t opcode)
     opr.type = OPR_MEM;
     opr.addr = cpu.esp;
     opr.data_size = data_size;
+    opr.sreg = SREG_SS;
+    
     operand_read(&opr);
     cpu.esp += 4;
     cpu.eip = opr.val;

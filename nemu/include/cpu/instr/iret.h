@@ -3,5 +3,5 @@
 /*
 Put the declarations of `iret' instructions here.
 */
-
+make_instr_func(iret);
 #endif
