@@ -50,8 +50,8 @@ void irq_handle(TrapFrame *tf)
 	{
 		int irq_id = irq - 1000;
 		assert(irq_id < NR_HARD_INTR);
-		if (irq_id == 0)
-			panic("You have hit a timer interrupt, remove this panic after you've figured out how the control flow gets here.");
+		//if (irq_id == 0)
+			//panic("You have hit a timer interrupt, remove this panic after you've figured out how the control flow gets here.");
 
 		struct IRQ_t *f = handles[irq_id];
 
