@@ -29,7 +29,7 @@ void raise_intr(uint8_t intr_no)
 	
 	cpu.eip = (b->offset_31_16 << 16) + (b->offset_15_0);
 	if(b->type == 0xE) cpu.eflags.IF = 0;
-	load_reg(1);
+	load_sreg(1);
 #endif
 }
 
