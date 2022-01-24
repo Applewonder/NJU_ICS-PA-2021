@@ -1,7 +1,7 @@
 #ifndef __PA_CONFIG_H__
 #define __PA_CONFIG_H__
 
-#define NEMU_REF_INSTR
+//#define NEMU_REF_INSTR
 
 // PA 3
 //#define CACHE_ENABLED
