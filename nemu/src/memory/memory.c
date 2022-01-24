@@ -45,7 +45,7 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data)
 		if(is_mmio(paddr) == -1) {
 			hw_mem_write(paddr, len, data);
 		} else {
-			mmio_read(paddr, len, data, is_mmio(paddr));
+			mmio_write(paddr, len, data, is_mmio(paddr));
 		}
 		
 #endif
