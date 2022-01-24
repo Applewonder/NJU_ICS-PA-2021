@@ -19,7 +19,7 @@ void create_video_mapping()
 	PDE *updir = (PDE *)va_to_pa(get_updir());
 	updir[0].val = make_pde(va_to_pa(uptable));
 	for(uint32_t addrv = 0xa0; addrv < 0xb0; addrv++) {
-		uptable[addrv].val = make_pde(addrv << 12);
+		uptable[addrv].val = make_pte(addrv << 12);
 	}
 }
 
