@@ -18,6 +18,6 @@
 #define HAS_DEVICE_VGA       // we then have display
 #define HAS_DEVICE_AUDIO     // audio, this is experimental, need to enable when submit pa-4-3
 
-#define PA_ONLINE
+//#define PA_ONLINE
 
 #endif
